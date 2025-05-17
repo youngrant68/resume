@@ -1,0 +1,166 @@
+#container
+{
+	margin: 0 1px;
+	background: #fff;
+	min-width:1250px;
+	width: auto !important;
+	width:1250px;
+}
+
+#header
+{
+	background: #009999;
+	padding: 20px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+	float: left;
+	width: 100%;
+	background: #003333;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { background: #009999; }
+
+#content
+{
+	clear: left;
+	padding: 10px;
+}
+
+
+
+#footer
+{
+	background: #ccc;
+	text-align: right;
+	padding: 20px;
+        font-family :  arial, verdana, "sans-serif";
+        font-size : 12px;
+        font-weight : normal;
+        color : #777777;
+}
+
+
+.classFR {
+   background-color:lightgreen;
+   width: 40px;
+   height: 30px;
+
+}
+
+.classFRLarge {
+   background-color:lightgreen;
+   width: 84px;
+   height: 30px;
+
+}
+
+.classSR {
+   background-color:khaki;
+   width: 40px;
+   height: 30px;
+
+}
+
+.classSRLarge {
+   background-color:khaki;
+   width: 84px;
+   height: 30px;
+
+}
+
+.classTR {
+   background-color:lightblue;
+   width: 40px;
+   height: 30px;
+
+}
+
+.classTRLarge {
+   background-color:lightblue;
+   width: 84px;
+   height: 30px;
+
+}
+
+
+p
+	{
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-size: 14pt;
+		line-height: 1.25em;
+		color: #4c4c4c;
+	}
+
+	h1,h2,h3,h4
+	{
+		font-family: 'Open Sans Condensed', sans-serif;
+		color: #1d1d1d;
+	}
+
+
+.listclass {
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-size: 14pt;
+		line-height: 1.25em;
+		color: #4c4c4c;
+	}
+
+
+
+a:hover { color: #C0C0C0; }
+
+
+
+a:link.small {
+        font-family :  arial, verdana, "sans-serif";
+        font-size : 12px;
+        font-weight : normal;
+        color : #777777;
+}
+
+a:active.small {
+        font-family :  arial, verdana, "sans-serif";
+        font-size : 12px;
+        font-weight : normal;
+        color : #777777;
+}
+
+a:visited.small {
+        font-family :  arial, verdana, "sans-serif";
+        font-size : 12px;
+        font-weight : normal;
+        color : #777777;
+}
+
+a:hover.small {
+        font-family :  arial, verdana, "sans-serif";
+        font-size : 12px;
+        font-weight : normal;
+        color : #777777;
+}

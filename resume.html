@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="robots" content="index, follow">
+
+<title>Resume Builder</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+
+<script language="javascript" src="sitegraphics/couriertest.js"></script>
+<script language="javascript" src="sitegraphics/utilities.js"></script>
+<script language="javascript" src="sitegraphics/TemplateOneArial.js"></script>
+<script language="javascript" src="sitegraphics/TemplateOneTimes.js"></script>
+<script language="javascript" src="sitegraphics/TemplateTwoArial.js"></script>
+<script language="javascript" src="sitegraphics/TemplateTwoTimes.js"></script>
+
+<script language="javascript" src="sitegraphics/TemplateOneCoverLetterArial.js"></script>
+<script language="javascript" src="sitegraphics/TemplateOneCoverLetterTimes.js"></script>
+<script language="javascript" src="sitegraphics/TemplateTwoCoverLetterArial.js"></script>
+<script language="javascript" src="sitegraphics/TemplateTwoCoverLetterTimes.js"></script>
+
+<link rel="stylesheet" type="text/css" href="sitegraphics/style.css" media="screen" />
+
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+input, select {
+    font-size: 12pt;
+    font-family: arial;
+}
+
+.texty {
+  font-family: courier;
+  font-size: 12pt;
+  color: #000080;
+  font-weight: bold;
+}
+
+/* *************** Button Colors *************** */
+
+.button {
+  background-color: #800000; /* Red */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.button2 {background-color: #005500;} /* Green */
+.button3 {background-color: #00008B;} /* Blue */
+.button4 {background-color: #856363;} /* Dustyrose */
+.button5 {background-color: #800080;} /* Purple */
+.button6 {background-color: #008080;} /* Teal */
+.button7 {background-color: #708090;} /* Grey */
+
+.button8 {background-color: #AEE7F1; color: black; font-size: 20px;} /* Arial */
+.button9 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;} /* Times */
+.button10 {background-color: #AEE7F1; color: black; font-size: 20px; font-family: Courier;} /* Courier */
+
+.button27 {background-color: #AEE7F1; color: black; font-size: 20px;} /* Arial Template Two */
+.button28 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;} /* Times Template Two */
+
+.button11 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 9pt */
+.button12 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 10pt */
+.button13 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 11pt */
+.button14 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 12pt */
+
+.button15 {background-color: #CCFF99; color: black; font-size: 20px;} /* 13pt */
+.button16 {background-color: #CCFF99; color: black; font-size: 20px;} /* 14pt */
+.button17 {background-color: #CCFF99; color: black; font-size: 20px;} /* 15pt */
+.button18 {background-color: #CCFF99; color: black; font-size: 20px;} /* 16pt */
+
+.button19 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 26pt */
+.button20 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 28pt */
+.button21 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 30pt */
+.button22 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 32pt */
+
+.button23 {background-color: #CC99FF; color: black; font-size: 20px;} /* 18pt */
+.button24 {background-color: #CC99FF; color: black; font-size: 20px;} /* 20pt */
+.button25 {background-color: #CC99FF; color: black; font-size: 20px;} /* 22pt */
+.button26 {background-color: #CC99FF; color: black; font-size: 20px;} /* 24pt */
+
+.button29 {background-color: #AEE7F1; color: black; font-size: 20px;} /* Cover Letter Template One Arial */
+.button30 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;} /* Cover Letter Template One Times */
+
+.button31 {background-color: #AEE7F1; color: black; font-size: 20px;} /* Cover Letter Template Two Arial Template Two */
+.button32 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;} /* Cover Letter Template Two Times Template Two */
+
+.buttonsmall {background-color: #F1F1F1; color: black; font-size: 20px;}
+
+.buttonsmall2 {background-color: #FFFFCC; color: black; font-size: 20px; border: 1;}
+
+.buttonsmall3 {
+  background-color: #AEE7F1;
+  color: black;
+  font-size: 20px;
+  border: 1;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttonsmall4 {
+  background-color: #AEE7F1;
+  color: black;
+  font-size: 20px;
+  border: 1;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  font-family: Times;
+  cursor: pointer;
+}
+
+.accordion {
+ box-sizing: border-box;
+ display: flex;
+ font-family: Arial, Helvetica, sans-serif;
+ overflow: hidden;
+ width: 100%;
+}
+
+span:hover {
+ background-color: #cfcfcf;
+}
+
+.accordion-select {
+ cursor: pointer;
+ margin: 0;
+ opacity: 0;
+ z-index: 1;
+}
+
+.accordion-title {
+ position: relative;
+}
+
+.accordion-title:not(:nth-last-child(2))::after {
+ border: 1px solid transparent;
+ bottom: 0;
+ content: '';
+ left: 0;
+ position: absolute;
+ right: 0;
+ top: 0;
+}
+
+.accordion-title span {
+ bottom: 0px;
+ box-sizing: border-box;
+ display: block;
+ position: absolute;
+ white-space: nowrap;
+ width: 100%;
+}
+
+.accordion-content {
+ box-sizing: border-box;
+ overflow: auto;
+ position: relative;
+ transition: margin 0.3s ease 0.1s;
+}
+
+.accordion-select:checked + .accordion-title + .accordion-content {
+ margin-bottom: 0;
+ margin-right: 0;
+}
+
+/* Generated styles starts here */
+
+.accordion {
+ border-color: #dedede;
+ border-radius: 1px;
+ border-style: solid;
+ border-width: 3px;
+ flex-direction: column;
+ height: auto;
+}
+
+.accordion-title,
+.accordion-select  {
+ background-color: #ffffff;
+ color: #7f8787;
+ width: 100%;
+ height: 41px;
+ font-size: 19px;
+}
+
+.accordion-select {
+ margin-bottom: -41px;
+ margin-right: 0;
+}
+
+.accordion-title:not(:nth-last-child(2))::after {
+ border-bottom-color: #eaeaea;
+ border-right-color: transparent;
+}
+
+.accordion-select:hover + .accordion-title,
+.accordion-select:checked + .accordion-title {
+ background-color: #ffffff;
+}
+
+.accordion-title span  {
+ transform: rotate(0deg);
+ -ms-writing-mode: lr-tb;
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+ padding-left: 21px;
+ padding-right: 21px;
+ line-height: 41px;
+}
+
+.accordion-content {
+ background-color: #f7f7f7;
+ color: #000000;
+ height: 600px;
+ margin-bottom: -600px;
+ margin-right: 0;
+ padding: 15px;
+ width: 100%;
+}
+
+
+</style>
+
+<script type="application/javascript">
+
+//<input type="text" STYLE="background-color: #FFFFCC;" id="addyextra" name="addyextra" size="30" maxlength="30" placeholder="Extra line - some templates need it" value ="">
+
+var TextSize = 11;
+var LineHeight = 4.5; //Line height
+var HeaderCol01 = 128;
+var HeaderCol02 = 0;
+var HeaderCol03 = 0;
+var HeaderTextCol01 = 255;
+var HeaderTextCol02 = 255;
+var HeaderTextCol03 = 255;
+var HeadingTextCol01 = 128;
+var HeadingTextCol02 = 0;
+var HeadingTextCol03 = 0;
+var HeadingSize = 15;
+var HeaderText01 = 30;
+var HeaderText02 = 22;
+var BodyTextCol01 = 0;
+var BodyTextCol02 = 0;
+var BodyTextCol03 = 0;
+var SP01 = 1.7;
+var SP02 = 1.8;
+var HTDiff = 1;
+
+var spacingsummary = 0;
+var spacingskills = 0;
+var spacingexperience = 0;
+var spacingexperiencePos2 = 0;
+var spacingexperiencePos3 = 0;
+var spacingeducation = 0;
+var spacingeducationPos2 = 0;
+var spacingeducationPos3 = 0;
+var spacingeducationPos4 = 0;
+var spacingextrasidebarOne = 0; // Extra Sidebar Section
+var spacingextrasidebarTwo = 0; // Extra Sidebar Section Two
+var spacingextrasidebarThree = 0; // Extra Sidebar Section Three
+var spacingextraOnePos2 = 0; //Extra Main page section (one column)
+var spacingextraTwo = 0; // Extra main page section (Two columns)
+
+var pdetails01 = "";
+var pdetails02 = "";
+var pdetails03 = "";
+var pdetails04 = "";
+var pdetails05 = "";
+var pdetails06 = "";
+var pdetails07 = "";
+var pdetails08 = "";
+var pdetails09 = "";
+var SummaryText = "";
+var SummaryHeader = "";
+var Skill01 = "";
+var Skill02 = "";
+var Skill03 = "";
+var Skill04 = "";
+var Skill05 = "";
+var Skill06 = "";
+var SKillsHeader = "";
+var EducationHeader = "";
+var CourseOneInstitute = ""; //Institute name
+var CourseOneQual = ""; //Qualification name
+var CourseOneSubject = ""; //Subject name
+var CourseOneCompleted = ""; //Year completed
+var CourseTwoInstitute = ""; //Institute name
+var CourseTwoQual = ""; //Qualification name
+var CourseTwoSubject = ""; //Subject name
+var CourseTwoCompleted = ""; //Year completed
+var CourseThreeInstitute = ""; //Institute name
+var CourseThreeQual = ""; //Qualification name
+var CourseThreeSubject = ""; //Subject name
+var CourseThreeCompleted = ""; //Year completed
+var CourseFourInstitute = ""; //Institute name
+var CourseFourQual = ""; //Qualification name
+var CourseFourSubject = ""; //Subject name
+var CourseFourCompleted = ""; //Year completed
+var ExperienceHeader = ""; // Experience Header
+var PositionOneTitle = ""; //Position one title
+var PositionOneEmployer = ""; // Position one Employer
+var PositionOneStart = ""; // Position one date started
+var PositionOneFinished = ""; // Position one date finished
+var PositionOneTwoLineOne = ""; // Position One two line points
+var PositionOneTwoLineTwo = ""; // Position One two line points
+var PositionOneTwoLineThree = ""; // Position One two line points
+var PositionOneTwoLineFour = ""; // Position One two line points
+var PositionOneTwoLineFive = ""; // Position One two line points
+var PositionOneSingleLineOne = ""; // Position One single line points
+var PositionOneSingleLineTwo = ""; // Position One single line points
+var PositionOneSingleLineThree = ""; // Position One single line points
+var PositionOneSingleLineFour = ""; // Position One single line points
+var PositionOneSingleLineFive = ""; // Position One single line points
+var PositionTwoTitle = ""; //Position two title
+var PositionTwoEmployer = ""; // Position two Employer
+var PositionTwoStart = ""; // Position two date started
+var PositionTwoFinished = ""; // Position two date finished
+var PositionTwoTwoLineOne = ""; // Position 2 two line points
+var PositionTwoTwoLineTwo = ""; // Position 2 two line points
+var PositionTwoTwoLineThree = ""; // Position 2 two line points
+var PositionTwoTwoLineFour = ""; // Position 2 two line points
+var PositionTwoTwoLineFive = ""; // Position 2 two line points
+var PositionTwoSingleLineOne = ""; // Position 2 single line points
+var PositionTwoSingleLineTwo = ""; // Position 2 single line points
+var PositionTwoSingleLineThree = ""; // Position 2 single line points
+var PositionTwoSingleLineFour = ""; // Position 2 single line points
+var PositionTwoSingleLineFive = ""; // Position 2 single line points
+var PositionThreeTitle = ""; //Position 3 title
+var PositionThreeEmployer = ""; // Position 3 Employer
+var PositionThreeStart = ""; // Position 3 date started
+var PositionThreeFinished = ""; // Position 3 date finished
+var PositionThreeTwoLineOne = ""; // Position 3 two line points
+var PositionThreeTwoLineTwo = ""; // Position 3 two line points
+var PositionThreeTwoLineThree = ""; // Position 3 two line points
+var PositionThreeTwoLineFour = ""; // Position 3 two line points
+var PositionThreeTwoLineFive = ""; // Position 3 two line points
+var PositionThreeSingleLineOne = ""; // Position 3 single line points
+var PositionThreeSingleLineTwo = ""; // Position 3 single line points
+var PositionThreeSingleLineThree = ""; // Position 3 single line points
+var PositionThreeSingleLineFour = ""; // Position 3 single line points
+var PositionThreeSingleLineFive = ""; // Position 3 single line points
+var Extrasec2Header = ""; // Extra section two Header
+var Extrasec2SubLeft = ""; // Extra section two left sub Header
+var Extrasec2LeftOne = ""; // Extra section two left line one
+var Extrasec2LeftTwo = ""; // Extra section two left line two
+var Extrasec2LeftThree = ""; // Extra section two left line three
+var Extrasec2LeftFour = ""; // Extra section two left line four
+var Extrasec2LeftFive = ""; // Extra section two left line five
+var Extrasec2SubRight = ""; // Extra section two right sub Header
+var Extrasec2RightOne = ""; // Extra section two right line one
+var Extrasec2RightTwo = ""; // Extra section two right line two
+var Extrasec2RightThree = ""; // Extra section two right line three
+var Extrasec2RightFour = ""; // Extra section two right line four
+var Extrasec2RightFive = ""; // Extra section two right line five
+var Extrasec1Header = ""; // Extra section one Header
+var Extrasec1Paragraph = ""; // Extra section one left sub Header
+var ExtraSidebarHeader2 = ""; // Extra section Sidebar header ***** NEW SECTION
+var ExtraSidebarPara = ""; // Extra section Sidebar ***** NEW SECTION
+var ExtraSidebarHeader = ""; // Extra section Sidebar header
+var ExtraSidebarSubTop = ""; // Extra section Sidebar Subheader top
+var ExtraSidebarSubBottom = ""; // Extra section Sidebar subheader bottom
+var ExtraSidebarSubMostBottom = ""; // Extra section Sidebar subheader  most bottom
+var ExtraSidebarTopOne = ""; // Extra section Sidebar top one
+var ExtraSidebarTopTwo = ""; // Extra section Sidebar top two
+var ExtraSidebarTopThree = ""; // Extra section Sidebar top three
+var ExtraSidebarTopFour = ""; // Extra section Sidebar top four
+var ExtraSidebarTopFive = ""; // Extra section Sidebar top five
+var ExtraSidebarBottomOne = ""; // Extra section Sidebar bottom one
+var ExtraSidebarBottomTwo = ""; // Extra section Sidebar bottom two
+var ExtraSidebarBottomThree = ""; // Extra section Sidebar bottom three
+var ExtraSidebarBottomFour = ""; // Extra section Sidebar bottom four
+var ExtraSidebarBottomFive = ""; // Extra section Sidebar bottom five
+var ExtraSidebaMostBottomOne = ""; // Extra section Sidebar most bottom one
+var ExtraSidebarMostBottomTwo = ""; // Extra section Sidebar most bottom two
+var ExtraSidebarMostBottomThree = ""; // Extra section Sidebar most bottom three
+var ExtraSidebarMostBottomFour = ""; // Extra section Sidebar most bottom four
+var ExtraSidebarMostBottomFive = ""; // Extra section Sidebar most bottom five
+
+
+
+
+</script>
+
+</head>
+
+<body onload="SetSpacing();">
+
+  <!-- ********************  Start body  ******************** -->
+
+    <div id="container">
+    	<div id="header">
+
+    <img src="images/w.png" alt="W" width="45" height="45">
+    <img src="images/i.png" alt="I" width="45" height="45">
+    <img src="images/s.png" alt="S" width="45" height="45">
+    <img src="images/h.png" alt="H" width="45" height="45">
+    <img src="images/blank.png" alt="" width="45" height="45">
+    <img src="images/i.png" alt="I" width="45" height="45">
+    <img src="images/blank.png" alt="" width="45" height="45">
+    <img src="images/c.png" alt="C" width="45" height="45">
+    <img src="images/o.png" alt="O" width="45" height="45">
+    <img src="images/u.png" alt="U" width="45" height="45">
+    <img src="images/l.png" alt="L" width="45" height="45">
+    <img src="images/d.png" alt="D" width="45" height="45">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <br><br>
+
+    <img src="sitegraphics/r.png" alt="R" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">
+    <img src="sitegraphics/s.png" alt="S" width="23" height="23">
+    <img src="sitegraphics/u.png" alt="U" width="23" height="23">
+    <img src="sitegraphics/m.png" alt="M" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="sitegraphics/b.png" alt="B" width="23" height="23">
+    <img src="sitegraphics/u.png" alt="U" width="23" height="23">
+    <img src="sitegraphics/i.png" alt="I" width="23" height="23">
+    <img src="sitegraphics/l.png" alt="L" width="23" height="23">
+    <img src="sitegraphics/d.png" alt="D" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">
+    <img src="sitegraphics/r.png" alt="R" width="23" height="23">
+
+
+    	</div>
+    	<div id="navigation">
+    		<ul>
+    			<li><a href="index.html">Home</a></li>
+    			<li><a href="resume.html">Resume Builder</a></li>
+    			<li><a href="coverletter.html">Cover Letter Builder</a></li>
+    			<li><a href="jobsearch.html">Job Search</a></li>
+    		</ul>
+    	</div>
+    	<div id="content">
+
+  <!-- ********************  End body  ******************** -->
+
+
+<h1>Resume Builder</h1><br>
+
+<h2><font color="#008800">Scroll to the bottom of the page first and fill out your details.</font></h2>
+
+<h2><font color="#008800">Then return to the top and use the buttons to choose your text/header sizes, colours and fonts.</font></h2>
+<br><br>
+
+<h2>Choose your color<small> (Default is Red)</small>
+<br>
+<button onclick="RedBG();" class="button">&nbsp;Red&nbsp;&nbsp;</button>
+<button onclick="GreenBG();" class="button button2">Green&nbsp;</button>
+<button onclick="BlueBG();" class="button button3">&nbsp;Blue&nbsp;</button>
+<button onclick="BrownBG();" class="button button4">Brown&nbsp;</button>
+<button onclick="PurpleBG();" class="button button5">Purple</button>
+<button onclick="TealBG();" class="button button6">&nbsp;Teal&nbsp;</button>
+<button onclick="GreyBG();" class="button button7">&nbsp;Grey&nbsp;</button>
+</h2>
+
+<table border="1" cellpadding="0" cellspacing="1">
+  <tr>
+  <th><h2>Text Size (Default is 11pt)</h2></th>
+  <th><h2>Heading Size (Default is 15pt)</h2></th>
+  </tr>
+<tr>
+<td>
+  &nbsp;<button onclick="ChooseTextSize9();" class="button button11">&nbsp;&nbsp;9 pt&nbsp;</button>
+  <button onclick="ChooseTextSize10();" class="button button12">&nbsp;10 pt&nbsp;</button>
+  <button onclick="ChooseTextSize11();" class="button button13">&nbsp;11 pt&nbsp;&nbsp;</button>
+  <button onclick="ChooseTextSize12();" class="button button14">&nbsp;12 pt&nbsp;</button>&nbsp;
+</td>
+<td>
+  &nbsp;<button onclick="ChooseHeadingSize13();" class="button button15">&nbsp;13 pt&nbsp;</button>
+  <button onclick="ChooseHeadingSize14();" class="button button16">&nbsp;14 pt&nbsp;</button>
+  <button onclick="ChooseHeadingSize15();" class="button button17">&nbsp;15 pt&nbsp;</button>
+    <button onclick="ChooseHeadingSize16();" class="button button18">&nbsp;16 pt&nbsp;</button>&nbsp;
+</td>
+</tr>
+</table>
+<br>
+<table border="1" cellpadding="0" cellspacing="1">
+  <tr>
+  <th><h2>Header Size (Main, Default is 30pt)</h2></th>
+  <th><h2>Header Size (Secondary, Default is 22pt)</h2></th>
+  </tr>
+<tr>
+<td>
+  &nbsp;<button onclick="ChooseHeaderSize26();" class="button button19">&nbsp;26 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize28();" class="button button20">&nbsp;28 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize30();" class="button button21">&nbsp;30 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize32();" class="button button22">&nbsp;32 pt&nbsp;</button>&nbsp;
+</td>
+<td>
+  &nbsp;<button onclick="ChooseHeaderSize18();" class="button button23">&nbsp;18 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize20();" class="button button24">&nbsp;20 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize22();" class="button button25">&nbsp;22 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize24();" class="button button26">&nbsp;24 pt&nbsp;</button>&nbsp;
+</td>
+</tr>
+</table>
+<br>
+<h2>Choose your resume template</h2>
+
+<table border="1" cellpadding="0" cellspacing="0">
+<tr>
+<th><h2>Template 1</h2></th>
+<th><h2>Template 2</h2></th>
+</tr>
+<tr>
+<td>
+  <button onclick="javascript:TemplateOneArialSinglePage();" class="button button8"><b>&nbsp;&nbsp;&nbsp;&nbsp;Arial&nbsp;&nbsp;&nbsp;</b></button><br>
+  <button onclick="javascript:TemplateOneTimesSinglePage();" class="button button9"><b>&nbsp;&nbsp;&nbsp;Times&nbsp;&nbsp;&nbsp;</b></button><br>
+<!--   <button onclick="TemplateOneCourierSinglePage();" class="button button10"><b>Courier</b></button> -->
+</td>
+<td valign="top">
+  <button onclick="javascript:TemplateTwoArialSinglePage();" class="button button27"><b>&nbsp;&nbsp;&nbsp;&nbsp;Arial&nbsp;&nbsp;&nbsp;</b></button><br>
+  <button onclick="javascript:TemplateTwoTimesSinglePage();" class="button button28"><b>&nbsp;&nbsp;&nbsp;Times&nbsp;&nbsp;&nbsp;</b></button>
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<h2>Fill out your details</h2>
+
+
+
+<!-- ********************  Horizontal Tabs  ******************** -->
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Details')" id="defaultOpen">Personal Details</button>
+  <button class="tablinks" onclick="openCity(event, 'Summary')">Summary</button>
+  <button class="tablinks" onclick="openCity(event, 'Skills')">Skills</button>
+  <button class="tablinks" onclick="openCity(event, 'Experience')">Experience</button>
+  <button class="tablinks" onclick="openCity(event, 'Education')">Education</button>
+  <button class="tablinks" onclick="openCity(event, 'Extrasidebar')">Extra (Sidebar)</button>
+  <button class="tablinks" onclick="openCity(event, 'ExtraOne')">Extra (One Column)</button>
+  <button class="tablinks" onclick="openCity(event, 'ExtraTwo')">Extra (Two Columns)</button>
+  <button class="tablinks" onclick="openCity(event, 'Spacing')">Spacing</button>
+  <button class="tablinks" onclick="openCity(event, 'CoverLetter')">Cover Letter</button>
+  <button class="tablinks" onclick="openCity(event, 'Phrases')">Power Phrases</button>
+  <button class="tablinks" onclick="openCity(event, 'Adjectives')">Adjectives/Verbs</button>
+  <button class="tablinks" onclick="openCity(event, 'Help')">Help</button>
+</div>
+
+<!-- ********************  Personal Details Tab  ******************** -->
+
+<div id="Details" class="tabcontent">
+<form name="details">
+  <h3>Personal Details</h3>
+  <h4><font color="#008800">Position: Header or sidebar</font></h4>
+<label>Full Name</label>
+<br>
+  <input type="text" id="fname" name="fname" size="30" maxlength="30" placeholder="First Name">
+  <input type="text" id="lname" name="lname" size="30" maxlength="30" placeholder="Last Name">
+<br><br>
+<label>Address</label>
+<br>
+  <input type="text" id="city" name="city" size="30" maxlength="30" placeholder="City/Suburb">
+  <input type="text" id="state" name="state" size="10" maxlength="10" placeholder="State (XX/XXX)">
+  <input type="text" id="zip" name="zip" size="10" maxlength="10" placeholder="ZIP Code">
+<br><br>
+<label>Phone Number</label>
+<br>
+  <input type="text" id="phonenumber" name="phonenumber" size="30" maxlength="30" placeholder="Phone Number">
+<br><br>
+<label>Email Address</label>
+<br>
+  <input type="text" id="email" name="email" size="60" maxlength="60" placeholder="Email Address">
+<br><br>
+<label>Career Title (Optional)</label>
+<br>
+  <input type="text" id="title" name="title" size="60" maxlength="60" placeholder="Career Title (Optional)">
+<br><br>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetDetails()"><img src="images/clear1.gif"width="60" height="46" alt="Clear personal details" border="0" name="resetdetails" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- ********************  Summary Tab  ******************** -->
+
+<div id="Summary" class="tabcontent">
+<form name="summary">
+  <h3>Career Summary</h3>
+    <h4><font color="#008800">Position: Main page</font></h4>
+    <label><b>Summary Section Header</b></label><br>
+    <input type="text" id="summaryheader" name="summaryheader" size="20" maxlength="30" placeholder="Section Header" value ="Summary">
+  <br><br>
+  <label><b>Career Summary Text</b></label>
+  <br>
+  <textarea id="careersummary" name="careersummary" rows="6" cols="80" placeholder="Career summary text"></textarea>
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetSummary()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR SUMMARY" border="0" name="CLEARSUMMARY" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+<!-- ********************  Skills Tab  ******************** -->
+
+<div id="Skills" class="tabcontent">
+<form name="skills">
+  <h3>Skills</h3>
+  <h4><font color="#008800">Position: Sidebar</font></h4>
+  <label><b>Skills Header</b></label><br>
+  <input type="text" id="skillsheader" name="skillsheader" size="20" maxlength="20" placeholder="Section Header" value ="Skills"><br><br>
+  <label><b>List six of your best skills</b></label><br>
+  <input type="text" id="skill01" name="skill01" size="30" maxlength="30" placeholder="Skill 1"><br>
+  <input type="text" id="skill02" name="skill02" size="30" maxlength="30" placeholder="Skill 2"><br>
+  <input type="text" id="skill03" name="skill03" size="30" maxlength="30" placeholder="Skill 3"><br>
+  <input type="text" id="skill04" name="skill04" size="30" maxlength="30" placeholder="Skill 4"><br>
+  <input type="text" id="skill05" name="skill05" size="30" maxlength="30" placeholder="Skill 5"><br>
+  <input type="text" id="skill06" name="skill06" size="30" maxlength="30" placeholder="Skill 6"><br>
+  <br>
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetSkills()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Skills" border="0" name="clearskills" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+<!-- ********************  Work Experience Tab  ******************** -->
+
+<div id="Experience" class="tabcontent">
+<form name="experience">
+  <h3>Work Experience</h3>
+  <h4><font color="#008800">Position: Main page</font></h4>
+  <label><b>Summary Section Header</b></label><br>
+  <input type="text" id="experienceheader" name="experienceheader" size="30" maxlength="30" placeholder="Section Header" value ="Experience">
+<br><br>
+<div class="accordion">
+  <input type="radio" name="select" class="accordion-select" checked />
+ <div class="accordion-title"><span><b>Position 1 Details</b></span></div>
+ <div class="accordion-content">
+
+<table width="760px" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Position Title&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononetitle" name="positiononetitle" size="50" maxlength="50" placeholder="Position Title">
+    </td>
+  </tr>
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Employer&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononeemployer" name="positiononeemployer" size="50" maxlength="50" placeholder="Employer">
+    </td>
+  </tr>
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Date Started&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononestart" name="positiononestart" size="10" maxlength="10" placeholder="xx/xxxx">
+    </td>
+  </tr>
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Date Finished&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononefinished" name="positiononefinished" size="10" maxlength="10" placeholder="xx/xxxx"><br><br>
+    </td>
+  </tr>
+<tr>
+  <td width="160px" valign="top" align="right"><b>&nbsp;Two line points:&nbsp;</b></td>
+  <td width="600px">
+  <textarea id="positiononetwolineone" name="positiononetwolineone" rows="2" cols="70" placeholder="Two line point"></textarea>
+  <textarea id="positiononetwolinetwo" name="positiononetwolinetwo" rows="2" cols="70" placeholder="Two line point"></textarea>
+  <textarea id="positiononetwolinethree" name="positiononetwolinethree" rows="2" cols="70" placeholder="Two line point"></textarea>
+  <textarea id="positiononetwolinefour" name="positiononetwolinefour" rows="2" cols="70" placeholder="Two line point"></textarea>
+  <textarea id="positiononetwolinefive" name="positiononetwolinefive" rows="2" cols="70" placeholder="Two line point"></textarea>
+  </td>
+</tr>
+<tr>
+  <td width="156px" valign="top" align="right"><b>&nbsp;Single line points:&nbsp;</b></td>
+  <td width="600px">
+  <textarea id="positiononesinglelineone" name="positiononesinglelineone" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinetwo" name="positiononesinglelinetwo" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinethree" name="positiononesinglelinethree" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinefour" name="positiononesinglelinefour" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinefive" name="positiononesinglelinefive" rows="1" cols="70" placeholder="Single line point"></textarea>
+  </td>
+</tr>
+</table>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetExperienceOne()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Experience Position One" border="0" name="clearexperienceone" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+
+ </div>
+
+<!-- ********************  Work Experience Tab  Position Two ******************** -->
+
+
+      <input type="radio" name="select" class="accordion-select" />
+ <div class="accordion-title"><span><b>Position 2 Details</b></span></div>
+ <div class="accordion-content">
+
+   <table width="760px" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Position Title&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwotitle" name="positiontwotitle" size="50" maxlength="50" placeholder="Position Title">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Employer&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwoemployer" name="positiontwoemployer" size="50" maxlength="50" placeholder="Employer">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Started&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwostart" name="positiontwostart" size="10" maxlength="10" placeholder="xx/xxxx">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Finished&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwofinished" name="positiontwofinished" size="10" maxlength="10" placeholder="xx/xxxx"><br><br>
+       </td>
+     </tr>
+   <tr>
+     <td width="160px" valign="top" align="right"><b>&nbsp;Two line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positiontwotwolineone" name="positiontwotwolineone" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positiontwotwolinetwo" name="positiontwotwolinetwo" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positiontwotwolinethree" name="positiontwotwolinethree" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positiontwotwolinefour" name="positiontwotwolinefour" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positiontwotwolinefive" name="positiontwotwolinefive" rows="2" cols="70" placeholder="Two line point"></textarea>
+     </td>
+   </tr>
+   <tr>
+     <td width="156px" valign="top" align="right"><b>&nbsp;Single line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positiontwosinglelineone" name="positiontwosinglelineone" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positiontwosinglelinetwo" name="positiontwosinglelinetwo" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positiontwosinglelinethree" name="positiontwosinglelinethree" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positiontwosinglelinefour" name="positiontwosinglelinefour" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positiontwosinglelinefive" name="positiontwosinglelinefive" rows="1" cols="70" placeholder="Single line point"></textarea>
+     </td>
+   </tr>
+   </table>
+   <br>
+   <table width="140px border="1" bordercolor="#000000">
+   <tr>
+   <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+   <td align="center" valign="middle" width="65px"><a href="javascript:ResetExperienceTwo()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Experience Position Two" border="0" name="clearexperiencetwo" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+   </tr>
+   </table>
+
+ </div>
+
+ <!-- ********************  Work Experience Tab  Position Three ******************** -->
+
+      <input type="radio" name="select" class="accordion-select" />
+ <div class="accordion-title"><span><b>Position 3 Details</b></span></div>
+ <div class="accordion-content">
+
+   <table width="760px" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Position Title&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreetitle" name="positionthreetitle" size="50" maxlength="50" placeholder="Position Title">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Employer&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreeemployer" name="positionthreeemployer" size="50" maxlength="50" placeholder="Employer">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Started&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreestart" name="positionthreestart" size="10" maxlength="10" placeholder="xx/xxxx">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Finished&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreefinished" name="positionthreefinished" size="10" maxlength="10" placeholder="xx/xxxx"><br><br>
+       </td>
+     </tr>
+   <tr>
+     <td width="160px" valign="top" align="right"><b>&nbsp;Two line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positionthreetwolineone" name="positionthreetwolineone" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinetwo" name="positionthreetwolinetwo" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinethree" name="positionthreetwolinethree" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinefour" name="positionthreetwolinefour" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinefive" name="positionthreetwolinefive" rows="2" cols="70" placeholder="Two line point"></textarea>
+     </td>
+   </tr>
+   <tr>
+     <td width="156px" valign="top" align="right"><b>&nbsp;Single line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positionthreesinglelineone" name="positionthreesinglelineone" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positionthreesinglelinetwo" name="positionthreesinglelinetwo" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positionthreesinglelinethree" name="positionthreesinglelinethree" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positionthreesinglelinefour" name="positionthreesinglelinefour" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positionthreesinglelinefive" name="positionthreesinglelinefive" rows="1" cols="70" placeholder="Single line point"></textarea>
+     </td>
+   </tr>
+   </table>
+   <br>
+   <table width="140px border="1" bordercolor="#000000">
+   <tr>
+   <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+   <td align="center" valign="middle" width="65px"><a href="javascript:ResetExperienceThree()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Experience Position Three" border="0" name="clearexperiencethree" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+   </tr>
+   </table>
+
+ </div>
+</div>
+
+</form>
+</div>
+
+<!-- ********************  Education Tab  ******************** -->
+
+<div id="Education" class="tabcontent">
+<form name="education">
+  <h3>Education</h3>
+  <h4><font color="#008800">Position: Sidebar (Please note that these four sections are stacked on top of each other)</font></h4>
+  <label><b>Education Section Header</b></label><br>
+  <input type="text" id="educationheader" name="educationheader" size="20" maxlength="20" placeholder="Section Header" value ="Education">
+<br><br>
+<table Width="1210px" border="1" cellspacing="0" cellpadding="0">
+<tr>
+<th Width="150px" Align="center"></th>
+<th Width="265px" Align="center">Qualification 1</th>
+<th Width="265px" Align="center">Qualification 2</th>
+<th Width="265px" Align="center">Qualification 3</th>
+<th Width="265px" Align="center">Qualification 4</th>
+</tr>
+<tr>
+<td><b>&nbsp;Institution Name</b></td>
+<td><input type="text" id="courseoneinstitute" name="courseoneinstitute" size="28" maxlength="30" placeholder="Institution Name"></td>
+<td><input type="text" id="coursetwoinstitute" name="coursetwoinstitute" size="28" maxlength="30" placeholder="Institution Name"></td>
+<td><input type="text" id="coursethreeinstitute" name="coursethreeinstitute" size="28" maxlength="30" placeholder="Institute Name"></td>
+<td><input type="text" id="coursefourinstitute" name="coursefourinstitute" size="28" maxlength="30" placeholder="Institute Name"></td>
+</tr>
+<tr>
+<td><b>&nbsp;Qualification</b></td>
+<td><input type="text" id="courseonequal" name="courseonequal" size="28" maxlength="30" placeholder="Qualification"></td>
+<td><input type="text" id="coursetwoqual" name="coursetwoqual" size="28" maxlength="30" placeholder="Qualification"></td>
+<td><input type="text" id="coursethreequal" name="coursethreequal" size="28" maxlength="30" placeholder="Qualification"></td>
+<td><input type="text" id="coursefourqual" name="coursefourqual" size="28" maxlength="30" placeholder="Qualification"></td>
+</tr>
+<tr>
+<td><b>&nbsp;Subject</b></td>
+<td><input type="text" id="courseonesubject" name="courseonesubject" size="28" maxlength="30" placeholder="Subject"></td>
+<td><input type="text" id="coursetwosubject" name="coursetwosubject" size="28" maxlength="30" placeholder="Subject"></td>
+<td><input type="text" id="coursethreesubject" name="coursethreesubject" size="28" maxlength="30" placeholder="Subject"></td>
+<td><input type="text" id="coursefoursubject" name="coursefoursubject" size="28" maxlength="30" placeholder="Subject"></td>
+</tr>
+<tr>
+<td><b>&nbsp;Year completed</b></td>
+<td><input type="text" id="courseonecompleted" name="courseonecompleted" size="28" maxlength="30" placeholder="Year completed"></td>
+<td><input type="text" id="coursetwocompleted" name="coursetwocompleted" size="28" maxlength="30" placeholder="Year completed"></td>
+<td><input type="text" id="coursethreecompleted" name="coursethreecompleted" size="28" maxlength="30" placeholder="Year complete"></td>
+<td><input type="text" id="coursefourcompleted" name="coursefourcompleted" size="28" maxlength="30" placeholder="Year complete"></td>
+</tr>
+</table>
+
+<br>
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetEducation()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Education" border="0" name="cleareducation" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+
+
+
+<!-- ********************  Extra Sidebar Tab  ******************** -->
+
+<div id="Extrasidebar" class="tabcontent">
+
+<!-- ******************** Accordian start ******************** -->
+<div class="accordion">
+  <input type="radio" name="select" class="accordion-select" checked />
+ <div class="accordion-title"><span><b>Extra Sidebar Section 1</b></span></div>
+ <div class="accordion-content">
+
+     <form name="extrasidebar2">
+       <h3>Extra Section 1 Sidebar</h3>
+       <h4><font color="#008800">Position: Sidebar</font></h4>
+
+       <label><b>Summary Section Header</b></label><br>
+       <input type="text" id="extrasidebarheader2" name="extrasidebarheader2" size="20" maxlength="30" placeholder="Section Header">
+     <br><br>
+     <label><b>Extra Section Text</b></label>
+     <br>
+     <textarea id="extrasidebartext2" name="extrasidebartext2" rows="6" cols="30" placeholder="Extra sidebar section text"></textarea>
+     <br><br>
+     <table width="140px border="1" bordercolor="#000000">
+     <tr>
+     <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+     <td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecSidebar2()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Extra Section (Sidebar)" border="0" name="clearextrasidebar2" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+     </tr>
+     </table>
+
+     </form>
+</div>
+
+
+
+          <input type="radio" name="select" class="accordion-select" />
+   <div class="accordion-title"><span><b>Extra Sidebar Section 2</b></span></div>
+   <div class="accordion-content">
+
+     <form name="extrasidebar">
+       <h3>Extra Section 2 Sidebar</h3>
+       <h4><font color="#008800">Position: Sidebar</font></h4>
+       <label><b>Extra Section Header</b></label><br>
+       <input type="text" id="extrasidebarheader" name="extrasidebarheader" size="20" maxlength="30" placeholder="Section Header">
+       <br><br>
+       <table width="1045px" border="0" cellpadding="0" cellspacing="0">
+       <tr>
+       <th></th>
+       <th>Part 1</th>
+       <th>Part 2</th>
+       <th>Part 3</th>
+       </tr>
+       <tr>
+       <td align="right" valign="top"><label><b>Sub Header:&nbsp;</b></label></td>
+       <td width="285px" align="center"><input type="text" id="extrasidebarsubtop" name="extrasidebarsubtop" size="30" maxlength="30" placeholder="Sub Header"><br><br></td>
+       <td width="315px" align="right"><input type="text" id="extrasidebarsubbottom" name="extrasidebarsubbottom" size="30" maxlength="30" placeholder="Sub Header"><br><br></td>
+       <td width="315px" align="right"><input type="text" id="extrasidebarsubmostbottom" name="extrasidebarsubmostbottom" size="30" maxlength="30" placeholder="Sub Header"><br><br></td>
+       </tr>
+       <tr>
+       <td align="right" valign="top"><label><b>Five Lines:&nbsp;</b></label></td>
+       <td align="center">
+       <input type="text" id="extrasidebartopone" name="extrasidebartopone" size="30" maxlength="30" placeholder="Line 1">
+       <input type="text" id="extrasidebartoptwo" name="extrasidebartoptwo" size="30" maxlength="30" placeholder="Line 2">
+       <input type="text" id="extrasidebartopthree" name="extrasidebartopthree" size="30" maxlength="30" placeholder="Line 3">
+       <input type="text" id="extrasidebartopfour" name="extrasidebartopfour" size="30" maxlength="30" placeholder="Line 4">
+       <input type="text" id="extrasidebartopfive" name="extrasidebartopfive" size="30" maxlength="30" placeholder="Line 5">
+       </td>
+       <td align="right">
+       <input type="text" id="extrasidebarbottomone" name="extrasidebarbottomone" size="30" maxlength="30" placeholder="Line 1">
+       <input type="text" id="extrasidebarbottomtwo" name="extrasidebarbottomtwo" size="30" maxlength="30" placeholder="Line 2">
+       <input type="text" id="extrasidebarbottomthree" name="extrasidebarbottomthree" size="30" maxlength="30" placeholder="Line 3">
+       <input type="text" id="extrasidebarbottomfour" name="extrasidebarbottomfour" size="30" maxlength="30" placeholder="Line 4">
+       <input type="text" id="extrasidebarbottomfive" name="extrasidebarbottomfive" size="30" maxlength="30" placeholder="Line 5">
+       </td>
+       <td align="right">
+       <input type="text" id="extrasidebarmostbottomone" name="extrasidebarmostbottomone" size="30" maxlength="30" placeholder="Line 1">
+       <input type="text" id="extrasidebarmostbottomtwo" name="extrasidebarmostbottomtwo" size="30" maxlength="30" placeholder="Line 2">
+       <input type="text" id="extrasidebarmostbottomthree" name="extrasidebarmostbottomthree" size="30" maxlength="30" placeholder="Line 3">
+       <input type="text" id="extrasidebarmostbottomfour" name="extrasidebarmostbottomfour" size="30" maxlength="30" placeholder="Line 4">
+       <input type="text" id="extrasidebarmostbottomfive" name="extrasidebarmostbottomfive" size="30" maxlength="30" placeholder="Line 5">
+       </td>
+       </tr>
+       </table>
+       <br>
+       <table width="140px border="1" bordercolor="#000000">
+       <tr>
+       <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+       <td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecSidebar()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Extra Section (Sidebar)" border="0" name="clearextrasidebar" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+       </tr>
+       </table>
+
+
+     </form>
+
+  </div>
+  </div>
+
+<!-- ******************** Accordian finish ******************** -->
+
+
+</div>
+
+
+<!-- ********************  Extra one column section Tab  ******************** -->
+
+<div id="ExtraOne" class="tabcontent">
+
+<div class="accordion">
+  <input type="radio" name="select" class="accordion-select" checked />
+ <div class="accordion-title"><span><b>Extra Section 1 (Main page)</b></span></div>
+ <div class="accordion-content">
+
+
+<form name="extrasec1">
+  <h3>Extra Section One Column (If needed)</h3>
+  <h4><font color="#008800">Position: Main page</font></h4>
+  <label><b>Extra Section Header</b></label><br>
+  <input type="text" id="extrasec1header" name="extrasec1header" size="20" maxlength="30" placeholder="Section Header">
+  <br><br>
+  <label><b>Extra Section Text</b></label>
+  <br>
+  <textarea id="extrasec1paragraph" name="extrasec1paragraph" rows="6" cols="80" placeholder="Extra section text"></textarea>
+</form>
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecOne()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR EXTRA SECTION" border="0" name="CLEARextrasecone" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+</form>
+</div>
+
+
+
+          <input type="radio" name="select" class="accordion-select" />
+   <div class="accordion-title"><span><b>Extra Section 2 (Main page)</b></span></div>
+   <div class="accordion-content">
+
+
+  <form name="extrasec1A">
+    <h3>Another Extra Section (If needed)</h3>
+    <h4><font color="#008800">Position: Main page</font></h4>
+    <label><b>Extra Section Header</b></label><br>
+    <input type="text" id="extrasec1Aheader" name="extrasec1Aheader" size="20" maxlength="30" placeholder="Section Header">
+    <br><br>
+    <label><b>Extra Section Text</b></label>
+    <br>
+    <textarea id="extrasec1Aparagraph" name="extrasec1Aparagraph" rows="6" cols="80" placeholder="Extra section text"></textarea>
+  </form>
+    <br>
+    <table width="140px border="1" bordercolor="#000000">
+    <tr>
+    <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+    <td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecOneA()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR EXTRA SECTION" border="0" name="CLEARextrasecone" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+    </tr>
+    </table>
+  </form>
+  </div>
+  </div>
+  </div>
+
+
+<!-- ********************  Extra two column section Tab  ******************** -->
+
+<div id="ExtraTwo" class="tabcontent">
+<form name="extrasec2">
+  <h3>Extra Section Two Columns  (If needed to fill the page)</h3>
+  <h4><font color="#008800">Position: Main page condensed</font></h4>
+
+  <label><b>Extra Section Header</b></label><br>
+  <input type="text" id="extrasec2header" name="extrasec2header" size="20" maxlength="30" placeholder="Section Header">
+<br><br>
+<table width="730px" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<th></th>
+<th>Column 1 (Left)</th>
+<th>Column 2 (Right)</th>
+</tr>
+<tr>
+<td align="right" valign="top"><label><b>Sub Header:&nbsp;</b></label></td>
+<td width="285px" align="center"><input type="text" id="extrasec2subleft" name="extrasec2subleft" size="30" maxlength="30" placeholder="Sub Header"><br><br></td>
+<td width="315px" align="right"><input type="text" id="extrasec2subright" name="extrasec2subright" size="30" maxlength="30" placeholder="Sub Header"><br><br></td>
+</tr>
+<tr>
+<td align="right" valign="top"><label><b>Five Lines:&nbsp;</b></label></td>
+<td align="center">
+  <input type="text" id="extrasec2leftone" name="extrasec2leftone" size="30" maxlength="30" placeholder="Line 1">
+  <input type="text" id="extrasec2lefttwo" name="extrasec2lefttwo" size="30" maxlength="30" placeholder="Line 2">
+  <input type="text" id="extrasec2leftthree" name="extrasec2leftthree" size="30" maxlength="30" placeholder="Line 3">
+  <input type="text" id="extrasec2leftfour" name="extrasec2leftfour" size="30" maxlength="30" placeholder="Line 4">
+  <input type="text" id="extrasec2leftfive" name="extrasec2leftfive" size="30" maxlength="30" placeholder="Line 5">
+</td>
+<td align="right">
+  <input type="text" id="extrasec2rightone" name="extrasec2rightone" size="30" maxlength="30" placeholder="Line 1">
+  <input type="text" id="extrasec2righttwo" name="extrasec2righttwo" size="30" maxlength="30" placeholder="Line 2">
+  <input type="text" id="extrasec2rightthree" name="extrasec2rightthree" size="30" maxlength="30" placeholder="Line 3">
+  <input type="text" id="extrasec2rightfour" name="extrasec2rightfour" size="30" maxlength="30" placeholder="Line 4">
+  <input type="text" id="extrasec2rightfive" name="extrasec2rightfive" size="30" maxlength="30" placeholder="Line 5">
+</td>
+</tr>
+</table>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecTwo()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Extra Section (two columns)" border="0" name="cleareducation" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+
+
+<!-- ********************  Section Spacing Tab  ******************** -->
+
+<div id="Spacing" class="tabcontent">
+<form name="pageonespacing">
+  <h3>Section Spacing</h3>
+  <p>Add/Subtract space in between sections and parts of certain sections</p>
+
+
+<table width="720px" border="1" cellspacing="0" cellpadding="1">
+<tr>
+<th align="center">Section</th>
+<th align="center" width="80px">-1 mm</th>
+<th align="center" width="80px">-5 mm</th>
+<th align="center" width="80px">mm</th>
+<th align="center" width="80px">+5 mm</th>
+<th align="center" width="80px">+1 mm</th>
+</tr>
+<tr>
+<td align="left"><label><b>&nbsp;Summary</b> (Main page)</label></td>
+<td align="center"><a href="javascript:summaryValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:summaryValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="summaryspacing" name="summaryspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:summaryValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:summaryValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+
+<tr>
+<td align="left"><label><b>&nbsp;Skills (Sidebar)</b></label></td>
+<td align="center"><a href="javascript:skillsValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:skillsValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="skillsspacing" name="skillsspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:skillsValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:skillsValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Experience</b> (Main page)</td>
+<td align="center"><a href="javascript:experienceValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:experienceValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="experiencespacing" name="experiencespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:experienceValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:experienceValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Experience</b> (Main page) >>> Position 2</td>
+<td align="center"><a href="javascript:experiencePos2Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos2Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="experiencePos2spacing" name="experiencePos2spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:experiencePos2Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos2Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Experience</b> (Main page) >>> Position 3</td>
+<td align="center"><a href="javascript:experiencePos3Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos3Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="experiencePos3spacing" name="experiencePos3spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:experiencePos3Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos3Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Education (Sidebar) </b></td>
+<td align="center"><a href="javascript:educationValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationspacing" name="educationspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<tr>
+<td align="left"><b>&nbsp;Education (Sidebar) </b> >>> Course 2</td>
+<td align="center"><a href="javascript:educationPos2Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos2Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationPos2spacing" name="educationPos2spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationPos2Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos2Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Education (Sidebar) </b> >>> Course 3</td>
+<td align="center"><a href="javascript:educationPos3Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos3Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationPos3spacing" name="educationPos3spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationPos3Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos3Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr
+<tr>
+<td align="left"><b>&nbsp;Education (Sidebar) </b> >>> Course 4</td>
+<td align="center"><a href="javascript:educationPos4Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos4Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationPos4spacing" name="educationPos4spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationPos4Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos4Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra 1 (Sidebar) </b>(paragraph)</td>
+<td align="center"><a href="javascript:extrasidebarParaValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarParavalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarParaValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarParavalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarParaspacing" name="extrasidebarParaspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarParaValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarParavalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarParaValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarParavalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra 2 (Sidebar)</b></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarOnespacing" name="extrasidebarOnespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra 2 (Sidebar)</b> >>> Part 2</td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarTwospacing" name="extrasidebarTwospacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra 2 (Sidebar)</b> >>> Part 3</td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarThreespacing" name="extrasidebarThreespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra Paragraph 1</b> (Main page)</td>
+<td align="center"><a href="javascript:extraOnePos2Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extraOnePos2Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extraOnePos2spacing" name="extraOnePos2spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extraOnePos2Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extraOnePos2Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra Paragraph 2</b> (Main page)</td>
+<td align="center"><a href="javascript:extraOneValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraOnevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extraOneValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraOnevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extraOnespacing" name="extraOnespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extraOneValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraOnevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extraOneValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraOnevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra Two Columns</b> (Main page)</td>
+<td align="center"><a href="javascript:extraTwoValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extraTwoValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extraTwospacing" name="extraTwospacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extraTwoValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extraTwoValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+</table>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>RESET</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:SetSpacing()"><img src="images/clear1.gif"width="60" height="46" alt="-5" border="0" name="resetspacing" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- ********************  Cover Letter Tab  ******************** -->
+
+<div id="CoverLetter" class="tabcontent">
+<form name="coverletter">
+  <h2>Cover Letter</h2>
+  <p>Save your cover letter with the same header as your resume.<br><br>Paste your cover letter in the textarea below. Delete your name, address, phone number and email address. Type your name, address, phone number and email address into the appropriate text boxes in the "Personal Details" tab.</p>
+
+<br>
+
+  <h3>Choose your resume template</h3>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+  <tr>
+  <th><h2>Template 1</h2></th>
+  <th><h2>Template 2</h2></th>
+  </tr>
+  <tr>
+    <td>
+      <span class="buttonsmall3" onclick="javascript:CoverLetterTemplateOneArial();"><b>&nbsp;&nbsp;&nbsp;&nbsp;Arial&nbsp;&nbsp;&nbsp;</b></span><br>
+      <span class="buttonsmall4" onclick="javascript:CoverLetterTemplateOneTimes();"><b>&nbsp;&nbsp;&nbsp;Times&nbsp;&nbsp;&nbsp;</b></span><br>
+    </td>
+    <td valign="top">
+      <span class="buttonsmall3" onclick="javascript:CoverLetterTemplateTwoArial();"><b>&nbsp;&nbsp;&nbsp;&nbsp;Arial&nbsp;&nbsp;&nbsp;</b></span><br>
+      <span class="buttonsmall4" onclick="javascript:CoverLetterTemplateTwoTimes();"><b>&nbsp;&nbsp;&nbsp;Times&nbsp;&nbsp;&nbsp;</b></span><br>
+    </td>
+  </tr>
+  </table>
+
+  <br><br>
+
+
+  <textarea class="texty" onfocus="this.select()" id="coverlettercontent2" name="coverlettercontent2" rows="30" cols="75"></textarea>
+
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetCoverLetter2()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR SUMMARY" border="0" name="CLEARSUMMARY" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+
+
+
+</form>
+</div>
+
+<!-- ********************  Power Phrases Tab  ******************** -->
+
+<div id="Phrases" class="tabcontent">
+<form name="powerphrases">
+  <h3>Power Phrases</h3>
+  <p>Power phrases you can use in your resume</p>
+
+  <iframe src="sitegraphics/powerphrases.html" width="1150" height="500" style="border:1px solid black;">
+  </iframe>
+
+<br><br>
+
+</form>
+</div>
+
+<!-- ********************  Adjectives Tab  ******************** -->
+
+<div id="Adjectives" class="tabcontent">
+<form name="adjectivestab">
+  <h3>Adjectives</h3>
+  <p>A list of adjectives you can use in your resume</p>
+</form>
+</div>
+
+<!-- ********************  Help Tab  ******************** -->
+
+<div id="Help" class="tabcontent">
+<form name="helptab">
+  <h3>Help</h3>
+  <p>How to use this resume builder</p>
+</form>
+</div>
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
+<!-- ********************  kf then statement
+var empt = document.form1.adresse.value;
+if (empt === ""){
+VertSpace = VertSpace - 30;
+} else {
+VertSpace = VertSpace;
+}
+******************** -->
+
+<br>
+<!-- ********************  Start Footer  ******************** -->
+
+</div>
+<div id="footer">
+
+<center><a class="small" href="index.html">Home</a> | <a class="small" href="resume.html">Resume Builder</a> | <a class="small" href="coverletter.html">Cover Letter Builder</a> | <a class="small" href="jobsearch.html">Job Search</a></center>
+
+  Copyright &copy; wishicould.net, 2021
+</div>
+</div>
+
+<!-- ********************  End Footer  ******************** -->
+
+
+</body>
+</html>

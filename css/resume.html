@@ -1,0 +1,3979 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Resume Builder</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+
+<script language="javascript" src="sitegraphics/couriertest.js"></script>
+<script language="javascript" src="sitegraphics/utilities.js"></script>
+
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+input, select {
+    font-size: 12pt;
+    font-family: arial;
+}
+
+
+
+/* *************** Button Colors *************** */
+
+.button {
+  background-color: #800000; /* Red */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.button2 {background-color: #006400;} /* Green */
+.button3 {background-color: #00008B;} /* Blue */
+.button4 {background-color: #856363;} /* Dustyrose */
+.button5 {background-color: #800080;} /* Purple */
+.button6 {background-color: #008080;} /* Teal */
+.button7 {background-color: #708090;} /* Grey */
+
+.button8 {background-color: #AEE7F1; color: black; font-size: 20px;} /* Arial */
+.button9 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;} /* Times */
+.button10 {background-color: #AEE7F1; color: black; font-size: 20px; font-family: Courier;} /* Courier */
+
+.button11 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 10pt */
+.button12 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 11pt */
+.button13 {background-color: #CCFFCC; color: black; font-size: 20px;} /* 12pt */
+
+.button14 {background-color: #CCFF99; color: black; font-size: 20px;} /* 13pt */
+.button15 {background-color: #CCFF99; color: black; font-size: 20px;} /* 14pt */
+.button16 {background-color: #CCFF99; color: black; font-size: 20px;} /* 15pt */
+
+.button17 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 26pt */
+.button18 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 28pt */
+.button19 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 30pt */
+.button20 {background-color: #CCCCFF; color: black; font-size: 20px;} /* 32pt */
+
+.button21 {background-color: #CC99FF; color: black; font-size: 20px;} /* 18pt */
+.button22 {background-color: #CC99FF; color: black; font-size: 20px;} /* 20pt */
+.button23 {background-color: #CC99FF; color: black; font-size: 20px;} /* 22pt */
+.button24 {background-color: #CC99FF; color: black; font-size: 20px;} /* 24pt */
+
+.buttonsmall {background-color: #F1F1F1; color: black; font-size: 20px;}
+
+.accordion {
+ box-sizing: border-box;
+ display: flex;
+ font-family: Arial, Helvetica, sans-serif;
+ overflow: hidden;
+ width: 100%;
+}
+
+.accordion-select {
+ cursor: pointer;
+ margin: 0;
+ opacity: 0;
+ z-index: 1;
+}
+
+.accordion-title {
+ position: relative;
+}
+
+.accordion-title:not(:nth-last-child(2))::after {
+ border: 1px solid transparent;
+ bottom: 0;
+ content: '';
+ left: 0;
+ position: absolute;
+ right: 0;
+ top: 0;
+}
+
+.accordion-title span {
+ bottom: 0px;
+ box-sizing: border-box;
+ display: block;
+ position: absolute;
+ white-space: nowrap;
+ width: 100%;
+}
+
+.accordion-content {
+ box-sizing: border-box;
+ overflow: auto;
+ position: relative;
+ transition: margin 0.3s ease 0.1s;
+}
+
+.accordion-select:checked + .accordion-title + .accordion-content {
+ margin-bottom: 0;
+ margin-right: 0;
+}
+
+/* Generated styles starts here */
+
+.accordion {
+ border-color: #dedede;
+ border-radius: 1px;
+ border-style: solid;
+ border-width: 3px;
+ flex-direction: column;
+ height: auto;
+}
+
+.accordion-title,
+.accordion-select  {
+ background-color: #ffffff;
+ color: #7f8787;
+ width: 100%;
+ height: 41px;
+ font-size: 19px;
+}
+
+.accordion-select {
+ margin-bottom: -41px;
+ margin-right: 0;
+}
+
+.accordion-title:not(:nth-last-child(2))::after {
+ border-bottom-color: #eaeaea;
+ border-right-color: transparent;
+}
+
+.accordion-select:hover + .accordion-title,
+.accordion-select:checked + .accordion-title {
+ background-color: #ffffff;
+}
+
+.accordion-title span  {
+ transform: rotate(0deg);
+ -ms-writing-mode: lr-tb;
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+ padding-left: 21px;
+ padding-right: 21px;
+ line-height: 41px;
+}
+
+.accordion-content {
+ background-color: #f7f7f7;
+ color: #000000;
+ height: 600px;
+ margin-bottom: -600px;
+ margin-right: 0;
+ padding: 15px;
+ width: 100%;
+}
+
+
+</style>
+
+<script type="application/javascript">
+
+//<input type="text" STYLE="background-color: #FFFFCC;" id="addyextra" name="addyextra" size="30" maxlength="30" placeholder="Extra line - some templates need it" value ="">
+
+var TextSize = 11;
+var LineHeight = 4.5; //Line height
+var HeaderCol01 = 128;
+var HeaderCol02 = 0;
+var HeaderCol03 = 0;
+var HeaderTextCol01 = 255;
+var HeaderTextCol02 = 255;
+var HeaderTextCol03 = 255;
+var HeadingTextCol01 = 128;
+var HeadingTextCol02 = 0;
+var HeadingTextCol03 = 0;
+var HeadingSize = 14;
+var HeaderText01 = 30;
+var HeaderText02 = 22;
+var BodyTextCol01 = 0;
+var BodyTextCol02 = 0;
+var BodyTextCol03 = 0;
+var SP01 = 1.7;
+var SP02 = 1.8;
+var HTDiff = 1;
+
+var spacingsummary = 0;
+var spacingskills = 0;
+var spacingexperience = 0;
+var spacingexperiencePos2 = 0;
+var spacingexperiencePos3 = 0;
+var spacingeducation = 0;
+var spacingeducationPos2 = 0;
+var spacingeducationPos3 = 0;
+var spacingeducationPos4 = 0;
+var spacingextrasidebarOne = 0; // Extra Sidebar Section
+var spacingextrasidebarTwo = 0; // Extra Sidebar Section Two
+var spacingextrasidebarThree = 0; // Extra Sidebar Section Three
+var spacingextraOnePos2 = 0; //Extra Main page section (one column)
+var spacingextraTwo = 0; // Extra main page section (Two columns)
+
+var pdetails01 = "";
+var pdetails02 = "";
+var pdetails03 = "";
+var pdetails04 = "";
+var pdetails05 = "";
+var pdetails06 = "";
+var pdetails07 = "";
+var pdetails08 = "";
+var pdetails09 = "";
+var SummaryText = "";
+var SummaryHeader = "";
+var Skill01 = "";
+var Skill02 = "";
+var Skill03 = "";
+var Skill04 = "";
+var Skill05 = "";
+var Skill06 = "";
+var SKillsHeader = "";
+var EducationHeader = "";
+var CourseOneInstitute = ""; //Institute name
+var CourseOneQual = ""; //Qualification name
+var CourseOneSubject = ""; //Subject name
+var CourseOneCompleted = ""; //Year completed
+var CourseTwoInstitute = ""; //Institute name
+var CourseTwoQual = ""; //Qualification name
+var CourseTwoSubject = ""; //Subject name
+var CourseTwoCompleted = ""; //Year completed
+var CourseThreeInstitute = ""; //Institute name
+var CourseThreeQual = ""; //Qualification name
+var CourseThreeSubject = ""; //Subject name
+var CourseThreeCompleted = ""; //Year completed
+var CourseFourInstitute = ""; //Institute name
+var CourseFourQual = ""; //Qualification name
+var CourseFourSubject = ""; //Subject name
+var CourseFourCompleted = ""; //Year completed
+var ExperienceHeader = ""; // Experience Header
+var PositionOneTitle = ""; //Position one title
+var PositionOneEmployer = ""; // Position one Employer
+var PositionOneStart = ""; // Position one date started
+var PositionOneFinished = ""; // Position one date finished
+var PositionOneTwoLineOne = ""; // Position One two line points
+var PositionOneTwoLineTwo = ""; // Position One two line points
+var PositionOneTwoLineThree = ""; // Position One two line points
+var PositionOneTwoLineFour = ""; // Position One two line points
+var PositionOneTwoLineFive = ""; // Position One two line points
+var PositionOneSingleLineOne = ""; // Position One single line points
+var PositionOneSingleLineTwo = ""; // Position One single line points
+var PositionOneSingleLineThree = ""; // Position One single line points
+var PositionOneSingleLineFour = ""; // Position One single line points
+var PositionOneSingleLineFive = ""; // Position One single line points
+var PositionTwoTitle = ""; //Position two title
+var PositionTwoEmployer = ""; // Position two Employer
+var PositionTwoStart = ""; // Position two date started
+var PositionTwoFinished = ""; // Position two date finished
+var PositionTwoTwoLineOne = ""; // Position 2 two line points
+var PositionTwoTwoLineTwo = ""; // Position 2 two line points
+var PositionTwoTwoLineThree = ""; // Position 2 two line points
+var PositionTwoTwoLineFour = ""; // Position 2 two line points
+var PositionTwoTwoLineFive = ""; // Position 2 two line points
+var PositionTwoSingleLineOne = ""; // Position 2 single line points
+var PositionTwoSingleLineTwo = ""; // Position 2 single line points
+var PositionTwoSingleLineThree = ""; // Position 2 single line points
+var PositionTwoSingleLineFour = ""; // Position 2 single line points
+var PositionTwoSingleLineFive = ""; // Position 2 single line points
+var PositionThreeTitle = ""; //Position 3 title
+var PositionThreeEmployer = ""; // Position 3 Employer
+var PositionThreeStart = ""; // Position 3 date started
+var PositionThreeFinished = ""; // Position 3 date finished
+var PositionThreeTwoLineOne = ""; // Position 3 two line points
+var PositionThreeTwoLineTwo = ""; // Position 3 two line points
+var PositionThreeTwoLineThree = ""; // Position 3 two line points
+var PositionThreeTwoLineFour = ""; // Position 3 two line points
+var PositionThreeTwoLineFive = ""; // Position 3 two line points
+var PositionThreeSingleLineOne = ""; // Position 3 single line points
+var PositionThreeSingleLineTwo = ""; // Position 3 single line points
+var PositionThreeSingleLineThree = ""; // Position 3 single line points
+var PositionThreeSingleLineFour = ""; // Position 3 single line points
+var PositionThreeSingleLineFive = ""; // Position 3 single line points
+var Extrasec2Header = ""; // Extra section two Header
+var Extrasec2SubLeft = ""; // Extra section two left sub Header
+var Extrasec2LeftOne = ""; // Extra section two left line one
+var Extrasec2LeftTwo = ""; // Extra section two left line two
+var Extrasec2LeftThree = ""; // Extra section two left line three
+var Extrasec2LeftFour = ""; // Extra section two left line four
+var Extrasec2LeftFive = ""; // Extra section two left line five
+var Extrasec2SubRight = ""; // Extra section two right sub Header
+var Extrasec2RightOne = ""; // Extra section two right line one
+var Extrasec2RightTwo = ""; // Extra section two right line two
+var Extrasec2RightThree = ""; // Extra section two right line three
+var Extrasec2RightFour = ""; // Extra section two right line four
+var Extrasec2RightFive = ""; // Extra section two right line five
+var Extrasec1Header = ""; // Extra section one Header
+var Extrasec1Paragraph = ""; // Extra section one left sub Header
+var ExtraSidebarHeader = ""; // Extra section Sidebar header
+var ExtraSidebarSubTop = ""; // Extra section Sidebar Subheader top
+var ExtraSidebarSubBottom = ""; // Extra section Sidebar subheader bottom
+var ExtraSidebarSubMostBottom = ""; // Extra section Sidebar subheader  most bottom
+var ExtraSidebarTopOne = ""; // Extra section Sidebar top one
+var ExtraSidebarTopTwo = ""; // Extra section Sidebar top two
+var ExtraSidebarTopThree = ""; // Extra section Sidebar top three
+var ExtraSidebarTopFour = ""; // Extra section Sidebar top four
+var ExtraSidebarTopFive = ""; // Extra section Sidebar top five
+var ExtraSidebarBottomOne = ""; // Extra section Sidebar bottom one
+var ExtraSidebarBottomTwo = ""; // Extra section Sidebar bottom two
+var ExtraSidebarBottomThree = ""; // Extra section Sidebar bottom three
+var ExtraSidebarBottomFour = ""; // Extra section Sidebar bottom four
+var ExtraSidebarBottomFive = ""; // Extra section Sidebar bottom five
+var ExtraSidebaMostBottomOne = ""; // Extra section Sidebar most bottom one
+var ExtraSidebarMostBottomTwo = ""; // Extra section Sidebar most bottom two
+var ExtraSidebarMostBottomThree = ""; // Extra section Sidebar most bottom three
+var ExtraSidebarMostBottomFour = ""; // Extra section Sidebar most bottom four
+var ExtraSidebarMostBottomFive = ""; // Extra section Sidebar most bottom five
+
+
+function ResetDetails() {
+
+var ClearDet01="";
+
+  document.getElementById("fname").value=ClearDet01;
+  document.getElementById("lname").value=ClearDet01;
+  document.getElementById("city").value=ClearDet01;
+  document.getElementById("state").value=ClearDet01;
+  document.getElementById("zip").value=ClearDet01;
+  document.getElementById("phonenumber").value=ClearDet01;
+  document.getElementById("email").value=ClearDet01;
+  document.getElementById("title").value=ClearDet01;
+}
+
+function ResetSummary() {
+
+  var ClearDet01="";
+
+  document.getElementById("careersummary").value=ClearDet01;
+}
+
+function ResetSkills() {
+
+  var ClearDet01="";
+  document.getElementById("skillsheader").value="Skills";
+  document.getElementById("skill01").value=ClearDet01;
+  document.getElementById("skill02").value=ClearDet01;
+  document.getElementById("skill03").value=ClearDet01;
+  document.getElementById("skill04").value=ClearDet01;
+  document.getElementById("skill05").value=ClearDet01;
+  document.getElementById("skill06").value=ClearDet01;
+}
+
+function ResetEducation() {
+
+  var ClearDet01="";
+  document.getElementById("educationheader").value="Education";
+  document.getElementById("courseoneinstitute").value=ClearDet01;
+  document.getElementById("courseonequal").value=ClearDet01;
+  document.getElementById("courseonesubject").value=ClearDet01;
+  document.getElementById("courseonecompleted").value=ClearDet01;
+  document.getElementById("coursetwoinstitute").value=ClearDet01;
+  document.getElementById("coursetwoqual").value=ClearDet01;
+  document.getElementById("coursetwosubject").value=ClearDet01;
+  document.getElementById("coursetwocompleted").value=ClearDet01;
+  document.getElementById("coursethreeinstitute").value=ClearDet01;
+  document.getElementById("coursethreequal").value=ClearDet01;
+  document.getElementById("coursethreesubject").value=ClearDet01;
+  document.getElementById("coursethreecompleted").value=ClearDet01;
+  document.getElementById("coursefourinstitute").value=ClearDet01;
+  document.getElementById("coursefourqual").value=ClearDet01;
+  document.getElementById("coursefoursubject").value=ClearDet01;
+  document.getElementById("coursefourcompleted").value=ClearDet01;
+}
+
+function ResetExperienceOne() {
+
+  var ClearDet01="";
+  document.getElementById("experienceheader").value="Experience";
+  document.getElementById("positiononetitle").value=ClearDet01;
+  document.getElementById("positiononeemployer").value=ClearDet01;
+  document.getElementById("positiononestart").value=ClearDet01;
+  document.getElementById("positiononefinished").value=ClearDet01;
+  document.getElementById("positiononetwolineone").value=ClearDet01;
+  document.getElementById("positiononetwolinetwo").value=ClearDet01;
+  document.getElementById("positiononetwolinethree").value=ClearDet01;
+  document.getElementById("positiononetwolinefour").value=ClearDet01;
+  document.getElementById("positiononetwolinefive").value=ClearDet01;
+  document.getElementById("positiononesinglelineone").value=ClearDet01;
+  document.getElementById("positiononesinglelinetwo").value=ClearDet01;
+  document.getElementById("positiononesinglelinethree").value=ClearDet01;
+  document.getElementById("positiononesinglelinefour").value=ClearDet01;
+  document.getElementById("positiononesinglelinefive").value=ClearDet01;
+}
+
+function ResetExperienceTwo() {
+
+  var ClearDet01="";
+  document.getElementById("positiontwotitle").value=ClearDet01;
+  document.getElementById("positiontwoemployer").value=ClearDet01;
+  document.getElementById("positiontwostart").value=ClearDet01;
+  document.getElementById("positiontwofinished").value=ClearDet01;
+  document.getElementById("positiontwotwolineone").value=ClearDet01;
+  document.getElementById("positiontwotwolinetwo").value=ClearDet01;
+  document.getElementById("positiontwotwolinethree").value=ClearDet01;
+  document.getElementById("positiontwotwolinefour").value=ClearDet01;
+  document.getElementById("positiontwotwolinefive").value=ClearDet01;
+  document.getElementById("positiontwosinglelineone").value=ClearDet01;
+  document.getElementById("positiontwosinglelinetwo").value=ClearDet01;
+  document.getElementById("positiontwosinglelinethree").value=ClearDet01;
+  document.getElementById("positiontwosinglelinefour").value=ClearDet01;
+  document.getElementById("positiontwosinglelinefive").value=ClearDet01;
+}
+
+function ResetExperienceThree() {
+
+  var ClearDet01="";
+  document.getElementById("positionthreetitle").value=ClearDet01;
+  document.getElementById("positionthreeemployer").value=ClearDet01;
+  document.getElementById("positionthreestart").value=ClearDet01;
+  document.getElementById("positionthreefinished").value=ClearDet01;
+  document.getElementById("positionthreetwolineone").value=ClearDet01;
+  document.getElementById("positionthreetwolinetwo").value=ClearDet01;
+  document.getElementById("positionthreetwolinethree").value=ClearDet01;
+  document.getElementById("positionthreetwolinefour").value=ClearDet01;
+  document.getElementById("positionthreetwolinefive").value=ClearDet01;
+  document.getElementById("positionthreesinglelineone").value=ClearDet01;
+  document.getElementById("positionthreesinglelinetwo").value=ClearDet01;
+  document.getElementById("positionthreesinglelinethree").value=ClearDet01;
+  document.getElementById("positionthreesinglelinefour").value=ClearDet01;
+  document.getElementById("positionthreesinglelinefive").value=ClearDet01;
+}
+
+function ResetExtrasecTwo() {
+
+  var ClearDet01="";
+  document.getElementById("extrasec2header").value=ClearDet01;
+  document.getElementById("extrasec2subleft").value=ClearDet01;
+  document.getElementById("extrasec2leftone").value=ClearDet01;
+  document.getElementById("extrasec2lefttwo").value=ClearDet01;
+  document.getElementById("extrasec2leftthree").value=ClearDet01;
+  document.getElementById("extrasec2leftfour").value=ClearDet01;
+  document.getElementById("extrasec2leftfive").value=ClearDet01;
+  document.getElementById("extrasec2subright").value=ClearDet01;
+  document.getElementById("extrasec2rightone").value=ClearDet01;
+  document.getElementById("extrasec2righttwo").value=ClearDet01;
+  document.getElementById("extrasec2rightthree").value=ClearDet01;
+  document.getElementById("extrasec2rightfour").value=ClearDet01;
+  document.getElementById("extrasec2rightfive").value=ClearDet01;
+}
+
+function ResetExtrasecOne() {
+
+  var ClearDet01="";
+  document.getElementById("extrasec1header").value=ClearDet01;
+  document.getElementById("extrasec1paragraph").value=ClearDet01;
+
+}
+
+function ResetExtrasecSidebar() {
+
+  var ClearDet01="";
+  document.getElementById("extrasidebarheader").value=ClearDet01;
+  document.getElementById("extrasidebarsubtop").value=ClearDet01;
+  document.getElementById("extrasidebarsubbottom").value=ClearDet01
+  document.getElementById("extrasidebarsubmostbottom").value=ClearDet01;
+  document.getElementById("extrasidebartopone").value=ClearDet01;
+  document.getElementById("extrasidebartoptwo").value=ClearDet01;
+  document.getElementById("extrasidebartopthree").value=ClearDet01;
+  document.getElementById("extrasidebartopfour").value=ClearDet01;
+  document.getElementById("extrasidebartopfive").value=ClearDet01;
+  document.getElementById("extrasidebarbottomone").value=ClearDet01;
+  document.getElementById("extrasidebarbottomtwo").value=ClearDet01;
+  document.getElementById("extrasidebarbottomthree").value=ClearDet01;
+  document.getElementById("extrasidebarbottomfour").value=ClearDet01;
+  document.getElementById("extrasidebarbottomfive").value=ClearDet01;
+  document.getElementById("extrasidebarmostbottomone").value=ClearDet01;
+  document.getElementById("extrasidebarmostbottomtwo").value=ClearDet01;
+  document.getElementById("extrasidebarmostbottomthree").value=ClearDet01;
+  document.getElementById("extrasidebarmostbottomfour").value=ClearDet01;
+  document.getElementById("extrasidebarmostbottomfive").value=ClearDet01;
+}
+
+
+function GetData() {
+
+pdetails01 = document.getElementById("fname").value;
+pdetails02 = document.getElementById("lname").value;
+pdetails03 = document.getElementById("city").value;
+pdetails04 = document.getElementById("state").value;
+pdetails05 = document.getElementById("zip").value;
+pdetails06 = document.getElementById("phonenumber").value;
+pdetails07 = document.getElementById("email").value;
+pdetails08 = document.getElementById("title").value;
+//pdetails09 = document.getElementById("addyextra").value;
+SummaryText = document.getElementById("careersummary").value;
+SummaryHeader = document.getElementById("summaryheader").value;
+Skill01 = document.getElementById("skill01").value;
+Skill02 = document.getElementById("skill02").value;
+Skill03= document.getElementById("skill03").value;
+Skill04 = document.getElementById("skill04").value;
+Skill05 = document.getElementById("skill05").value;
+Skill06 = document.getElementById("skill06").value;
+SkillsHeader = document.getElementById("skillsheader").value;
+EducationHeader = document.getElementById("educationheader").value;
+CourseOneInstitute = document.getElementById("courseoneinstitute").value;
+CourseOneQual = document.getElementById("courseonequal").value;
+CourseOneSubject = document.getElementById("courseonesubject").value;
+CourseOneCompleted = document.getElementById("courseonecompleted").value;
+CourseTwoInstitute = document.getElementById("coursetwoinstitute").value;
+CourseTwoQual = document.getElementById("coursetwoqual").value;
+CourseTwoSubject = document.getElementById("coursetwosubject").value;
+CourseTwoCompleted = document.getElementById("coursetwocompleted").value;
+CourseThreeInstitute = document.getElementById("coursethreeinstitute").value;
+CourseThreeQual = document.getElementById("coursethreequal").value;
+CourseThreeSubject = document.getElementById("coursethreesubject").value;
+CourseThreeCompleted = document.getElementById("coursethreecompleted").value;
+CourseFourInstitute = document.getElementById("coursefourinstitute").value;
+CourseFourQual = document.getElementById("coursefourqual").value;
+CourseFourSubject = document.getElementById("coursefoursubject").value;
+CourseFourCompleted = document.getElementById("coursefourcompleted").value;
+ExperienceHeader = document.getElementById("experienceheader").value;
+PositionOneTitle = document.getElementById("positiononetitle").value;
+PositionOneEmployer = document.getElementById("positiononeemployer").value;
+PositionOneStart = document.getElementById("positiononestart").value;
+PositionOneFinished = document.getElementById("positiononefinished").value;
+PositionOneTwoLineOne = document.getElementById("positiononetwolineone").value;
+PositionOneTwoLineTwo = document.getElementById("positiononetwolinetwo").value;
+PositionOneTwoLineThree = document.getElementById("positiononetwolinethree").value;
+PositionOneTwoLineFour = document.getElementById("positiononetwolinefour").value;
+PositionOneTwoLineFive = document.getElementById("positiononetwolinefive").value;
+PositionOneSingleLineOne = document.getElementById("positiononesinglelineone").value;
+PositionOneSingleLineTwo = document.getElementById("positiononesinglelinetwo").value;
+PositionOneSingleLineThree = document.getElementById("positiononesinglelinethree").value;
+PositionOneSingleLineFour = document.getElementById("positiononesinglelinefour").value;
+PositionOneSingleLineFive = document.getElementById("positiononesinglelinefive").value;
+PositionTwoTitle = document.getElementById("positiontwotitle").value;
+PositionTwoEmployer = document.getElementById("positiontwoemployer").value;
+PositionTwoStart = document.getElementById("positiontwostart").value;
+PositionTwoFinished = document.getElementById("positiontwofinished").value;
+PositionTwoTwoLineOne = document.getElementById("positiontwotwolineone").value;
+PositionTwoTwoLineTwo = document.getElementById("positiontwotwolinetwo").value;
+PositionTwoTwoLineThree = document.getElementById("positiontwotwolinethree").value;
+PositionTwoTwoLineFour = document.getElementById("positiontwotwolinefour").value;
+PositionTwoTwoLineFive = document.getElementById("positiontwotwolinefive").value;
+PositionTwoSingleLineOne = document.getElementById("positiontwosinglelineone").value;
+PositionTwoSingleLineTwo = document.getElementById("positiontwosinglelinetwo").value;
+PositionTwoSingleLineThree = document.getElementById("positiontwosinglelinethree").value;
+PositionTwoSingleLineFour = document.getElementById("positiontwosinglelinefour").value;
+PositionTwoSingleLineFive = document.getElementById("positiontwosinglelinefive").value;
+PositionThreeTitle = document.getElementById("positionthreetitle").value;
+PositionThreeEmployer = document.getElementById("positionthreeemployer").value;
+PositionThreeStart = document.getElementById("positionthreestart").value;
+PositionThreeFinished = document.getElementById("positionthreefinished").value;
+PositionThreeTwoLineOne = document.getElementById("positionthreetwolineone").value;
+PositionThreeTwoLineTwo = document.getElementById("positionthreetwolinetwo").value;
+PositionThreeTwoLineThree = document.getElementById("positionthreetwolinethree").value;
+PositionThreeTwoLineFour = document.getElementById("positionthreetwolinefour").value;
+PositionThreeTwoLineFive = document.getElementById("positionthreetwolinefive").value;
+PositionThreeSingleLineOne = document.getElementById("positionthreesinglelineone").value;
+PositionThreeSingleLineTwo = document.getElementById("positionthreesinglelinetwo").value;
+PositionThreeSingleLineThree = document.getElementById("positionthreesinglelinethree").value;
+PositionThreeSingleLineFour = document.getElementById("positionthreesinglelinefour").value;
+PositionThreeSingleLineFive = document.getElementById("positionthreesinglelinefive").value;
+Extrasec2Header = document.getElementById("extrasec2header").value;
+Extrasec2SubLeft = document.getElementById("extrasec2subleft").value;
+Extrasec2LeftOne = document.getElementById("extrasec2leftone").value;
+Extrasec2LeftTwo = document.getElementById("extrasec2lefttwo").value;
+Extrasec2LeftThree = document.getElementById("extrasec2leftthree").value;
+Extrasec2LeftFour = document.getElementById("extrasec2leftfour").value;
+Extrasec2LeftFive = document.getElementById("extrasec2leftfive").value;
+Extrasec2SubRight = document.getElementById("extrasec2subright").value;
+Extrasec2RightOne = document.getElementById("extrasec2rightone").value;
+Extrasec2RightTwo = document.getElementById("extrasec2righttwo").value;
+Extrasec2RightThree = document.getElementById("extrasec2rightthree").value;
+Extrasec2RightFour = document.getElementById("extrasec2rightfour").value;
+Extrasec2RightFive = document.getElementById("extrasec2rightfive").value;
+Extrasec1Header = document.getElementById("extrasec1header").value;
+Extrasec1Paragraph = document.getElementById("extrasec1paragraph").value;
+ExtraSidebarHeader = document.getElementById("extrasidebarheader").value;
+ExtraSidebarSubTop = document.getElementById("extrasidebarsubtop").value;
+ExtraSidebarSubBottom = document.getElementById("extrasidebarsubbottom").value;
+ExtraSidebarSubMostBottom = document.getElementById("extrasidebarsubmostbottom").value;
+ExtraSidebarTopOne = document.getElementById("extrasidebartopone").value;
+ExtraSidebarTopTwo = document.getElementById("extrasidebartoptwo").value;
+ExtraSidebarTopThree = document.getElementById("extrasidebartopthree").value;
+ExtraSidebarTopFour = document.getElementById("extrasidebartopfour").value;
+ExtraSidebarTopFive = document.getElementById("extrasidebartopfive").value;
+ExtraSidebarBottomOne = document.getElementById("extrasidebarbottomone").value;
+ExtraSidebarBottomTwo = document.getElementById("extrasidebarbottomtwo").value;
+ExtraSidebarBottomThree = document.getElementById("extrasidebarbottomthree").value;
+ExtraSidebarBottomFour = document.getElementById("extrasidebarbottomfour").value;
+ExtraSidebarBottomFive = document.getElementById("extrasidebarbottomfive").value;
+ExtraSidebarMostBottomOne = document.getElementById("extrasidebarmostbottomone").value;
+ExtraSidebarMostBottomTwo = document.getElementById("extrasidebarmostbottomtwo").value;
+ExtraSidebarMostBottomThree = document.getElementById("extrasidebarmostbottomthree").value;
+ExtraSidebarMostBottomFour = document.getElementById("extrasidebarmostbottomfour").value;
+ExtraSidebarMostBottomFive = document.getElementById("extrasidebarmostbottomfive").value;
+}
+
+function RedBG() {
+
+ HeaderCol01 = 128;
+ HeaderCol02 = 0;
+ HeaderCol03 = 0;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 128;
+ HeadingTextCol02 = 0;
+ HeadingTextCol03 = 0;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+function GreenBG() {
+
+ HeaderCol01 = 0;
+ HeaderCol02 = 100;
+ HeaderCol03 = 0;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 0;
+ HeadingTextCol02 = 100;
+ HeadingTextCol03 = 0;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+function BlueBG() {
+
+ HeaderCol01 = 0;
+ HeaderCol02 = 0;
+ HeaderCol03 = 139;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 0;
+ HeadingTextCol02 = 0;
+ HeadingTextCol03 = 139;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+function BrownBG() {
+
+ HeaderCol01 = 133;
+ HeaderCol02 = 99;
+ HeaderCol03 = 99;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 133;
+ HeadingTextCol02 = 99;
+ HeadingTextCol03 = 99;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+function PurpleBG() {
+
+ HeaderCol01 = 128;
+ HeaderCol02 = 0;
+ HeaderCol03 = 128;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 128;
+ HeadingTextCol02 = 0;
+ HeadingTextCol03 = 128;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+function TealBG() {
+
+ HeaderCol01 = 0;
+ HeaderCol02 = 128;
+ HeaderCol03 = 128;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 0;
+ HeadingTextCol02 = 128;
+ HeadingTextCol03 = 128;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+function GreyBG() {
+
+ HeaderCol01 = 112;
+ HeaderCol02 = 128;
+ HeaderCol03 = 144;
+ HeaderTextCol01 = 255;
+ HeaderTextCol02 = 255;
+ HeaderTextCol03 = 255;
+ HeadingTextCol01 = 112;
+ HeadingTextCol02 = 128;
+ HeadingTextCol03 = 144;
+ BodyTextCol01 = 0;
+ BodyTextCol02 = 0;
+ BodyTextCol03 = 0;
+
+}
+
+
+ function ChooseTextSize12() {
+
+TextSize = 12;
+LineHeight = 4.85;
+SP01 = 1.9;
+SP02 = 2.0;
+
+ }
+
+ function ChooseTextSize11() {
+
+TextSize = 11;
+LineHeight = 4.5;
+SP01 = 1.7;
+SP02 = 1.8;
+
+ }
+
+ function ChooseTextSize10() {
+
+TextSize = 10;
+LineHeight = 4;
+SP01 = 1.5;
+SP02 = 1.6;
+
+ }
+
+// function ChooseTextSize9() {
+
+//TextSize = 9;
+//LineHeight = 3.6;
+
+// }
+
+function ChooseHeadingSize13() {
+
+HeadingSize = 13;
+
+}
+
+function ChooseHeadingSize14() {
+
+HeadingSize = 14;
+
+}
+
+function ChooseHeadingSize15() {
+
+HeadingSize = 15;
+
+}
+
+function ChooseHeaderSize26() {
+
+HeaderText01 = 26;
+
+}
+
+function ChooseHeaderSize28() {
+
+HeaderText01 = 28;
+
+}
+
+function ChooseHeaderSize30() {
+
+HeaderText01 = 30;
+
+}
+
+function ChooseHeaderSize32() {
+
+HeaderText01 = 32;
+
+}
+
+function ChooseHeaderSize18() {
+
+HeaderText02 = 18;
+HTDiff = 2.5;
+}
+
+function ChooseHeaderSize20() {
+
+HeaderText02 = 20;
+HTDiff = 2;
+}
+
+function ChooseHeaderSize22() {
+
+HeaderText02 = 22;
+HTDiff = 1;
+}
+
+function ChooseHeaderSize24() {
+
+HeaderText02 = 24;
+HTDiff = 0.5;
+}
+
+function TemplateOneArialSinglePage() {
+
+  GetData();
+  TempOneArial();
+
+}
+
+function TemplateOneTimesSinglePage() {
+
+  GetData();
+  TempOneTimes();
+
+}
+
+
+
+
+
+
+
+// *********************** TEMPLATE ONE ARIAL  Single Page ****************************
+
+
+function TempOneArial() {
+
+
+
+
+// Default export is a4 paper, portrait, using millimeters for units
+var doc = new jsPDF()
+
+
+// Declarations of the data
+
+var VertSpace = 0;
+var BTStart = 65; //Body text start point
+var BTWidth = 140; // Body text width
+var LinePoint = 60; // Vertical line point (Border of the side menu and body text)
+var BulletPoint = 69; // Bullet points
+var BPStart = 73;  // Start Bullet Point text
+var BPWidth = 132;  //Bullet Point Text Width
+//var LineHeight = 4.5; //Line height
+var SBBullet = 8; // Sidebar Bullet Point
+var SidebarLeftMargin = 4; //Sidebar Left Margin
+var RightColumn = 135;
+// ***********************  Draw Header ****************************
+
+doc.setDrawColor(HeaderCol01,HeaderCol02,HeaderCol03);
+doc.setFillColor(HeaderCol01,HeaderCol02,HeaderCol03);
+doc.setLineWidth(0.25);
+doc.rect(2, 2, 206, 36);
+doc.rect(3, 3, 204, 34, 'F'); // filled maroon square
+
+var firstname = pdetails01.toUpperCase();
+var lastname = pdetails02.toUpperCase();
+var fullname = firstname + " " + lastname;
+
+doc.setFont("helvetica");
+doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+doc.setFontSize(HeaderText01);
+doc.text(8, 15, fullname); // Name
+
+var HeaderDiff = 24-HTDiff;
+doc.setFontSize(HeaderText02);
+doc.text(8, HeaderDiff, pdetails08); // Career Title
+
+var addy = pdetails03 + ", " + pdetails04 + " " + pdetails05;
+
+var start01 = addy.length;
+//var start02 = start01*1.5; //10pt
+//var start02 = start01*1.7; // 11pt
+//var start02 = start01*1.9; // 12pt
+var start02 = start01*SP01;
+var startpoint = 198 - start02;
+doc.setFontSize(TextSize);
+doc.text(startpoint, 22, addy); // Address
+
+var start01 = pdetails07.length;
+//var start02 = start01*1.6; // 10pt
+//var start02 = start01*1.8; // 11pt
+//var start02 = start01*2.0; // 12pt
+var start02 = start01*SP02;
+var startpoint = 198 - start02;
+doc.setFontSize(TextSize);
+doc.text(startpoint, 28, pdetails07); // Email Address
+
+var start01 = pdetails06.length;
+//var start02 = start01*1.5; // 10pt
+//var start02 = start01*1.7; // 11pt
+//var start02 = start01*1.9; // 12pt
+var start02 = start01*SP01;
+var startpoint = 198 - start02;
+doc.setFontSize(TextSize);
+doc.text(startpoint, 34, pdetails06); // Phone Number
+
+doc.setDrawColor(HeadingTextCol01, HeadingTextCol02, HeadingTextCol03);
+doc.line(LinePoint, 38, LinePoint,297); // Summary Section Line
+
+// ***********************  Draw Summary ****************************
+
+var SummaryTop = 46 + spacingsummary;
+var SummarySpace = 46 + spacingsummary;
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+var inputVal = SummaryHeader.toUpperCase();
+//doc.text(inputVal, (LinePoint/2),SummaryTop , 0, 'center');// Summary Header
+doc.text(BTStart, SummarySpace, inputVal); // Summary Header
+
+var empt = document.summary.summaryheader.value;
+if (empt === ""){
+SummarySpace = SummarySpace;
+} else {
+SummarySpace = SummarySpace + (LineHeight*1.25);
+}
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+
+var paragraph = SummaryText;
+var lines = doc.splitTextToSize(paragraph, BTWidth);
+doc.text(BTStart, SummarySpace, lines);  // Career Summary
+
+var empt = document.summary.careersummary.value;
+if (empt === ""){
+var SummaryBottom = SummarySpace;
+} else {
+  var a = paragraph.length;
+  var b = a/80;
+  var c = Math.ceil(b);
+  var SummaryBottom = c*4.5 + SummaryTop;
+}
+
+
+
+// ***********************  Skills Section ****************************
+
+var SkillsTop = 46 + spacingskills;
+var SkillsBottom = SkillsTop;
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+
+var skillhead = SkillsHeader.toUpperCase();
+doc.text(SidebarLeftMargin, SkillsBottom, skillhead); // Skills Header
+var empt = document.skills.skillsheader.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+SkillsBottom = SkillsBottom + (LineHeight*1.25);
+}
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+
+
+doc.text(SBBullet, SkillsBottom, Skill01);
+var empt = document.skills.skill01.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+SkillsBottom = SkillsBottom + LineHeight;
+}
+
+doc.text(SBBullet, SkillsBottom, Skill02);
+var empt = document.skills.skill02.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+SkillsBottom = SkillsBottom + LineHeight;
+}
+
+doc.text(SBBullet, SkillsBottom, Skill03);
+var empt = document.skills.skill03.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+SkillsBottom = SkillsBottom + LineHeight;
+}
+
+doc.text(SBBullet, SkillsBottom, Skill04);
+var empt = document.skills.skill04.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+SkillsBottom = SkillsBottom + LineHeight;
+}
+
+doc.text(SBBullet, SkillsBottom, Skill05);
+var empt = document.skills.skill05.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+SkillsBottom = SkillsBottom + LineHeight;
+}
+
+doc.text(SBBullet, SkillsBottom, Skill06);
+var empt = document.skills.skill06.value;
+if (empt === ""){
+SkillsBottom = SkillsBottom;
+} else {
+doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+SkillsBottom = SkillsBottom;
+}
+
+// ***********************  Education Section  Course ONE ****************************
+
+var EducationTop = SkillsBottom + 15 + spacingeducation;
+var EducationBottom = EducationTop;
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+
+var educationhead = EducationHeader.toUpperCase();
+doc.text(SidebarLeftMargin, EducationBottom, educationhead); // Education Header
+var empt = document.education.educationheader.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + (LineHeight*1.25);
+}
+
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseOneInstitute); // Course one institute
+var empt = document.education.courseoneinstitute.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseOneQual); // Course one qualification
+var empt = document.education.courseonequal.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseOneSubject); // Course one subject
+var empt = document.education.courseonesubject.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+var empt = document.education.courseonecompleted.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseOneCompleted); // Course one year completed
+EducationBottom = EducationBottom;
+}
+
+// ***********************  Education Section  Course two ****************************
+
+EducationBottom = EducationBottom + 10 + spacingeducationPos2;
+
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseTwoInstitute); // Course two institute
+
+var empt = document.education.coursetwoinstitute.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseTwoQual); // Course two qualification
+var empt = document.education.coursetwoqual.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseTwoSubject); // Course two subject
+var empt = document.education.coursetwosubject.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+var empt = document.education.coursetwocompleted.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseTwoCompleted); // Course two year completed
+EducationBottom = EducationBottom;
+}
+
+
+// ***********************  Education Section  Course three ****************************
+
+EducationBottom = EducationBottom + 10 + spacingeducationPos3;
+
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseThreeInstitute); // Course three institute
+
+var empt = document.education.coursethreeinstitute.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseThreeQual); // Course three qualification
+var empt = document.education.coursethreequal.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseThreeSubject); // Course three subject
+var empt = document.education.coursethreesubject.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+var empt = document.education.coursethreecompleted.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseThreeCompleted); // Course three completed
+EducationBottom = EducationBottom;
+}
+
+// ***********************  Education Section  Course four ****************************
+
+EducationBottom = EducationBottom + 10 + spacingeducationPos4;
+
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseFourInstitute); // Course four institute
+
+var empt = document.education.coursefourinstitute.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseFourQual); // Course four qualification
+var empt = document.education.coursefourqual.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, EducationBottom, CourseFourSubject); // Course four subject
+var empt = document.education.coursefoursubject.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+EducationBottom = EducationBottom + LineHeight;
+}
+
+var empt = document.education.coursefourcompleted.value;
+if (empt === ""){
+EducationBottom = EducationBottom;
+} else {
+doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseFourCompleted); // Course four completed
+EducationBottom = EducationBottom;
+}
+
+// ***********************  Extra Section Sidebar Part one ****************************
+
+
+var ExtraSidebarTop = EducationBottom + 15 + spacingextrasidebarOne;
+var ExtraSidebarBottom = ExtraSidebarTop;
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+
+var extrasidebarhead = ExtraSidebarHeader.toUpperCase();
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, extrasidebarhead); // Sidebar Header
+var empt = document.extrasidebar.extrasidebarheader.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + (LineHeight*1.25);
+}
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarSubTop); // Extra section sidebar Part 1 sub header
+var empt = document.extrasidebar.extrasidebarsubtop.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopOne); // Extra section sidebar Part 1 Line one
+var empt = document.extrasidebar.extrasidebartopone.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopTwo); // Extra section sidebar Part 1 line two
+var empt = document.extrasidebar.extrasidebartoptwo.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopThree); // Extra section sidebar Part 1 line three
+var empt = document.extrasidebar.extrasidebartopthree.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopFour); // Extra section sidebar Part 1 line four
+var empt = document.extrasidebar.extrasidebartopfour.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopFive); // Extra section sidebar Part 1 line five
+var empt = document.extrasidebar.extrasidebartopfive.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom;
+}
+
+
+// ***********************  Extra Section Sidebar Part two ****************************
+
+ExtraSidebarBottom = ExtraSidebarBottom + 10 + spacingextrasidebarTwo;
+
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarSubBottom); // Extra section sidebar Part 2 sub header
+var empt = document.extrasidebar.extrasidebarsubbottom.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomOne); // Extra section sidebar Part 2 Line one
+var empt = document.extrasidebar.extrasidebarbottomone.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomTwo); // Extra section sidebar Part 2 line two
+var empt = document.extrasidebar.extrasidebarbottomtwo.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomThree); // Extra section sidebar Part 2 line three
+var empt = document.extrasidebar.extrasidebarbottomthree.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomFour); // Extra section sidebar Part 2 line four
+var empt = document.extrasidebar.extrasidebarbottomfour.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomFive); // Extra section sidebar Part 2 line five
+var empt = document.extrasidebar.extrasidebarbottomfive.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom;
+}
+
+// ***********************  Extra Section Sidebar Part three ****************************
+
+ExtraSidebarBottom = ExtraSidebarBottom + 10 + spacingextrasidebarThree;
+
+doc.setFontType("bold");
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarSubMostBottom); // Extra section sidebar Part 3 sub header
+var empt = document.extrasidebar.extrasidebarsubmostbottom.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomOne); // Extra section sidebar Part 3 Line one
+var empt = document.extrasidebar.extrasidebarmostbottomone.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomTwo); // Extra section sidebar Part 3 line two
+var empt = document.extrasidebar.extrasidebarmostbottomtwo.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomThree); // Extra section sidebar Part 3 line three
+var empt = document.extrasidebar.extrasidebarmostbottomthree.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomFour); // Extra section sidebar Part 3 line four
+var empt = document.extrasidebar.extrasidebarmostbottomfour.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+}
+
+doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomFive); // Extra section sidebar Part 3 line five
+var empt = document.extrasidebar.extrasidebarmostbottomfive.value;
+if (empt === ""){
+ExtraSidebarBottom = ExtraSidebarBottom;
+} else {
+ExtraSidebarBottom = ExtraSidebarBottom;
+}
+
+
+// ***********************  Experience Section ****************************
+
+var ExperienceTop = SummaryBottom + 15 + spacingexperience;
+var ExperienceSpace = SummaryBottom + 15 + spacingexperience;
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+var inputVal = ExperienceHeader.toUpperCase();
+
+doc.text(BTStart, ExperienceSpace, inputVal); //Experience Header
+
+var empt = document.experience.experienceheader.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+ExperienceSpace = ExperienceSpace + (LineHeight*1.25);
+}
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("bold");
+
+var inputVal = PositionOneTitle.toUpperCase();
+doc.text(BTStart, ExperienceSpace, inputVal + "         " + PositionOneStart + " - " + PositionOneFinished); // Position one title
+
+var empt = document.experience.positiononetitle.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+doc.text(BTStart, ExperienceSpace, "         " + " - "); // Delete the | & -
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+} else {
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+doc.setFontType("italic");
+
+doc.text(BTStart, ExperienceSpace, PositionOneEmployer); // Position one employer
+
+var empt = document.experience.positiononeemployer.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+doc.setFontType("normal");
+
+var paragraph = PositionOneTwoLineOne;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+var empt = document.experience.positiononetwolineone.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + (LineHeight*2);
+}
+
+var paragraph = PositionOneTwoLineTwo;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+var empt = document.experience.positiononetwolinetwo.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + (LineHeight*2);
+}
+
+var paragraph = PositionOneTwoLineThree;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+var empt = document.experience.positiononetwolinethree.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + (LineHeight*2);
+}
+
+var paragraph = PositionOneTwoLineFour;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+var empt = document.experience.positiononetwolinefour.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + (LineHeight*2);
+}
+
+var paragraph = PositionOneTwoLineFive;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+var empt = document.experience.positiononetwolinefive.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + (LineHeight*2);
+}
+
+doc.text(BPStart, ExperienceSpace, PositionOneSingleLineOne);  // Position One single line point
+var empt = document.experience.positiononesinglelineone.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceSpace, PositionOneSingleLineTwo);  // Position One single line point
+var empt = document.experience.positiononesinglelinetwo.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceSpace, PositionOneSingleLineThree);  // Position One single line point
+var empt = document.experience.positiononesinglelinethree.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceSpace, PositionOneSingleLineFour);  // Position One single line point
+var empt = document.experience.positiononesinglelinefour.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceSpace, PositionOneSingleLineFive);  // Position One single line point
+var empt = document.experience.positiononesinglelinefive.value;
+if (empt === ""){
+ExperienceSpace = ExperienceSpace;
+} else {
+doc.text(BulletPoint, ExperienceSpace, '\u2022');
+ExperienceSpace = ExperienceSpace + LineHeight;
+}
+
+// ***********************  Experience Section Position Two ****************************
+
+var ExperienceTwoTop = ExperienceSpace + 5 + spacingexperiencePos2;
+var ExperienceTwoSpace = ExperienceSpace + 5 + spacingexperiencePos2;
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("bold");
+
+var inputVal = PositionTwoTitle.toUpperCase();
+doc.text(BTStart, ExperienceTwoSpace, inputVal + "         " + PositionTwoStart + " - " + PositionTwoFinished); // Position two title
+
+var empt = document.experience.positiontwotitle.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+doc.text(BTStart, ExperienceTwoSpace, "         " + " - "); // Delete the | & -
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+} else {
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+doc.setFontType("italic");
+
+doc.text(BTStart, ExperienceTwoSpace, PositionTwoEmployer); // Position two employer
+
+var empt = document.experience.positiontwoemployer.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+doc.setFontType("normal");
+
+var paragraph = PositionTwoTwoLineOne;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+var empt = document.experience.positiontwotwolineone.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+}
+
+var paragraph = PositionTwoTwoLineTwo;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+var empt = document.experience.positiontwotwolinetwo.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+}
+
+var paragraph = PositionTwoTwoLineThree;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+var empt = document.experience.positiontwotwolinethree.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+}
+
+var paragraph = PositionTwoTwoLineFour;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+var empt = document.experience.positiontwotwolinefour.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+}
+
+var paragraph = PositionTwoTwoLineFive;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+var empt = document.experience.positiontwotwolinefive.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+}
+
+doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineOne);  // Position 2 single line point
+var empt = document.experience.positiontwosinglelineone.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineTwo);  // Position 2 single line point
+var empt = document.experience.positiontwosinglelinetwo.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineThree);  // Position 2 single line point
+var empt = document.experience.positiontwosinglelinethree.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineFour);  // Position 2 single line point
+var empt = document.experience.positiontwosinglelinefour.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineFive);  // Position 2 single line point
+var empt = document.experience.positiontwosinglelinefive.value;
+if (empt === ""){
+ExperienceTwoSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+}
+
+// ***********************  Experience Section Position Three ****************************
+
+var ExperienceThreeTop = ExperienceTwoSpace + 5 + spacingexperiencePos3;
+var ExperienceThreeSpace = ExperienceTwoSpace + 5 + spacingexperiencePos3;
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("bold");
+
+var inputVal = PositionThreeTitle.toUpperCase();
+doc.text(BTStart, ExperienceThreeSpace, inputVal + "         " + PositionThreeStart + " - " + PositionThreeFinished); // Position three title
+
+var empt = document.experience.positionthreetitle.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+doc.text(BTStart, ExperienceThreeSpace, "         " + " - "); // Delete the | & -
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+} else {
+ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+}
+
+doc.setFontType("italic");
+
+doc.text(BTStart, ExperienceThreeSpace, PositionThreeEmployer); // Position two employer
+
+var empt = document.experience.positionthreeemployer.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+}
+
+doc.setFontType("normal");
+
+var paragraph = PositionThreeTwoLineOne;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+var empt = document.experience.positionthreetwolineone.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+}
+
+var paragraph = PositionThreeTwoLineTwo;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+var empt = document.experience.positionthreetwolinetwo.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+}
+
+var paragraph = PositionThreeTwoLineThree;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+var empt = document.experience.positionthreetwolinethree.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+}
+
+var paragraph = PositionThreeTwoLineFour;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+var empt = document.experience.positionthreetwolinefour.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+}
+
+var paragraph = PositionThreeTwoLineFive;
+var lines = doc.splitTextToSize(paragraph, BPWidth);
+doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+var empt = document.experience.positionthreetwolinefive.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+}
+
+doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineOne);  // Position 3 single line point
+var empt = document.experience.positionthreesinglelineone.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineTwo);  // Position 3 single line point
+var empt = document.experience.positionthreesinglelinetwo.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineThree);  // Position 3 single line point
+var empt = document.experience.positionthreesinglelinethree.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceTwoSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineFour);  // Position 3 single line point
+var empt = document.experience.positionthreesinglelinefour.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+}
+
+doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineFive);  // Position 3 single line point
+var empt = document.experience.positionthreesinglelinefive.value;
+if (empt === ""){
+ExperienceThreeSpace = ExperienceThreeSpace;
+} else {
+doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+}
+
+// ***********************  Extra Section Two Column  (mainpage)****************************
+
+
+var ExtraTwoTop = ExperienceThreeSpace + 10 + spacingextraTwo;
+var ExtraTwoLeftSpace = ExperienceThreeSpace + 10 + spacingextraTwo;
+var ExtraTwoRightSpace = ExperienceThreeSpace + 10 + spacingextraTwo;
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+var inputVal = Extrasec2Header.toUpperCase();
+
+doc.text(BTStart, ExtraTwoLeftSpace, inputVal); //Experience Header
+
+var empt = document.extrasec2.extrasec2header.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + (LineHeight*1.25);
+ExtraTwoRightSpace = ExtraTwoRightSpace + (LineHeight*1.25);
+}
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("bold");
+
+doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2SubLeft); //Experience left sub Header
+var empt = document.extrasec2.extrasec2subleft.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftOne); //Experience left line one
+var empt = document.extrasec2.extrasec2leftone.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+}
+
+doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftTwo); //Experience left line two
+var empt = document.extrasec2.extrasec2lefttwo.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+}
+
+doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftThree); //Experience left line three
+var empt = document.extrasec2.extrasec2leftthree.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+}
+
+doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftFour); //Experience left line four
+var empt = document.extrasec2.extrasec2leftfour.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+}
+
+doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftFive); //Experience left line Five
+var empt = document.extrasec2.extrasec2leftfive.value;
+if (empt === ""){
+ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+} else {
+ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+}
+
+doc.setFontType("bold");
+
+doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2SubRight); //Experience right sub Header
+var empt = document.extrasec2.extrasec2subright.value;
+if (empt === ""){
+ExtraTwoRightSpace = ExtraTwoRightSpace;
+} else {
+ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+}
+
+doc.setFontType("normal");
+
+doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightOne); //Experience right line one
+var empt = document.extrasec2.extrasec2rightone.value;
+if (empt === ""){
+ExtraTwoRightSpace = ExtraTwoRightSpace;
+} else {
+ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+}
+
+doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightTwo); //Experience right line two
+var empt = document.extrasec2.extrasec2righttwo.value;
+if (empt === ""){
+ExtraTwoRightSpace = ExtraTwoRightSpace;
+} else {
+ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+}
+
+doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightThree); //Experience right line three
+var empt = document.extrasec2.extrasec2rightthree.value;
+if (empt === ""){
+ExtraTwoRightSpace = ExtraTwoRightSpace;
+} else {
+ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+}
+
+doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightFour); //Experience right line four
+var empt = document.extrasec2.extrasec2rightfour.value;
+if (empt === ""){
+ExtraTwoRightSpace = ExtraTwoRightSpace;
+} else {
+ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+}
+
+doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightFive); //Experience right line five
+var empt = document.extrasec2.extrasec2rightfive.value;
+if (empt === ""){
+ExtraTwoRightSpace = ExtraTwoRightSpace;
+} else {
+ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+}
+
+// ***********************  Extra Section One Column  (mainpage)****************************
+
+var ExtraOneTop = ExtraTwoLeftSpace + 10 + spacingextraOnePos2
+var ExtraOneSpace = ExtraTwoLeftSpace + 10 + spacingextraOnePos2
+
+
+doc.setFontSize(HeadingSize);
+doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+var inputVal = Extrasec1Header.toUpperCase();
+
+doc.text(BTStart, ExtraOneSpace, inputVal); //Extra section one column Header
+
+var empt = document.extrasec1.extrasec1header.value;
+if (empt === ""){
+ExtraOneSpace = ExtraOneSpace;
+} else {
+ExtraOneSpace = ExtraOneSpace + (LineHeight*1.25);
+}
+
+doc.setFontSize(TextSize);
+doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+doc.setFontType("normal");
+
+var paragraph = Extrasec1Paragraph;
+var lines = doc.splitTextToSize(paragraph, BTWidth);
+doc.text(BTStart, ExtraOneSpace, lines);  // Extra section one column text
+var empt = document.extrasec1.extrasec1paragraph.value;
+if (empt === ""){
+ExtraOneSpace = ExtraOneSpace;
+} else {
+ExtraOneSpace = ExtraOneSpace;
+}
+
+
+
+// ***********************  Save File ****************************
+
+doc.save('resume-one-arial.pdf')
+
+  }
+
+
+
+
+
+// *********************** TEMPLATE ONE TIMES ****************************
+
+
+function TempOneTimes() {
+
+
+
+
+  // Default export is a4 paper, portrait, using millimeters for units
+  var doc = new jsPDF()
+
+
+  // Declarations of the data
+
+  var VertSpace = 0;
+  var BTStart = 65; //Body text start point
+  var BTWidth = 140; // Body text width
+  var LinePoint = 60; // Vertical line point (Border of the side menu and body text)
+  var BulletPoint = 69; // Bullet points
+  var BPStart = 73;  // Start Bullet Point text
+  var BPWidth = 132;  //Bullet Point Text Width
+  //var LineHeight = 4.5; //Line height
+  var SBBullet = 8; // Sidebar Bullet Point
+  var SidebarLeftMargin = 4; //Sidebar Left Margin
+  var RightColumn = 135;
+  // ***********************  Draw Header ****************************
+
+  doc.setDrawColor(HeaderCol01,HeaderCol02,HeaderCol03);
+  doc.setFillColor(HeaderCol01,HeaderCol02,HeaderCol03);
+  doc.setLineWidth(0.25);
+  doc.rect(2, 2, 206, 36);
+  doc.rect(3, 3, 204, 34, 'F'); // filled maroon square
+
+  var firstname = pdetails01.toUpperCase();
+  var lastname = pdetails02.toUpperCase();
+  var fullname = firstname + " " + lastname;
+
+  doc.setFont("times");
+  doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+  doc.setFontSize(HeaderText01);
+  doc.text(8, 15, fullname); // Name
+
+  var HeaderDiff = 24-HTDiff;
+  doc.setFontSize(HeaderText02);
+  doc.text(8, HeaderDiff, pdetails08); // Career Title
+
+  var addy = pdetails03 + ", " + pdetails04 + " " + pdetails05;
+
+  var start01 = addy.length;
+  //var start02 = start01*1.5; //10pt
+  //var start02 = start01*1.7; // 11pt
+  //var start02 = start01*1.9; // 12pt
+  var start02 = start01*SP01;
+  var startpoint = 198 - start02;
+  doc.setFontSize(TextSize);
+  doc.text(startpoint, 22, addy); // Address
+
+  var start01 = pdetails07.length;
+  //var start02 = start01*1.6; // 10pt
+  //var start02 = start01*1.8; // 11pt
+  //var start02 = start01*2.0; // 12pt
+  var start02 = start01*SP02;
+  var startpoint = 198 - start02;
+  doc.setFontSize(TextSize);
+  doc.text(startpoint, 28, pdetails07); // Email Address
+
+  var start01 = pdetails06.length;
+  //var start02 = start01*1.5; // 10pt
+  //var start02 = start01*1.7; // 11pt
+  //var start02 = start01*1.9; // 12pt
+  var start02 = start01*SP01;
+  var startpoint = 198 - start02;
+  doc.setFontSize(TextSize);
+  doc.text(startpoint, 34, pdetails06); // Phone Number
+
+  doc.setDrawColor(HeadingTextCol01, HeadingTextCol02, HeadingTextCol03);
+  doc.line(LinePoint, 38, LinePoint,297); // Summary Section Line
+
+  // ***********************  Draw Summary ****************************
+
+  var SummaryTop = 46 + spacingsummary;
+  var SummarySpace = 46 + spacingsummary;
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+  var inputVal = SummaryHeader.toUpperCase();
+  //doc.text(inputVal, (LinePoint/2),SummaryTop , 0, 'center');// Summary Header
+  doc.text(BTStart, SummarySpace, inputVal); // Summary Header
+
+  var empt = document.summary.summaryheader.value;
+  if (empt === ""){
+  SummarySpace = SummarySpace;
+  } else {
+  SummarySpace = SummarySpace + (LineHeight*1.25);
+  }
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+
+  var paragraph = SummaryText;
+  var lines = doc.splitTextToSize(paragraph, BTWidth);
+  doc.text(BTStart, SummarySpace, lines);  // Career Summary
+
+  var empt = document.summary.careersummary.value;
+  if (empt === ""){
+  var SummaryBottom = SummarySpace;
+  } else {
+    var a = paragraph.length;
+    var b = a/80;
+    var c = Math.ceil(b);
+    var SummaryBottom = c*4.5 + SummaryTop;
+  }
+
+
+
+  // ***********************  Skills Section ****************************
+
+  var SkillsTop = 46 + spacingskills;
+  var SkillsBottom = SkillsTop;
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+
+  var skillhead = SkillsHeader.toUpperCase();
+  doc.text(SidebarLeftMargin, SkillsBottom, skillhead); // Skills Header
+  var empt = document.skills.skillsheader.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  SkillsBottom = SkillsBottom + (LineHeight*1.25);
+  }
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+
+
+  doc.text(SBBullet, SkillsBottom, Skill01);
+  var empt = document.skills.skill01.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+  SkillsBottom = SkillsBottom + LineHeight;
+  }
+
+  doc.text(SBBullet, SkillsBottom, Skill02);
+  var empt = document.skills.skill02.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+  SkillsBottom = SkillsBottom + LineHeight;
+  }
+
+  doc.text(SBBullet, SkillsBottom, Skill03);
+  var empt = document.skills.skill03.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+  SkillsBottom = SkillsBottom + LineHeight;
+  }
+
+  doc.text(SBBullet, SkillsBottom, Skill04);
+  var empt = document.skills.skill04.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+  SkillsBottom = SkillsBottom + LineHeight;
+  }
+
+  doc.text(SBBullet, SkillsBottom, Skill05);
+  var empt = document.skills.skill05.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+  SkillsBottom = SkillsBottom + LineHeight;
+  }
+
+  doc.text(SBBullet, SkillsBottom, Skill06);
+  var empt = document.skills.skill06.value;
+  if (empt === ""){
+  SkillsBottom = SkillsBottom;
+  } else {
+  doc.text(SidebarLeftMargin, SkillsBottom, '\u2022');
+  SkillsBottom = SkillsBottom;
+  }
+
+  // ***********************  Education Section  Course ONE ****************************
+
+  var EducationTop = SkillsBottom + 15 + spacingeducation;
+  var EducationBottom = EducationTop;
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+
+  var educationhead = EducationHeader.toUpperCase();
+  doc.text(SidebarLeftMargin, EducationBottom, educationhead); // Education Header
+  var empt = document.education.educationheader.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + (LineHeight*1.25);
+  }
+
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseOneInstitute); // Course one institute
+  var empt = document.education.courseoneinstitute.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseOneQual); // Course one qualification
+  var empt = document.education.courseonequal.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseOneSubject); // Course one subject
+  var empt = document.education.courseonesubject.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  var empt = document.education.courseonecompleted.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseOneCompleted); // Course one year completed
+  EducationBottom = EducationBottom;
+  }
+
+  // ***********************  Education Section  Course two ****************************
+
+  EducationBottom = EducationBottom + 10 + spacingeducationPos2;
+
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseTwoInstitute); // Course two institute
+
+  var empt = document.education.coursetwoinstitute.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseTwoQual); // Course two qualification
+  var empt = document.education.coursetwoqual.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseTwoSubject); // Course two subject
+  var empt = document.education.coursetwosubject.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  var empt = document.education.coursetwocompleted.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseTwoCompleted); // Course two year completed
+  EducationBottom = EducationBottom;
+  }
+
+
+  // ***********************  Education Section  Course three ****************************
+
+  EducationBottom = EducationBottom + 10 + spacingeducationPos3;
+
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseThreeInstitute); // Course three institute
+
+  var empt = document.education.coursethreeinstitute.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseThreeQual); // Course three qualification
+  var empt = document.education.coursethreequal.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseThreeSubject); // Course three subject
+  var empt = document.education.coursethreesubject.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  var empt = document.education.coursethreecompleted.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseThreeCompleted); // Course three completed
+  EducationBottom = EducationBottom;
+  }
+
+  // ***********************  Education Section  Course four ****************************
+
+  EducationBottom = EducationBottom + 10 + spacingeducationPos4;
+
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseFourInstitute); // Course four institute
+
+  var empt = document.education.coursefourinstitute.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseFourQual); // Course four qualification
+  var empt = document.education.coursefourqual.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, EducationBottom, CourseFourSubject); // Course four subject
+  var empt = document.education.coursefoursubject.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  EducationBottom = EducationBottom + LineHeight;
+  }
+
+  var empt = document.education.coursefourcompleted.value;
+  if (empt === ""){
+  EducationBottom = EducationBottom;
+  } else {
+  doc.text(SidebarLeftMargin, EducationBottom, "Completed " + CourseFourCompleted); // Course four completed
+  EducationBottom = EducationBottom;
+  }
+
+  // ***********************  Extra Section Sidebar Part one ****************************
+
+
+  var ExtraSidebarTop = EducationBottom + 15 + spacingextrasidebarOne;
+  var ExtraSidebarBottom = ExtraSidebarTop;
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+
+  var extrasidebarhead = ExtraSidebarHeader.toUpperCase();
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, extrasidebarhead); // Sidebar Header
+  var empt = document.extrasidebar.extrasidebarheader.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + (LineHeight*1.25);
+  }
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarSubTop); // Extra section sidebar Part 1 sub header
+  var empt = document.extrasidebar.extrasidebarsubtop.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopOne); // Extra section sidebar Part 1 Line one
+  var empt = document.extrasidebar.extrasidebartopone.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopTwo); // Extra section sidebar Part 1 line two
+  var empt = document.extrasidebar.extrasidebartoptwo.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopThree); // Extra section sidebar Part 1 line three
+  var empt = document.extrasidebar.extrasidebartopthree.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopFour); // Extra section sidebar Part 1 line four
+  var empt = document.extrasidebar.extrasidebartopfour.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarTopFive); // Extra section sidebar Part 1 line five
+  var empt = document.extrasidebar.extrasidebartopfive.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  }
+
+
+  // ***********************  Extra Section Sidebar Part two ****************************
+
+  ExtraSidebarBottom = ExtraSidebarBottom + 10 + spacingextrasidebarTwo;
+
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarSubBottom); // Extra section sidebar Part 2 sub header
+  var empt = document.extrasidebar.extrasidebarsubbottom.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomOne); // Extra section sidebar Part 2 Line one
+  var empt = document.extrasidebar.extrasidebarbottomone.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomTwo); // Extra section sidebar Part 2 line two
+  var empt = document.extrasidebar.extrasidebarbottomtwo.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomThree); // Extra section sidebar Part 2 line three
+  var empt = document.extrasidebar.extrasidebarbottomthree.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomFour); // Extra section sidebar Part 2 line four
+  var empt = document.extrasidebar.extrasidebarbottomfour.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarBottomFive); // Extra section sidebar Part 2 line five
+  var empt = document.extrasidebar.extrasidebarbottomfive.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  }
+
+  // ***********************  Extra Section Sidebar Part three ****************************
+
+  ExtraSidebarBottom = ExtraSidebarBottom + 10 + spacingextrasidebarThree;
+
+  doc.setFontType("bold");
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarSubMostBottom); // Extra section sidebar Part 3 sub header
+  var empt = document.extrasidebar.extrasidebarsubmostbottom.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomOne); // Extra section sidebar Part 3 Line one
+  var empt = document.extrasidebar.extrasidebarmostbottomone.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomTwo); // Extra section sidebar Part 3 line two
+  var empt = document.extrasidebar.extrasidebarmostbottomtwo.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomThree); // Extra section sidebar Part 3 line three
+  var empt = document.extrasidebar.extrasidebarmostbottomthree.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomFour); // Extra section sidebar Part 3 line four
+  var empt = document.extrasidebar.extrasidebarmostbottomfour.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom + LineHeight;
+  }
+
+  doc.text(SidebarLeftMargin, ExtraSidebarBottom, ExtraSidebarMostBottomFive); // Extra section sidebar Part 3 line five
+  var empt = document.extrasidebar.extrasidebarmostbottomfive.value;
+  if (empt === ""){
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  } else {
+  ExtraSidebarBottom = ExtraSidebarBottom;
+  }
+
+
+  // ***********************  Experience Section ****************************
+
+  var ExperienceTop = SummaryBottom + 15 + spacingexperience;
+  var ExperienceSpace = SummaryBottom + 15 + spacingexperience;
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+  var inputVal = ExperienceHeader.toUpperCase();
+
+  doc.text(BTStart, ExperienceSpace, inputVal); //Experience Header
+
+  var empt = document.experience.experienceheader.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  ExperienceSpace = ExperienceSpace + (LineHeight*1.25);
+  }
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("bold");
+
+  var inputVal = PositionOneTitle.toUpperCase();
+  doc.text(BTStart, ExperienceSpace, inputVal + "         " + PositionOneStart + " - " + PositionOneFinished); // Position one title
+
+  var empt = document.experience.positiononetitle.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+  doc.text(BTStart, ExperienceSpace, "         " + " - "); // Delete the | & -
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  } else {
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  doc.setFontType("italic");
+
+  doc.text(BTStart, ExperienceSpace, PositionOneEmployer); // Position one employer
+
+  var empt = document.experience.positiononeemployer.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  var paragraph = PositionOneTwoLineOne;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+  var empt = document.experience.positiononetwolineone.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionOneTwoLineTwo;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+  var empt = document.experience.positiononetwolinetwo.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionOneTwoLineThree;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+  var empt = document.experience.positiononetwolinethree.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionOneTwoLineFour;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+  var empt = document.experience.positiononetwolinefour.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionOneTwoLineFive;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceSpace, lines);  // Position One two line point
+
+  var empt = document.experience.positiononetwolinefive.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + (LineHeight*2);
+  }
+
+  doc.text(BPStart, ExperienceSpace, PositionOneSingleLineOne);  // Position One single line point
+  var empt = document.experience.positiononesinglelineone.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceSpace, PositionOneSingleLineTwo);  // Position One single line point
+  var empt = document.experience.positiononesinglelinetwo.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceSpace, PositionOneSingleLineThree);  // Position One single line point
+  var empt = document.experience.positiononesinglelinethree.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceSpace, PositionOneSingleLineFour);  // Position One single line point
+  var empt = document.experience.positiononesinglelinefour.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceSpace, PositionOneSingleLineFive);  // Position One single line point
+  var empt = document.experience.positiononesinglelinefive.value;
+  if (empt === ""){
+  ExperienceSpace = ExperienceSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceSpace, '\u2022');
+  ExperienceSpace = ExperienceSpace + LineHeight;
+  }
+
+  // ***********************  Experience Section Position Two ****************************
+
+  var ExperienceTwoTop = ExperienceSpace + 5 + spacingexperiencePos2;
+  var ExperienceTwoSpace = ExperienceSpace + 5 + spacingexperiencePos2;
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("bold");
+
+  var inputVal = PositionTwoTitle.toUpperCase();
+  doc.text(BTStart, ExperienceTwoSpace, inputVal + "         " + PositionTwoStart + " - " + PositionTwoFinished); // Position two title
+
+  var empt = document.experience.positiontwotitle.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+  doc.text(BTStart, ExperienceTwoSpace, "         " + " - "); // Delete the | & -
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  } else {
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  doc.setFontType("italic");
+
+  doc.text(BTStart, ExperienceTwoSpace, PositionTwoEmployer); // Position two employer
+
+  var empt = document.experience.positiontwoemployer.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  var paragraph = PositionTwoTwoLineOne;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+  var empt = document.experience.positiontwotwolineone.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionTwoTwoLineTwo;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+  var empt = document.experience.positiontwotwolinetwo.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionTwoTwoLineThree;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+  var empt = document.experience.positiontwotwolinethree.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionTwoTwoLineFour;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+  var empt = document.experience.positiontwotwolinefour.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionTwoTwoLineFive;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceTwoSpace, lines);  // Position 2 two line point
+
+  var empt = document.experience.positiontwotwolinefive.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + (LineHeight*2);
+  }
+
+  doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineOne);  // Position 2 single line point
+  var empt = document.experience.positiontwosinglelineone.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineTwo);  // Position 2 single line point
+  var empt = document.experience.positiontwosinglelinetwo.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineThree);  // Position 2 single line point
+  var empt = document.experience.positiontwosinglelinethree.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineFour);  // Position 2 single line point
+  var empt = document.experience.positiontwosinglelinefour.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceTwoSpace, PositionTwoSingleLineFive);  // Position 2 single line point
+  var empt = document.experience.positiontwosinglelinefive.value;
+  if (empt === ""){
+  ExperienceTwoSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceTwoSpace, '\u2022');
+  ExperienceTwoSpace = ExperienceTwoSpace + LineHeight;
+  }
+
+  // ***********************  Experience Section Position Three ****************************
+
+  var ExperienceThreeTop = ExperienceTwoSpace + 5 + spacingexperiencePos3;
+  var ExperienceThreeSpace = ExperienceTwoSpace + 5 + spacingexperiencePos3;
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("bold");
+
+  var inputVal = PositionThreeTitle.toUpperCase();
+  doc.text(BTStart, ExperienceThreeSpace, inputVal + "         " + PositionThreeStart + " - " + PositionThreeFinished); // Position three title
+
+  var empt = document.experience.positionthreetitle.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  doc.setTextColor(HeaderTextCol01,HeaderTextCol02,HeaderTextCol03);
+  doc.text(BTStart, ExperienceThreeSpace, "         " + " - "); // Delete the | & -
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  } else {
+  ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+  }
+
+  doc.setFontType("italic");
+
+  doc.text(BTStart, ExperienceThreeSpace, PositionThreeEmployer); // Position two employer
+
+  var empt = document.experience.positionthreeemployer.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  var paragraph = PositionThreeTwoLineOne;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+  var empt = document.experience.positionthreetwolineone.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionThreeTwoLineTwo;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+  var empt = document.experience.positionthreetwolinetwo.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionThreeTwoLineThree;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+  var empt = document.experience.positionthreetwolinethree.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionThreeTwoLineFour;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+  var empt = document.experience.positionthreetwolinefour.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+  }
+
+  var paragraph = PositionThreeTwoLineFive;
+  var lines = doc.splitTextToSize(paragraph, BPWidth);
+  doc.text(BPStart, ExperienceThreeSpace, lines);  // Position 3 two line point
+
+  var empt = document.experience.positionthreetwolinefive.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + (LineHeight*2);
+  }
+
+  doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineOne);  // Position 3 single line point
+  var empt = document.experience.positionthreesinglelineone.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineTwo);  // Position 3 single line point
+  var empt = document.experience.positionthreesinglelinetwo.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineThree);  // Position 3 single line point
+  var empt = document.experience.positionthreesinglelinethree.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceTwoSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineFour);  // Position 3 single line point
+  var empt = document.experience.positionthreesinglelinefour.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  ExperienceThreeSpace = ExperienceThreeSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExperienceThreeSpace, PositionThreeSingleLineFive);  // Position 3 single line point
+  var empt = document.experience.positionthreesinglelinefive.value;
+  if (empt === ""){
+  ExperienceThreeSpace = ExperienceThreeSpace;
+  } else {
+  doc.text(BulletPoint, ExperienceThreeSpace, '\u2022');
+  }
+
+  // ***********************  Extra Section Two Column  (mainpage)****************************
+
+
+  var ExtraTwoTop = ExperienceThreeSpace + 10 + spacingextraTwo;
+  var ExtraTwoLeftSpace = ExperienceThreeSpace + 10 + spacingextraTwo;
+  var ExtraTwoRightSpace = ExperienceThreeSpace + 10 + spacingextraTwo;
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+  var inputVal = Extrasec2Header.toUpperCase();
+
+  doc.text(BTStart, ExtraTwoLeftSpace, inputVal); //Experience Header
+
+  var empt = document.extrasec2.extrasec2header.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + (LineHeight*1.25);
+  ExtraTwoRightSpace = ExtraTwoRightSpace + (LineHeight*1.25);
+  }
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("bold");
+
+  doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2SubLeft); //Experience left sub Header
+  var empt = document.extrasec2.extrasec2subleft.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftOne); //Experience left line one
+  var empt = document.extrasec2.extrasec2leftone.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftTwo); //Experience left line two
+  var empt = document.extrasec2.extrasec2lefttwo.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftThree); //Experience left line three
+  var empt = document.extrasec2.extrasec2leftthree.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftFour); //Experience left line four
+  var empt = document.extrasec2.extrasec2leftfour.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+  }
+
+  doc.text(BPStart, ExtraTwoLeftSpace, Extrasec2LeftFive); //Experience left line Five
+  var empt = document.extrasec2.extrasec2leftfive.value;
+  if (empt === ""){
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace;
+  } else {
+  ExtraTwoLeftSpace = ExtraTwoLeftSpace + LineHeight;
+  }
+
+  doc.setFontType("bold");
+
+  doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2SubRight); //Experience right sub Header
+  var empt = document.extrasec2.extrasec2subright.value;
+  if (empt === ""){
+  ExtraTwoRightSpace = ExtraTwoRightSpace;
+  } else {
+  ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+  }
+
+  doc.setFontType("normal");
+
+  doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightOne); //Experience right line one
+  var empt = document.extrasec2.extrasec2rightone.value;
+  if (empt === ""){
+  ExtraTwoRightSpace = ExtraTwoRightSpace;
+  } else {
+  ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+  }
+
+  doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightTwo); //Experience right line two
+  var empt = document.extrasec2.extrasec2righttwo.value;
+  if (empt === ""){
+  ExtraTwoRightSpace = ExtraTwoRightSpace;
+  } else {
+  ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+  }
+
+  doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightThree); //Experience right line three
+  var empt = document.extrasec2.extrasec2rightthree.value;
+  if (empt === ""){
+  ExtraTwoRightSpace = ExtraTwoRightSpace;
+  } else {
+  ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+  }
+
+  doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightFour); //Experience right line four
+  var empt = document.extrasec2.extrasec2rightfour.value;
+  if (empt === ""){
+  ExtraTwoRightSpace = ExtraTwoRightSpace;
+  } else {
+  ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+  }
+
+  doc.text(RightColumn, ExtraTwoRightSpace, Extrasec2RightFive); //Experience right line five
+  var empt = document.extrasec2.extrasec2rightfive.value;
+  if (empt === ""){
+  ExtraTwoRightSpace = ExtraTwoRightSpace;
+  } else {
+  ExtraTwoRightSpace = ExtraTwoRightSpace + LineHeight;
+  }
+
+  // ***********************  Extra Section One Column  (mainpage)****************************
+
+  var ExtraOneTop = ExtraTwoLeftSpace + 10 + spacingextraOnePos2
+  var ExtraOneSpace = ExtraTwoLeftSpace + 10 + spacingextraOnePos2
+
+
+  doc.setFontSize(HeadingSize);
+  doc.setTextColor(HeadingTextCol01,HeadingTextCol02,HeadingTextCol03);
+  var inputVal = Extrasec1Header.toUpperCase();
+
+  doc.text(BTStart, ExtraOneSpace, inputVal); //Extra section one column Header
+
+  var empt = document.extrasec1.extrasec1header.value;
+  if (empt === ""){
+  ExtraOneSpace = ExtraOneSpace;
+  } else {
+  ExtraOneSpace = ExtraOneSpace + (LineHeight*1.25);
+  }
+
+  doc.setFontSize(TextSize);
+  doc.setTextColor(BodyTextCol01,BodyTextCol02,BodyTextCol03);
+  doc.setFontType("normal");
+
+  var paragraph = Extrasec1Paragraph;
+  var lines = doc.splitTextToSize(paragraph, BTWidth);
+  doc.text(BTStart, ExtraOneSpace, lines);  // Extra section one column text
+  var empt = document.extrasec1.extrasec1paragraph.value;
+  if (empt === ""){
+  ExtraOneSpace = ExtraOneSpace;
+  } else {
+  ExtraOneSpace = ExtraOneSpace;
+  }
+
+
+
+  // ***********************  Save File ****************************
+
+  doc.save('resume-one-times.pdf')
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</head>
+
+<body onload="SetSpacing();">
+
+<h2>Choose your color<small> (Default is Red)</small>
+<br>
+<button onclick="RedBG();" class="button">&nbsp;Red&nbsp;&nbsp;</button>
+<button onclick="GreenBG();" class="button button2">Green&nbsp;</button>
+<button onclick="BlueBG();" class="button button3">&nbsp;Blue&nbsp;</button>
+<button onclick="BrownBG();" class="button button4">Brown&nbsp;</button>
+<button onclick="PurpleBG();" class="button button5">Purple</button>
+<button onclick="TealBG();" class="button button6">&nbsp;Teal&nbsp;</button>
+<button onclick="GreyBG();" class="button button7">&nbsp;Grey&nbsp;</button>
+</h2>
+
+<table border="1" cellpadding="0" cellspacing="1">
+  <tr>
+  <th><h2>Text Size (Default is 11pt)</h2></th>
+  <th><h2>Heading Size (Default is 14pt)</h2></th>
+  </tr>
+<tr>
+<td>
+  &nbsp;<button onclick="ChooseTextSize10();" class="button button11">&nbsp;10 pt&nbsp;</button>
+  <button onclick="ChooseTextSize11();" class="button button12">&nbsp;11 pt&nbsp;</button>
+  <button onclick="ChooseTextSize12();" class="button button13">&nbsp;12 pt&nbsp;</button>&nbsp;
+</td>
+<td>
+  &nbsp;<button onclick="ChooseHeadingSize13();" class="button button14">&nbsp;13 pt&nbsp;</button>
+  <button onclick="ChooseHeadingSize14();" class="button button15">&nbsp;14 pt&nbsp;</button>
+  <button onclick="ChooseHeadingSize15();" class="button button16">&nbsp;15 pt&nbsp;</button>&nbsp;
+</td>
+</tr>
+</table>
+<br>
+<table border="1" cellpadding="0" cellspacing="1">
+  <tr>
+  <th><h2>Header Size (Main, Default is 30pt)</h2></th>
+  <th><h2>Header Size (Secondary, Default is 22pt)</h2></th>
+  </tr>
+<tr>
+<td>
+  &nbsp;<button onclick="ChooseHeaderSize26();" class="button button17">&nbsp;26 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize28();" class="button button18">&nbsp;28 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize30();" class="button button19">&nbsp;30 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize32();" class="button button20">&nbsp;32 pt&nbsp;</button>&nbsp;
+</td>
+<td>
+  &nbsp;<button onclick="ChooseHeaderSize18();" class="button button21">&nbsp;18 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize20();" class="button button22">&nbsp;20 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize22();" class="button button23">&nbsp;22 pt&nbsp;</button>
+  <button onclick="ChooseHeaderSize24();" class="button button24">&nbsp;24 pt&nbsp;</button>&nbsp;
+</td>
+</tr>
+</table>
+
+<h2>Template one font style <small>(Default is Sans-serif)</small>
+<br>
+<button onclick="javascript:TemplateOneArialSinglePage();" class="button button8"><b>Sans-serif</b></button>
+<button onclick="javascript:TemplateOneTimesSinglePage();" class="button button9"><b>&nbsp;&nbsp;&nbsp;Sans&nbsp;&nbsp;&nbsp;</b></button>
+<button onclick="TemplateOneCourierSinglePage();" class="button button10"><b>Courier</b></button>
+</h2>
+
+<h2>Choose your resume template</h2>
+
+
+<h2>Page One</h2>
+<h3>(Fill out your details)</h3>
+
+
+
+<!-- ********************  Horizontal Tabs  ******************** -->
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Details')" id="defaultOpen">Personal Details</button>
+  <button class="tablinks" onclick="openCity(event, 'Summary')">Summary</button>
+  <button class="tablinks" onclick="openCity(event, 'Skills')">Skills</button>
+  <button class="tablinks" onclick="openCity(event, 'Experience')">Experience</button>
+  <button class="tablinks" onclick="openCity(event, 'Education')">Education</button>
+  <button class="tablinks" onclick="openCity(event, 'Extrasidebar')">Extra (Sidebar)</button>
+  <button class="tablinks" onclick="openCity(event, 'ExtraTwo')">Extra (Two Columns)</button>
+  <button class="tablinks" onclick="openCity(event, 'ExtraOne')">Extra (One Column)</button>
+  <button class="tablinks" onclick="openCity(event, 'Spacing')">Spacing</button>
+  <button class="tablinks" onclick="openCity(event, 'Phrases')">Power Phrases</button>
+  <button class="tablinks" onclick="openCity(event, 'Adjectives')">Adjectives</button>
+  <button class="tablinks" onclick="openCity(event, 'Help')">Help</button>
+</div>
+
+<!-- ********************  Personal Details Tab  ******************** -->
+
+<div id="Details" class="tabcontent">
+<form name="details">
+  <h3>Personal Details</h3>
+  <h4><font color="#008800">Position: Header or sidebar</font></h4>
+<label>Full Name</label>
+<br>
+  <input type="text" id="fname" name="fname" size="30" maxlength="30" placeholder="First Name" value ="Grant">
+  <input type="text" id="lname" name="lname" size="30" maxlength="30" placeholder="Last Name" value ="Young">
+<br><br>
+<label>Address</label>
+<br>
+  <input type="text" id="city" name="city" size="30" maxlength="30" placeholder="City/Suburb" value ="Eatons Hill">
+  <input type="text" id="state" name="state" size="10" maxlength="10" placeholder="State (XX/XXX)" value ="QLD">
+  <input type="text" id="zip" name="zip" size="10" maxlength="10" placeholder="ZIP Code" value ="4037">
+<br><br>
+<label>Phone Number</label>
+<br>
+  <input type="text" id="phonenumber" name="phonenumber" size="30" maxlength="30" placeholder="Phone Number" value ="0412 462 751">
+<br><br>
+<label>Email Address</label>
+<br>
+  <input type="text" id="email" name="email" size="60" maxlength="60" placeholder="Email Address" value ="grantvy@gmail.com">
+<br><br>
+<label>Career Title (Optional)</label>
+<br>
+  <input type="text" id="title" name="title" size="60" maxlength="60" placeholder="Career Title (Optional)" value ="Storeman">
+<br><br>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetDetails()"><img src="images/clear1.gif"width="60" height="46" alt="Clear personal details" border="0" name="resetdetails" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- ********************  Summary Tab  ******************** -->
+
+<div id="Summary" class="tabcontent">
+<form name="summary">
+  <h3>Career Summary</h3>
+    <h4><font color="#008800">Position: Main page</font></h4>
+    <label><b>Summary Section Header</b></label><br>
+    <input type="text" id="summaryheader" name="summaryheader" size="20" maxlength="30" placeholder="Section Header" value ="Summary">
+  <br><br>
+  <label><b>Career Summary Text</b></label>
+  <br>
+  <textarea id="careersummary" name="careersummary" rows="6" cols="80" placeholder="Career summary text">I am a well-mannered, honest and hardworking individual who takes pride in everything I do. I am capable, mature, reliable, responsible, and I always pay close attention to detail. I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised.</textarea>
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetSummary()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR SUMMARY" border="0" name="CLEARSUMMARY" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+<!-- ********************  Skills Tab  ******************** -->
+
+<div id="Skills" class="tabcontent">
+<form name="skills">
+  <h3>Skills</h3>
+  <h4><font color="#008800">Position: Sidebar</font></h4>
+  <label><b>Skills Header</b></label><br>
+  <input type="text" id="skillsheader" name="skillsheader" size="20" maxlength="20" placeholder="Section Header" value ="Skills"><br><br>
+  <label><b>List six of your best skills</b></label><br>
+  <input type="text" id="skill01" name="skill01" size="30" maxlength="30" placeholder="Skill 1" value="Attention to detail"><br>
+  <input type="text" id="skill02" name="skill02" size="30" maxlength="30" placeholder="Skill 2" value="Problem solving"><br>
+  <input type="text" id="skill03" name="skill03" size="30" maxlength="30" placeholder="Skill 3" value="Team player"><br>
+  <input type="text" id="skill04" name="skill04" size="30" maxlength="30" placeholder="Skill 4" value="Computer skills"><br>
+  <input type="text" id="skill05" name="skill05" size="30" maxlength="30" placeholder="Skill 5" value="Ability to work unsupervised"><br>
+  <input type="text" id="skill06" name="skill06" size="30" maxlength="30" placeholder="Skill 6" value="Cash handling"><br>
+  <br>
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetSkills()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Skills" border="0" name="clearskills" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+<!-- ********************  Work Experience Tab  ******************** -->
+
+<div id="Experience" class="tabcontent">
+<form name="experience">
+  <h3>Work Experience</h3>
+  <h4><font color="#008800">Position: Main page</font></h4>
+  <label><b>Summary Section Header</b></label><br>
+  <input type="text" id="experienceheader" name="experienceheader" size="30" maxlength="30" placeholder="Section Header" value ="Experience">
+<br><br>
+<div class="accordion">
+  <input type="radio" name="select" class="accordion-select" checked />
+ <div class="accordion-title"><span><b>Position 1 Details</b></span></div>
+ <div class="accordion-content">
+
+<table width="760px" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Position Title&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononetitle" name="positiononetitle" size="50" maxlength="50" placeholder="Position Title" value="Casual House Attendant 1">
+    </td>
+  </tr>
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Employer&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononeemployer" name="positiononeemployer" size="50" maxlength="50" placeholder="Employer" value="Brisbane Convention & Exhibition Centre 1">
+    </td>
+  </tr>
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Date Started&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononestart" name="positiononestart" size="10" maxlength="10" placeholder="xx/xxxx" value="07/2003 1">
+    </td>
+  </tr>
+  <tr>
+    <td width="160px" valign="top" align="right"><b>&nbsp;Date Finished&nbsp;</b></td>
+    <td width="600px">
+     <input type="text" id="positiononefinished" name="positiononefinished" size="10" maxlength="10" placeholder="xx/xxxx" value="02/2019 1"><br><br>
+    </td>
+  </tr>
+<tr>
+  <td width="160px" valign="top" align="right"><b>&nbsp;Two line points:&nbsp;</b></td>
+  <td width="600px">
+  <textarea id="positiononetwolineone" name="positiononetwolineone" rows="2" cols="70" placeholder="Two line point">I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised. 1-1</textarea>
+  <textarea id="positiononetwolinetwo" name="positiononetwolinetwo" rows="2" cols="70" placeholder="Two line point">I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised. 1-2</textarea>
+  <textarea id="positiononetwolinethree" name="positiononetwolinethree" rows="2" cols="70" placeholder="Two line point">I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised 1-3.</textarea>
+  <textarea id="positiononetwolinefour" name="positiononetwolinefour" rows="2" cols="70" placeholder="Two line point">I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised. 1-4</textarea>
+  <textarea id="positiononetwolinefive" name="positiononetwolinefive" rows="2" cols="70" placeholder="Two line point"></textarea>
+  </td>
+</tr>
+<tr>
+  <td width="156px" valign="top" align="right"><b>&nbsp;Single line points:&nbsp;</b></td>
+  <td width="600px">
+  <textarea id="positiononesinglelineone" name="positiononesinglelineone" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinetwo" name="positiononesinglelinetwo" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinethree" name="positiononesinglelinethree" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinefour" name="positiononesinglelinefour" rows="1" cols="70" placeholder="Single line point"></textarea>
+  <textarea id="positiononesinglelinefive" name="positiononesinglelinefive" rows="1" cols="70" placeholder="Single line point"></textarea>
+  </td>
+</tr>
+</table>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetExperienceOne()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Experience Position One" border="0" name="clearexperienceone" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+
+ </div>
+
+<!-- ********************  Work Experience Tab  Position Two ******************** -->
+
+
+      <input type="radio" name="select" class="accordion-select" />
+ <div class="accordion-title"><span><b>Position 2 Details</b></span></div>
+ <div class="accordion-content">
+
+   <table width="760px" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Position Title&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwotitle" name="positiontwotitle" size="50" maxlength="50" placeholder="Position Title" value="Casual House Attendant 2">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Employer&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwoemployer" name="positiontwoemployer" size="50" maxlength="50" placeholder="Employer" value="Brisbane Convention & Exhibition Centre 2">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Started&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwostart" name="positiontwostart" size="10" maxlength="10" placeholder="xx/xxxx" value="07/2003 2">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Finished&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positiontwofinished" name="positiontwofinished" size="10" maxlength="10" placeholder="xx/xxxx" value="02/2019 2"><br><br>
+       </td>
+     </tr>
+   <tr>
+     <td width="160px" valign="top" align="right"><b>&nbsp;Two line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positiontwotwolineone" name="positiontwotwolineone" rows="2" cols="70" placeholder="Two line point">I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised. 2-1</textarea>
+     <textarea id="positiontwotwolinetwo" name="positiontwotwolinetwo" rows="2" cols="70" placeholder="Two line point">I am a self-starter who is willing to work and learn, and I am more than capable of working unsupervised. 2-2</textarea>
+     <textarea id="positiontwotwolinethree" name="positiontwotwolinethree" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positiontwotwolinefour" name="positiontwotwolinefour" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positiontwotwolinefive" name="positiontwotwolinefive" rows="2" cols="70" placeholder="Two line point"></textarea>
+     </td>
+   </tr>
+   <tr>
+     <td width="156px" valign="top" align="right"><b>&nbsp;Single line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positiontwosinglelineone" name="positiontwosinglelineone" rows="1" cols="70" placeholder="Single line point">I am a self-starter who is willing to work and learn. 2-1</textarea>
+     <textarea id="positiontwosinglelinetwo" name="positiontwosinglelinetwo" rows="1" cols="70" placeholder="Single line point">I am a self-starter who is willing to work and learn. 2-2</textarea>
+     <textarea id="positiontwosinglelinethree" name="positiontwosinglelinethree" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positiontwosinglelinefour" name="positiontwosinglelinefour" rows="1" cols="70" placeholder="Single line point"></textarea>
+     <textarea id="positiontwosinglelinefive" name="positiontwosinglelinefive" rows="1" cols="70" placeholder="Single line point"></textarea>
+     </td>
+   </tr>
+   </table>
+   <br>
+   <table width="140px border="1" bordercolor="#000000">
+   <tr>
+   <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+   <td align="center" valign="middle" width="65px"><a href="javascript:ResetExperienceTwo()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Experience Position Two" border="0" name="clearexperiencetwo" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+   </tr>
+   </table>
+
+ </div>
+
+ <!-- ********************  Work Experience Tab  Position Three ******************** -->
+
+      <input type="radio" name="select" class="accordion-select" />
+ <div class="accordion-title"><span><b>Position 3 Details</b></span></div>
+ <div class="accordion-content">
+
+   <table width="760px" border="0" bordercolor="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Position Title&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreetitle" name="positionthreetitle" size="50" maxlength="50" placeholder="Position Title" value="Casual House Attendant 3">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Employer&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreeemployer" name="positionthreeemployer" size="50" maxlength="50" placeholder="Employer" value="Brisbane Convention & Exhibition Centre 3">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Started&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreestart" name="positionthreestart" size="10" maxlength="10" placeholder="xx/xxxx" value="07/2003 3">
+       </td>
+     </tr>
+     <tr>
+       <td width="160px" valign="top" align="right"><b>&nbsp;Date Finished&nbsp;</b></td>
+       <td width="600px">
+        <input type="text" id="positionthreefinished" name="positionthreefinished" size="10" maxlength="10" placeholder="xx/xxxx" value="02/2019 3"><br><br>
+       </td>
+     </tr>
+   <tr>
+     <td width="160px" valign="top" align="right"><b>&nbsp;Two line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positionthreetwolineone" name="positionthreetwolineone" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinetwo" name="positionthreetwolinetwo" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinethree" name="positionthreetwolinethree" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinefour" name="positionthreetwolinefour" rows="2" cols="70" placeholder="Two line point"></textarea>
+     <textarea id="positionthreetwolinefive" name="positionthreetwolinefive" rows="2" cols="70" placeholder="Two line point"></textarea>
+     </td>
+   </tr>
+   <tr>
+     <td width="156px" valign="top" align="right"><b>&nbsp;Single line points:&nbsp;</b></td>
+     <td width="600px">
+     <textarea id="positionthreesinglelineone" name="positionthreesinglelineone" rows="1" cols="70" placeholder="Single line point">I am a self-starter who is willing to work and learn. 3-1</textarea>
+     <textarea id="positionthreesinglelinetwo" name="positionthreesinglelinetwo" rows="1" cols="70" placeholder="Single line point">I am a self-starter who is willing to work and learn. 3-2</textarea>
+     <textarea id="positionthreesinglelinethree" name="positionthreesinglelinethree" rows="1" cols="70" placeholder="Single line point">I am a self-starter who is willing to work and learn. 3-3</textarea>
+     <textarea id="positionthreesinglelinefour" name="positionthreesinglelinefour" rows="1" cols="70" placeholder="Single line point">I am a self-starter who is willing to work and learn. 3-4</textarea>
+     <textarea id="positionthreesinglelinefive" name="positionthreesinglelinefive" rows="1" cols="70" placeholder="Single line point"></textarea>
+     </td>
+   </tr>
+   </table>
+   <br>
+   <table width="140px border="1" bordercolor="#000000">
+   <tr>
+   <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+   <td align="center" valign="middle" width="65px"><a href="javascript:ResetExperienceThree()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Experience Position Three" border="0" name="clearexperiencethree" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+   </tr>
+   </table>
+
+ </div>
+</div>
+
+</form>
+</div>
+
+<!-- ********************  Education Tab  ******************** -->
+
+<div id="Education" class="tabcontent">
+<form name="education">
+  <h3>Education</h3>
+  <h4><font color="#008800">Position: Sidebar (Please note that these four sections are stacked on top of each other)</font></h4>
+  <label><b>Education Section Header</b></label><br>
+  <input type="text" id="educationheader" name="educationheader" size="20" maxlength="20" placeholder="Section Header" value ="Education">
+<br><br>
+<table Width="1210px" border="1" cellspacing="0" cellpadding="0">
+<tr>
+<th Width="150px" Align="center"></th>
+<th Width="265px" Align="center">Qualification 1</th>
+<th Width="265px" Align="center">Qualification 2</th>
+<th Width="265px" Align="center">Qualification 3</th>
+<th Width="265px" Align="center">Qualification 4</th>
+</tr>
+<tr>
+<td><b>&nbsp;Institution Name</b></td>
+<td><input type="text" id="courseoneinstitute" name="courseoneinstitute" size="28" maxlength="30" placeholder="Institution Name" value="Thomson Education Direct"></td>
+<td><input type="text" id="coursetwoinstitute" name="coursetwoinstitute" size="28" maxlength="30" placeholder="Institution Name" value="Kings Meadows High School"></td>
+<td><input type="text" id="coursethreeinstitute" name="coursethreeinstitute" size="28" maxlength="30" placeholder="Institute Name" value="YoungTown Primary School"></td>
+<td><input type="text" id="coursefourinstitute" name="coursefourinstitute" size="28" maxlength="30" placeholder="Institute Name" value="Munford Street Preschool"></td>
+</tr>
+<tr>
+<td><b>&nbsp;Qualification</b></td>
+<td><input type="text" id="courseonequal" name="courseonequal" size="28" maxlength="30" placeholder="Qualification" value="Diploma"></td>
+<td><input type="text" id="coursetwoqual" name="coursetwoqual" size="28" maxlength="30" placeholder="Qualification" value="Schools Certificate"></td>
+<td><input type="text" id="coursethreequal" name="coursethreequal" size="28" maxlength="30" placeholder="Qualification" value="Primary School Certificate"></td>
+<td><input type="text" id="coursefourqual" name="coursefourqual" size="28" maxlength="30" placeholder="Qualification" value="Preschool Certificate"></td>
+</tr>
+<tr>
+<td><b>&nbsp;Subject</b></td>
+<td><input type="text" id="courseonesubject" name="courseonesubject" size="28" maxlength="30" placeholder="Subject" value="Accounting"></td>
+<td><input type="text" id="coursetwosubject" name="coursetwosubject" size="28" maxlength="30" placeholder="Subject" value="Year 10"></td>
+<td><input type="text" id="coursethreesubject" name="coursethreesubject" size="28" maxlength="30" placeholder="Subject" value="Year 6"></td>
+<td><input type="text" id="coursefoursubject" name="coursefoursubject" size="28" maxlength="30" placeholder="Subject" value="Preschool"></td>
+</tr>
+<tr>
+<td><b>&nbsp;Year completed</b></td>
+<td><input type="text" id="courseonecompleted" name="courseonecompleted" size="28" maxlength="30" placeholder="Year completed" value="2003"></td>
+<td><input type="text" id="coursetwocompleted" name="coursetwocompleted" size="28" maxlength="30" placeholder="Year completed" value="1984"></td>
+<td><input type="text" id="coursethreecompleted" name="coursethreecompleted" size="28" maxlength="30" placeholder="Year complete" value="1980"></td>
+<td><input type="text" id="coursefourcompleted" name="coursefourcompleted" size="28" maxlength="30" placeholder="Year complete" value="1973"></td>
+</tr>
+</table>
+
+<br>
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetEducation()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Education" border="0" name="cleareducation" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+
+
+
+<!-- ********************  Extra Sidebar Tab  ******************** -->
+
+<div id="Extrasidebar" class="tabcontent">
+<form name="extrasidebar">
+  <h3>Extra Section Sidebar</h3>
+  <h4><font color="#008800">Position: Sidebar</font></h4>
+  <label><b>Extra Section Header</b></label><br>
+  <input type="text" id="extrasidebarheader" name="extrasidebarheader" size="20" maxlength="30" placeholder="Section Header" value ="Referees">
+  <br><br>
+  <table width="1045px" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+  <th></th>
+  <th>Part 1</th>
+  <th>Part 2</th>
+  <th>Part 3</th>
+  </tr>
+  <tr>
+  <td align="right" valign="top"><label><b>Sub Header:&nbsp;</b></label></td>
+  <td width="285px" align="center"><input type="text" id="extrasidebarsubtop" name="extrasidebarsubtop" size="30" maxlength="30" placeholder="Sub Header" value="Sub Header"><br><br></td>
+  <td width="315px" align="right"><input type="text" id="extrasidebarsubbottom" name="extrasidebarsubbottom" size="30" maxlength="30" placeholder="Sub Header" value="Sub Header"><br><br></td>
+  <td width="315px" align="right"><input type="text" id="extrasidebarsubmostbottom" name="extrasidebarsubmostbottom" size="30" maxlength="30" placeholder="Sub Header" value="Sub Header"><br><br></td>
+  </tr>
+  <tr>
+  <td align="right" valign="top"><label><b>Five Lines:&nbsp;</b></label></td>
+  <td align="center">
+  <input type="text" id="extrasidebartopone" name="extrasidebartopone" size="30" maxlength="30" placeholder="Line 1" value="Line one left Line one left">
+  <input type="text" id="extrasidebartoptwo" name="extrasidebartoptwo" size="30" maxlength="30" placeholder="Line 2" value="Line two left Line two left">
+  <input type="text" id="extrasidebartopthree" name="extrasidebartopthree" size="30" maxlength="30" placeholder="Line 3" value="Line three left Line three left">
+  <input type="text" id="extrasidebartopfour" name="extrasidebartopfour" size="30" maxlength="30" placeholder="Line 4" value="Line four left Line four left">
+  <input type="text" id="extrasidebartopfive" name="extrasidebartopfive" size="30" maxlength="30" placeholder="Line 5" value="Line five left Line five left">
+  </td>
+  <td align="right">
+  <input type="text" id="extrasidebarbottomone" name="extrasidebarbottomone" size="30" maxlength="30" placeholder="Line 1" value="Line one right Line one right">
+  <input type="text" id="extrasidebarbottomtwo" name="extrasidebarbottomtwo" size="30" maxlength="30" placeholder="Line 2" value="Line two right Line two right">
+  <input type="text" id="extrasidebarbottomthree" name="extrasidebarbottomthree" size="30" maxlength="30" placeholder="Line 3" value="Line three right Line three right">
+  <input type="text" id="extrasidebarbottomfour" name="extrasidebarbottomfour" size="30" maxlength="30" placeholder="Line 4" value="Line four right Line four right">
+  <input type="text" id="extrasidebarbottomfive" name="extrasidebarbottomfive" size="30" maxlength="30" placeholder="Line 5" value="Line five right Line five right">
+  </td>
+  <td align="right">
+  <input type="text" id="extrasidebarmostbottomone" name="extrasidebarmostbottomone" size="30" maxlength="30" placeholder="Line 1" value="Line one bottom Line one bott">
+  <input type="text" id="extrasidebarmostbottomtwo" name="extrasidebarmostbottomtwo" size="30" maxlength="30" placeholder="Line 2" value="Line two bottom Line two bott">
+  <input type="text" id="extrasidebarmostbottomthree" name="extrasidebarmostbottomthree" size="30" maxlength="30" placeholder="Line 3" value="Line three bottom Line thr bott">
+  <input type="text" id="extrasidebarmostbottomfour" name="extrasidebarmostbottomfour" size="30" maxlength="30" placeholder="Line 4" value="Line four bottom Line fou bott">
+  <input type="text" id="extrasidebarmostbottomfive" name="extrasidebarmostbottomfive" size="30" maxlength="30" placeholder="Line 5" value="Line five bottom Line fiv bott">
+  </td>
+  </tr>
+  </table>
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecSidebar()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Extra Section (Sidebar)" border="0" name="clearextrasidebar" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+</form>
+</div>
+
+<!-- ********************  Extra two column section Tab  ******************** -->
+
+<div id="ExtraTwo" class="tabcontent">
+<form name="extrasec2">
+  <h3>Extra Section Two Columns  (If needed to fill the page)</h3>
+  <h4><font color="#008800">Position: Main page condensed</font></h4>
+
+  <label><b>Extra Section Header</b></label><br>
+  <input type="text" id="extrasec2header" name="extrasec2header" size="20" maxlength="30" placeholder="Section Header" value ="Referees">
+<br><br>
+<table width="730px" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<th></th>
+<th>Column 1 (Left)</th>
+<th>Column 2 (Right)</th>
+</tr>
+<tr>
+<td align="right" valign="top"><label><b>Sub Header:&nbsp;</b></label></td>
+<td width="285px" align="center"><input type="text" id="extrasec2subleft" name="extrasec2subleft" size="30" maxlength="30" placeholder="Sub Header" value="Sub Header"><br><br></td>
+<td width="315px" align="right"><input type="text" id="extrasec2subright" name="extrasec2subright" size="30" maxlength="30" placeholder="Sub Header" value="Sub Header"><br><br></td>
+</tr>
+<tr>
+<td align="right" valign="top"><label><b>Five Lines:&nbsp;</b></label></td>
+<td align="center">
+  <input type="text" id="extrasec2leftone" name="extrasec2leftone" size="30" maxlength="30" placeholder="Line 1" value="Line one left Line one left">
+  <input type="text" id="extrasec2lefttwo" name="extrasec2lefttwo" size="30" maxlength="30" placeholder="Line 2" value="Line two left Line two left">
+  <input type="text" id="extrasec2leftthree" name="extrasec2leftthree" size="30" maxlength="30" placeholder="Line 3" value="Line three left Line three left">
+  <input type="text" id="extrasec2leftfour" name="extrasec2leftfour" size="30" maxlength="30" placeholder="Line 4" value="Line four left Line four left">
+  <input type="text" id="extrasec2leftfive" name="extrasec2leftfive" size="30" maxlength="30" placeholder="Line 5" value="Line five left Line five left">
+</td>
+<td align="right">
+  <input type="text" id="extrasec2rightone" name="extrasec2rightone" size="30" maxlength="30" placeholder="Line 1" value="Line one right Line one right">
+  <input type="text" id="extrasec2righttwo" name="extrasec2righttwo" size="30" maxlength="30" placeholder="Line 2" value="Line two right Line two right">
+  <input type="text" id="extrasec2rightthree" name="extrasec2rightthree" size="30" maxlength="30" placeholder="Line 3" value="Line three right Line three right">
+  <input type="text" id="extrasec2rightfour" name="extrasec2rightfour" size="30" maxlength="30" placeholder="Line 4" value="Line four right Line four right">
+  <input type="text" id="extrasec2rightfive" name="extrasec2rightfive" size="30" maxlength="30" placeholder="Line 5" value="Line five right Line five right">
+</td>
+</tr>
+</table>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecTwo()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Extra Section (two columns)" border="0" name="cleareducation" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- ********************  Extra one column section Tab  ******************** -->
+
+<div id="ExtraOne" class="tabcontent">
+<form name="extrasec1">
+  <h3>Extra Section One Column (If needed)</h3>
+  <h4><font color="#008800">Position: Main page</font></h4>
+  <label><b>Extra Section Header</b></label><br>
+  <input type="text" id="extrasec1header" name="extrasec1header" size="20" maxlength="30" placeholder="Section Header" value ="Profile">
+  <br><br>
+  <label><b>Extra Section Text</b></label>
+  <br>
+  <textarea id="extrasec1paragraph" name="extrasec1paragraph" rows="6" cols="80" placeholder="Extra section text">I just love working so much. From the people, the place and the views out the windows from my desk, I just love it to the moon and back. All day, every day for the rest of my life I could work this job and be happy. From the people, the place and the views out the windows from my desk, I just love it to the moon and back. All day, every day for the rest of my life I could work this job and be happy.</textarea>
+</form>
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetExtrasecOne()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR EXTRA SECTION" border="0" name="CLEARextrasecone" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+</div>
+
+<!-- ********************  Section Spacing Tab  ******************** -->
+
+<div id="Spacing" class="tabcontent">
+<form name="pageonespacing">
+  <h3>Section Spacing</h3>
+  <p>Add/Subtract space in between sections and parts of certain sections</p>
+
+
+<table width="700px" border="1" cellspacing="0" cellpadding="1">
+<tr>
+<th align="center">Section</th>
+<th align="center" width="80px">-1 mm</th>
+<th align="center" width="80px">-5 mm</th>
+<th align="center" width="80px">mm</th>
+<th align="center" width="80px">+5 mm</th>
+<th align="center" width="80px">+1 mm</th>
+</tr>
+<tr>
+<td align="left"><label><b>&nbsp;Summary</b></label></td>
+<td align="center"><a href="javascript:summaryValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:summaryValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="summaryspacing" name="summaryspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:summaryValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:summaryValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="summaryvalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+
+<tr>
+<td align="left"><label><b>&nbsp;Skills</b></label></td>
+<td align="center"><a href="javascript:skillsValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:skillsValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="skillsspacing" name="skillsspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:skillsValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:skillsValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="skillsvalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Experience</b></td>
+<td align="center"><a href="javascript:experienceValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:experienceValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="experiencespacing" name="experiencespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:experienceValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:experienceValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Experience</b> >>> Position 2</td>
+<td align="center"><a href="javascript:experiencePos2Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos2Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="experiencePos2spacing" name="experiencePos2spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:experiencePos2Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos2Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos2valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Experience</b> >>> Position 3</td>
+<td align="center"><a href="javascript:experiencePos3Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos3Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="experiencePos3spacing" name="experiencePos3spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:experiencePos3Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:experiencePos3Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="experiencePos3valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Education</b></td>
+<td align="center"><a href="javascript:educationValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationspacing" name="educationspacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationvalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<tr>
+<td align="left"><b>&nbsp;Education</b> >>> Course 2</td>
+<td align="center"><a href="javascript:educationPos2Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos2Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationPos2spacing" name="educationPos2spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationPos2Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos2Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos2valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Education</b> >>> Course 3</td>
+<td align="center"><a href="javascript:educationPos3Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos3Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationPos3spacing" name="educationPos3spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationPos3Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos3Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos3valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr
+<tr>
+<td align="left"><b>&nbsp;Education</b> >>> Course 4</td>
+<td align="center"><a href="javascript:educationPos4Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos4Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="educationPos4spacing" name="educationPos4spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:educationPos4Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:educationPos4Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="educationPos4valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra (Sidebar)</b></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarOnespacing" name="extrasidebarOnespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarOneValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarOnevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra (Sidebar)</b> >>> Part 2</td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarTwospacing" name="extrasidebarTwospacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarTwoValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarTwovalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra (Sidebar)</b> >>> Part 3</td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extrasidebarThreespacing" name="extrasidebarThreespacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extrasidebarThreeValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extrasidebarThreevalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra Two Columns</b> (Main page)</td>
+<td align="center"><a href="javascript:extraTwoValue(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extraTwoValue(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extraTwospacing" name="extraTwospacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extraTwoValue(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extraTwoValue(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraTwovalueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+<tr>
+<td align="left"><b>&nbsp;Extra One Column</b> (Main page)</td>
+<td align="center"><a href="javascript:extraOnePos2Value(-1)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueminus1" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><a href="javascript:extraOnePos2Value(-5)"><img src="images/back1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueminus" onMouseOver=" src='images/back2.gif'" onMouseOut=" src='images/back1.gif'"></a></td>
+<td align="center"><input type="text" id="extraOnePos2spacing" name="extraOnePos2spacing" size="3" maxlength="3"></td>
+<td align="center"><a href="javascript:extraOnePos2Value(5)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueplus" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+<td align="center"><a href="javascript:extraOnePos2Value(1)"><img src="images/forward1.gif"width="80" height="25" alt="-5" border="0" name="extraOnePos2valueplus1" onMouseOver=" src='images/forward2.gif'" onMouseOut=" src='images/forward1.gif'"></a></td>
+</tr>
+</table>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>RESET</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:SetSpacing()"><img src="images/clear1.gif"width="60" height="46" alt="-5" border="0" name="resetspacing" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- ********************  Power Phrases Tab  ******************** -->
+
+<div id="Phrases" class="tabcontent">
+<form name="powerphrases">
+  <h3>Power Phrases</h3>
+  <p>Power phrases you can use in your resume</p>
+</form>
+</div>
+
+<!-- ********************  Adjectives Tab  ******************** -->
+
+<div id="Adjectives" class="tabcontent">
+<form name="adjectivestab">
+  <h3>Adjectives</h3>
+  <p>A list of adjectives you can use in your resume</p>
+</form>
+</div>
+
+<!-- ********************  Help Tab  ******************** -->
+
+<div id="Help" class="tabcontent">
+<form name="helptab">
+  <h3>Help</h3>
+  <p>How to use this resume builder</p>
+</form>
+</div>
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
+<!-- ********************  kf then statement
+var empt = document.form1.adresse.value;
+if (empt === ""){
+VertSpace = VertSpace - 30;
+} else {
+VertSpace = VertSpace;
+}
+******************** -->
+
+
+</body>
+</html>

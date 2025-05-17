@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="robots" content="noindex, nofollow">
+
+<title>Wish-I-Could - Cover Letter Builder</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+
+
+<script language="javascript" src="sitegraphics/coverutilities.js"></script>
+<script language="javascript" src="sitegraphics/completecoverletter.js"></script>
+<script language="javascript" src="sitegraphics/SimpleCoverLetterArial.js"></script>
+<script language="javascript" src="sitegraphics/SimpleCoverLetterTimes.js"></script>
+
+<link rel="stylesheet" type="text/css" href="sitegraphics/style.css" media="screen" />
+
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+input, select {
+    font-size: 12pt;
+    font-family: arial;
+}
+
+
+.texty {
+  font-family: courier;
+  font-size: 12pt;
+  color: #000080;
+  font-weight: bold;
+}
+
+.textyy {
+  font-family: Helvetica;
+  font-size: 12pt;
+  color: #000000;
+  font-weight: normal;
+}
+
+.textyyy {
+  font-family: courier;
+  font-size: 12pt;
+  color: #000080;
+  font-weight: bold;
+  margin-left: 10px
+}
+
+/* *************** Button Colors *************** */
+
+/*.button {*/
+/*  background-color: #800000;*/ /* Red */
+/*  border: none;*/
+/*  color: white;*/
+/*  padding: 15px 32px;*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  display: inline-block;*/
+/*  font-size: 16px;*/
+/*  margin: 4px 2px;v
+/*  cursor: pointer;*/
+/*}*/
+
+
+/*.button2 {background-color: #005500;*/ /* Green */
+/*.button3 {background-color: #00008B;}*/ /* Blue */
+/*.button4 {background-color: #856363;}*/ /* Dustyrose */
+/*.button5 {background-color: #800080;}*/ /* Purple */
+/*.button6 {background-color: #008080;}*/ /* Teal */
+/*.button7 {background-color: #708090;}*/ /* Grey */
+
+/*.button8 {background-color: #AEE7F1; color: black; font-size: 20px;}*/ /* Arial */
+/*.button9 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;}*/ /* Times */
+/*.button10 {background-color: #AEE7F1; color: black; font-size: 20px; font-family: Courier;}*/ /* Courier */
+
+/*.button27 {background-color: #AEE7F1; color: black; font-size: 20px;}*/ /* Arial Template Two */
+/*.button28 {background-color: #AEE7F1; color: black; font-size: 20px;  font-family: Times;}*/ /* Times Template Two */
+
+/*.button11 {background-color: #CCFFCC; color: black; font-size: 20px;}*/ /* 9pt */
+/*.button12 {background-color: #CCFFCC; color: black; font-size: 20px;}*/ /* 10pt */
+/*.button13 {background-color: #CCFFCC; color: black; font-size: 20px;}*/ /* 11pt */
+/*.button14 {background-color: #CCFFCC; color: black; font-size: 20px;}*/ /* 12pt */
+
+/*.button15 {background-color: #CCFF99; color: black; font-size: 20px;}*/ /* 13pt */
+/*.button16 {background-color: #CCFF99; color: black; font-size: 20px;}*/ /* 14pt */
+/*.button17 {background-color: #CCFF99; color: black; font-size: 20px;}*/ /* 15pt */
+/*.button18 {background-color: #CCFF99; color: black; font-size: 20px;}*/ /* 16pt */
+
+/*.button19 {background-color: #CCCCFF; color: black; font-size: 20px;}*/ /* 26pt */
+/*.button20 {background-color: #CCCCFF; color: black; font-size: 20px;}*/ /* 28pt */
+/*.button21 {background-color: #CCCCFF; color: black; font-size: 20px;}*/ /* 30pt */
+/*.button22 {background-color: #CCCCFF; color: black; font-size: 20px;}*/ /* 32pt */
+
+/*.button23 {background-color: #CC99FF; color: black; font-size: 20px;}*/ /* 18pt */
+/*.button24 {background-color: #CC99FF; color: black; font-size: 20px;}*/ /* 20pt */
+/*.button25 {background-color: #CC99FF; color: black; font-size: 20px;}*/ /* 22pt */
+/*.button26 {background-color: #CC99FF; color: black; font-size: 20px;}*/ /* 24pt */
+
+
+
+.buttonsmall {background-color: #EEEEEE; color: black; font-size: 20px; border: 1;}
+
+.buttonsmall2 {background-color: #FFFFCC; color: black; font-size: 20px; border: 1;}
+
+ span:hover {
+  background-color: #cfcfcf;
+}
+
+.accordion {
+ box-sizing: border-box;
+ display: flex;
+ font-family: Arial, Helvetica, sans-serif;
+ overflow: hidden;
+ width: 100%;
+}
+
+.accordion-select {
+ cursor: pointer;
+ margin: 0;
+ opacity: 0;
+ z-index: 1;
+}
+
+.accordion-title {
+ position: relative;
+}
+
+.accordion-title:not(:nth-last-child(2))::after {
+ border: 1px solid transparent;
+ bottom: 0;
+ content: '';
+ left: 0;
+ position: absolute;
+ right: 0;
+ top: 0;
+}
+
+.accordion-title span {
+ bottom: 0px;
+ box-sizing: border-box;
+ display: block;
+ position: absolute;
+ white-space: nowrap;
+ width: 100%;
+}
+
+.accordion-content {
+ box-sizing: border-box;
+ overflow: auto;
+ position: relative;
+ transition: margin 0.3s ease 0.1s;
+}
+
+.accordion-select:checked + .accordion-title + .accordion-content {
+ margin-bottom: 0;
+ margin-right: 0;
+}
+
+/* Generated styles starts here */
+
+.accordion {
+ border-color: #dedede;
+ border-radius: 1px;
+ border-style: solid;
+ border-width: 3px;
+ flex-direction: column;
+ height: auto;
+}
+
+.accordion-title,
+.accordion-select  {
+ background-color: #ffffff;
+ color: #7f8787;
+ width: 100%;
+ height: 41px;
+ font-size: 19px;
+}
+
+.accordion-select {
+ margin-bottom: -41px;
+ margin-right: 0;
+}
+
+.accordion-title:not(:nth-last-child(2))::after {
+ border-bottom-color: #eaeaea;
+ border-right-color: transparent;
+}
+
+.accordion-select:hover + .accordion-title,
+.accordion-select:checked + .accordion-title {
+ background-color: #ffffff;
+}
+
+.accordion-title span  {
+ transform: rotate(0deg);
+ -ms-writing-mode: lr-tb;
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+ padding-left: 21px;
+ padding-right: 21px;
+ line-height: 41px;
+}
+
+.accordion-content {
+ background-color: #f7f7f7;
+ color: #000000;
+ height: 600px;
+ margin-bottom: -600px;
+ margin-right: 0;
+ padding: 15px;
+ width: 100%;
+}
+
+</style>
+
+<script type="application/javascript">
+
+var CoverLetterContent = "";
+var TextSize = 11;
+var BodyTextCol01 = 0;
+var BodyTextCol02 = 0;
+var BodyTextCol03 = 0;
+
+</script>
+
+</head>
+
+<body onload = "ExampleText()">
+
+  <!-- ********************  Start body  ******************** -->
+
+    <div id="container">
+    	<div id="header">
+
+    <img src="images/w.png" alt="W" width="45" height="45">
+    <img src="images/i.png" alt="I" width="45" height="45">
+    <img src="images/s.png" alt="S" width="45" height="45">
+    <img src="images/h.png" alt="H" width="45" height="45">
+    <img src="images/blank.png" alt="" width="45" height="45">
+    <img src="images/i.png" alt="I" width="45" height="45">
+    <img src="images/blank.png" alt="" width="45" height="45">
+    <img src="images/c.png" alt="C" width="45" height="45">
+    <img src="images/o.png" alt="O" width="45" height="45">
+    <img src="images/u.png" alt="U" width="45" height="45">
+    <img src="images/l.png" alt="L" width="45" height="45">
+    <img src="images/d.png" alt="D" width="45" height="45">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <br><br>
+
+    <img src="sitegraphics/c.png" alt="C" width="23" height="23">
+    <img src="sitegraphics/o.png" alt="O" width="23" height="23">
+    <img src="sitegraphics/v.png" alt="V" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">
+    <img src="sitegraphics/r.png" alt="R" width="23" height="23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="sitegraphics/l.png" alt="L" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">
+    <img src="sitegraphics/t.png" alt="T" width="23" height="23">
+    <img src="sitegraphics/t.png" alt="T" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">
+    <img src="sitegraphics/r.png" alt="R" width="23" height="23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="sitegraphics/b.png" alt="B" width="23" height="23">
+    <img src="sitegraphics/u.png" alt="U" width="23" height="23">
+    <img src="sitegraphics/i.png" alt="I" width="23" height="23">
+    <img src="sitegraphics/l.png" alt="L" width="23" height="23">
+    <img src="sitegraphics/d.png" alt="D" width="23" height="23">
+    <img src="sitegraphics/e.png" alt="E" width="23" height="23">
+    <img src="sitegraphics/r.png" alt="R" width="23" height="23">
+
+
+    	</div>
+    	<div id="navigation">
+    		<ul>
+    			<li><a href="index.html">Home</a></li>
+    			<li><a href="resume.html">Resume Builder</a></li>
+    			<li><a href="coverletter.html">Cover Letter Builder</a></li>
+    			<li><a href="jobsearch.html">Job Search</a></li>
+    		</ul>
+    	</div>
+    	<div id="content">
+
+  <!-- ********************  End body  ******************** -->
+
+
+<!-- ********************  document.getElementById('myTextarea').style.fontFamily = 'brush';  ******************** -->
+<!-- ********************  document.getElementById("table").style.fontSize = "14pt";  ******************** -->
+
+
+<h1>Cover Letter Builder</h1>
+
+
+<h2>Fill out your details</h2>
+
+
+
+<!-- ********************  Horizontal Tabs  ******************** -->
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Details')" id="defaultOpen">Contact Details</button>
+  <button class="tablinks" onclick="openCity(event, 'Subject')">Subject</button>
+  <button class="tablinks" onclick="openCity(event, 'Greeting')">Greeting</button>
+  <button class="tablinks" onclick="openCity(event, 'Opener')">Opener</button>
+  <button class="tablinks" onclick="openCity(event, 'Body')">Body</button>
+  <button class="tablinks" onclick="openCity(event, 'Gaps')">Gaps (**)</button>
+  <button class="tablinks" onclick="openCity(event, 'Availability')">Availability (**)</button>
+  <button class="tablinks" onclick="openCity(event, 'CallToAction')">Call to Action</button>
+  <button class="tablinks" onclick="openCity(event, 'Closer')">Closer</button>
+  <button class="tablinks" onclick="openCity(event, 'Example')">Example</button>
+  <button class="tablinks" onclick="openCity(event, 'Help')">Help</button>
+  <button class="tablinks" onclick="openCity(event, 'CoverLetter')">Cover Letter</button>
+  <button class="tablinks" onclick="openCity(event, 'RandomCL')">Random Cover Letter</button>
+
+</div>
+
+<!-- ********************  Personal Details Tab  ******************** -->
+
+<div id="Details" class="tabcontent">
+<form name="details">
+  <h2><font color="#008800">Contact Details</font></h2>
+
+
+<table width="1200px border="1" bordercolor="#000000">
+<tr>
+<td valign="top" align="left">
+  <input type="text" onfocus="this.select()" class="texty" id="fullname" name="fullname" size="35" maxlength="60" placeholder="Full Name">
+  <input type="text" onclick="setValueName()" id="yourname" name="yourname" size="22" maxlength="22" placeholder="<Your name here>" readonly>
+<br>
+  <input type="text" onfocus="this.select()" class="texty" id="phonenumber" name="phonenumber" size="35" maxlength="60" placeholder="Phone Number">
+  <input type="text" onclick="setValuePhone()" id="yournumber" name="yournumber" size="22" maxlength="22" placeholder="<Your phone number here>" readonly>
+<br>
+  <input type="text" onfocus="this.select()" class="texty" id="email" name="email" size="35" maxlength="60" placeholder="Email Address">
+  <input type="text" onclick="setValueEmail()" id="youremail" name="youremail" size="22" maxlength="22" placeholder="<Your email address here>" readonly>
+<br>
+  <input type="text" onfocus="this.select()" class="texty" id="addyress" name="addyress" size="35" maxlength="30" placeholder="City/Suburb, State Postcode">
+  <input type="text" onclick="setValueAddress()" id="youraddress" name="youraddress" size="22" maxlength="22" placeholder="<Your address here>" readonly>
+<br><br>
+<input type="text" onfocus="this.select()" class="texty" id="thedate" name="thedate" size="35" maxlength="30" placeholder="September 28, 2021">
+<input type="text" id="yourdate" name="yourdate" size="22" maxlength="22" placeholder="<Today's Date>" readonly>
+<br><br>
+<input type="text" onfocus="this.select()" class="texty" id="recipientname" name="recipientname" size="35" maxlength="30" placeholder="Recipient's Name">
+<input type="text" id="recipname" name="recipname" size="22" maxlength="22" placeholder="<Recipient's Name>" readonly>
+<br>
+<input type="text" onfocus="this.select()" class="texty" id="companyname" name="companyname" size="35" maxlength="30" placeholder="Company Name">
+<input type="text" onclick="SetCompanyName()" id="compname" name="compname" size="22" maxlength="22" placeholder="<Company Name>" readonly>
+<br>
+<input type="text" onfocus="this.select()" class="texty" id="companyaddress" name="companyaddress" size="35" maxlength="30" placeholder="City/Suburb, State Postcode">
+<input type="text" id="compaddress" name="compaddress" size="22" maxlength="22" placeholder="<Company Address>" readonly>
+<br>
+<input type="text" onfocus="this.select()" class="texty" id="companyphone" name="companyphone" size="35" maxlength="30" placeholder="Phone Number">
+<input type="text" id="compphone" name="compphone" size="22" maxlength="22" placeholder="<Company Phone Number>" readonly>
+<br>
+<input type="text" onfocus="this.select()" class="texty" id="companyemail" name="companyemail" size="35" maxlength="30" placeholder="Email Address">
+<input type="text" id="compemail" name="compemail" size="22" maxlength="22" placeholder="<Company Email Address>" readonly>
+<br><br>
+<input type="text" onfocus="this.select()" class="texty" id="companyposition" name="companyposition" size="35" maxlength="30" placeholder="Position Title">
+<input type="text" onclick="SetPositionTitle()" id="compposition" name="compposition" size="22" maxlength="22" placeholder="<Position Title>" readonly>
+<br>
+<input type="text" onfocus="this.select()" class="texty" id="advertisedon" name="advertisedon" size="35" maxlength="30" placeholder="Advertised on">
+<input type="text" onclick="SetAdvertisedOn()" id="adverton" name="adverton" size="22" maxlength="22" placeholder="<Advertised on>" readonly>
+<br>
+<p id="demo"></p>
+
+<script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d;
+</script>
+
+</td>
+<td valign="top" align="right">
+    <textarea class="texty" onfocus="this.select()" id="detailstext" name="detailstext" rows="20" cols="50"  placeholder="Details text"></textarea><br>
+</tr>
+</table>
+
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetContactDetails()"><img src="images/clear1.gif"width="60" height="46" alt="Clear personal details" border="0" name="resetdetails" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- ********************  Subject Tab  ******************** -->
+
+<div id="Subject" class="tabcontent">
+<form name="summary">
+  <h2><font color="#008800">Subject</font></h2>
+<br>
+
+<span class="buttonsmall" onclick="SubjectText1()">&nbsp;&nbsp;&nbsp;Subject 01&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText2()">&nbsp;&nbsp;&nbsp;Subject 02&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText3()">&nbsp;&nbsp;&nbsp;Subject 03&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText4()">&nbsp;&nbsp;&nbsp;Subject 04&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText5()">&nbsp;&nbsp;&nbsp;Subject 05&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText6()">&nbsp;&nbsp;&nbsp;Subject 06&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText7()">&nbsp;&nbsp;&nbsp;Subject 07&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText8()">&nbsp;&nbsp;&nbsp;Subject 08&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText9()">&nbsp;&nbsp;&nbsp;Subject 09&nbsp;&nbsp;&nbsp;</span><br>
+<span class="buttonsmall" onclick="SubjectText10()">&nbsp;&nbsp;&nbsp;Subject 10&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="SubjectText11()">&nbsp;&nbsp;&nbsp;Subject 11&nbsp;&nbsp;&nbsp;</span>
+
+<br><br>
+  <textarea onfocus="this.select()" class="texty" id="subjecttext" name="subjecttext" rows="10" cols="110" placeholder="Subject text"></textarea>
+</form>
+<br>
+
+
+<table width="140px border="0" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetSubject()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Subject" border="0" name="CLEARSUMMARY" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+<br>
+<table width="1000px  bordercolor="#000000">
+<tr>
+<td align="left" valign="top">
+<input type="text" onfocus="this.select()" class="texty" id="companyposition01" name="companyposition01" size="35" maxlength="30" placeholder="Position Title">&nbsp;&nbsp;<label>Position Title</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="companyname01" name="companyname01" size="35" maxlength="30" placeholder="Company Name">&nbsp;&nbsp;<label>Company Name</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="advertisedon01" name="advertisedon01" size="35" maxlength="30" placeholder="Advertised on">&nbsp;&nbsp;<label>Advertised on</label><br>
+
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ********************  Greeting Tab  ******************** -->
+
+<div id="Greeting" class="tabcontent">
+<form name="greeting">
+  <h2><font color="#008800">Greeting</font></h2>
+
+  <br>
+
+  <span class="buttonsmall" onclick="GreetingText1()">&nbsp;&nbsp;&nbsp;Greeting 01&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText2()">&nbsp;&nbsp;&nbsp;Greeting 02&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText3()">&nbsp;&nbsp;&nbsp;Greeting 03&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText4()">&nbsp;&nbsp;&nbsp;Greeting 04&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText5()">&nbsp;&nbsp;&nbsp;Greeting 05&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText6()">&nbsp;&nbsp;&nbsp;Greeting 06&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText7()">&nbsp;&nbsp;&nbsp;Greeting 07&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText8()">&nbsp;&nbsp;&nbsp;Greeting 08&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText9()">&nbsp;&nbsp;&nbsp;Greeting 09&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText10()">&nbsp;&nbsp;&nbsp;Greeting 10&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText11()">&nbsp;&nbsp;&nbsp;Greeting 11&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText12()">&nbsp;&nbsp;&nbsp;Greeting 12&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText13()">&nbsp;&nbsp;&nbsp;Greeting 13&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText14()">&nbsp;&nbsp;&nbsp;Greeting 14&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="GreetingText15()">&nbsp;&nbsp;&nbsp;Greeting 15&nbsp;&nbsp;&nbsp;</span>
+
+  <br><br>
+    <textarea onfocus="this.select()" class="texty" id="greetingtext" name="greetingtext" rows="10" cols="110" placeholder="Greeting text"></textarea>
+  <br>
+
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetGreeting()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Greeting" border="0" name="clearskills" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+</div>
+
+<!-- ********************  Opener Tab  ******************** -->
+
+<div id="Opener" class="tabcontent">
+<form name="opener">
+  <h2><font color="#008800">Opener</font></h2>
+
+<br>
+
+<span class="buttonsmall" onclick="OpenerText1()">&nbsp;&nbsp;&nbsp;Opener 01&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText2()">&nbsp;&nbsp;&nbsp;Opener 02&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText3()">&nbsp;&nbsp;&nbsp;Opener 03&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText4()">&nbsp;&nbsp;&nbsp;Opener 04&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText5()">&nbsp;&nbsp;&nbsp;Opener 05&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText6()">&nbsp;&nbsp;&nbsp;Opener 06&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText7()">&nbsp;&nbsp;&nbsp;Opener 07&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText8()">&nbsp;&nbsp;&nbsp;Opener 08&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText9()">&nbsp;&nbsp;&nbsp;Opener 09&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText10()">&nbsp;&nbsp;&nbsp;Opener 10&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText11()">&nbsp;&nbsp;&nbsp;Opener 11&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText12()">&nbsp;&nbsp;&nbsp;Opener 12&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText13()">&nbsp;&nbsp;&nbsp;Opener 13&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="OpenerText14()">&nbsp;&nbsp;&nbsp;Opener 14&nbsp;&nbsp;&nbsp;</span>
+
+<br><br>
+
+<textarea onfocus="this.select()" class="texty" id="openertext" name="openertext" rows="10" cols="110" placeholder="Opener text"></textarea>
+
+<br><br>
+
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetOpener()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Opener" border="0" name="clearskills" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+<br>
+<table width="1000px  bordercolor="#000000">
+<tr>
+<td align="left" valign="top">
+<input type="text" onfocus="this.select()" class="texty" id="companyposition02" name="companyposition02" size="35" maxlength="30" placeholder="Position Title">&nbsp;&nbsp;<label>Position Title</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="companyname02" name="companyname02" size="35" maxlength="30" placeholder="Company Name">&nbsp;&nbsp;<label>Company Name</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="advertisedon02" name="advertisedon02" size="35" maxlength="30" placeholder="Advertised on">&nbsp;&nbsp;<label>Advertised on</label><br>
+
+</td>
+</tr>
+</table>
+
+</form>
+</div>
+
+<!-- ********************  Body Tab  ******************** -->
+
+<div id="Body" class="tabcontent">
+<form name="body">
+  <h2><font color="#008800">Body</font></h2>
+
+  <br>
+
+  <span class="buttonsmall" onclick="BodyText1()">&nbsp;&nbsp;&nbsp;Body 01&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText2()">&nbsp;&nbsp;&nbsp;Body 02&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText3()">&nbsp;&nbsp;&nbsp;Body 03&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText4()">&nbsp;&nbsp;&nbsp;Body 04&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText5()">&nbsp;&nbsp;&nbsp;Body 05&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText6()">&nbsp;&nbsp;&nbsp;Body 06&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText7()">&nbsp;&nbsp;&nbsp;Body 07&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText8()">&nbsp;&nbsp;&nbsp;Body 08&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText9()">&nbsp;&nbsp;&nbsp;Body 09&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText10()">&nbsp;&nbsp;&nbsp;Body 10&nbsp;&nbsp;&nbsp;</span>
+
+
+  <!-- ********************
+  <span class="buttonsmall" onclick="BodyText9()">&nbsp;&nbsp;&nbsp;Body 09&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText10()">&nbsp;&nbsp;&nbsp;Body 10&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText11()">&nbsp;&nbsp;&nbsp;Body 11&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="BodyText12()">&nbsp;&nbsp;&nbsp;Body 12&nbsp;&nbsp;&nbsp;</span>
+******************** -->
+
+  <br><br>
+
+  <textarea onfocus="this.select()" class="texty" id="bodytext" name="bodytext" rows="10" cols="110" placeholder="Body text"></textarea>
+
+  <br>
+
+
+</form>
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetBody()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Body" border="0" name="clearbody" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+
+<br>
+<table width="1000px  bordercolor="#000000">
+<tr>
+<td align="left" valign="top">
+<input type="text" onfocus="this.select()" class="texty" id="companyposition03" name="companyposition03" size="35" maxlength="30" placeholder="Position Title">&nbsp;&nbsp;<label>Position Title</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="companyname03" name="companyname03" size="35" maxlength="30" placeholder="Company Name">&nbsp;&nbsp;<label>Company Name</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="advertisedon03" name="advertisedon03" size="35" maxlength="30" placeholder="Advertised on">&nbsp;&nbsp;<label>Advertised on</label><br>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+<!-- ********************  Gaps Tab  ******************** -->
+
+<div id="Gaps" class="tabcontent">
+
+  <form name="gaps">
+    <h2><font color="#008800">Gaps</font></h2>
+
+    <br>
+
+    <span class="buttonsmall" onclick="GapsText1()">&nbsp;&nbsp;&nbsp;Gaps 01&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText2()">&nbsp;&nbsp;&nbsp;Gaps 02&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText3()">&nbsp;&nbsp;&nbsp;Gaps 03&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText4()">&nbsp;&nbsp;&nbsp;Gaps 04&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText5()">&nbsp;&nbsp;&nbsp;Gaps 05&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText6()">&nbsp;&nbsp;&nbsp;Gaps 06&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText7()">&nbsp;&nbsp;&nbsp;Gaps 07&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText8()">&nbsp;&nbsp;&nbsp;Gaps 08&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText9()">&nbsp;&nbsp;&nbsp;Gaps 09&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText10()">&nbsp;&nbsp;&nbsp;Gaps 10&nbsp;&nbsp;&nbsp;</span><br>
+    <span class="buttonsmall" onclick="GapsText11()">&nbsp;&nbsp;&nbsp;Gaps 11&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText12()">&nbsp;&nbsp;&nbsp;Gaps 12&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText13()">&nbsp;&nbsp;&nbsp;Gaps 13&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText14()">&nbsp;&nbsp;&nbsp;Gaps 14&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText15()">&nbsp;&nbsp;&nbsp;Gaps 15&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="GapsText16()">&nbsp;&nbsp;&nbsp;Gaps 16&nbsp;&nbsp;&nbsp;</span>
+
+    <br><br>
+
+    <textarea onfocus="this.select()" class="texty" id="gapstext" name="gapstext" rows="10" cols="110" placeholder="Gaps text"></textarea>
+
+    <br>
+
+
+  </form>
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetGaps()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Gaps" border="0" name="cleargaps" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+
+
+</div>
+
+
+<!-- ********************  Availability section Tab  ******************** -->
+
+<div id="Availability" class="tabcontent">
+
+  <form name="availability">
+    <h2><font color="#008800">Availability</font></h2>
+
+    <br>
+
+    <span class="buttonsmall" onclick="AvailabilityText1()">&nbsp;&nbsp;&nbsp;Availability 01&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="AvailabilityText2()">&nbsp;&nbsp;&nbsp;Availability 02&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="AvailabilityText3()">&nbsp;&nbsp;&nbsp;Availability 03&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="AvailabilityText4()">&nbsp;&nbsp;&nbsp;Availability 04&nbsp;&nbsp;&nbsp;</span>
+
+    <br><br>
+
+    <textarea onfocus="this.select()" class="texty" id="availabilitytext" name="availabilitytext" rows="10" cols="110" placeholder="Availability text"></textarea>
+
+    <br>
+
+
+
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetAvailability()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Availability" border="0" name="clearavailability" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+
+  </form>
+</div>
+
+
+<!-- ********************  Call to Action section Tab  ******************** -->
+
+<div id="CallToAction" class="tabcontent">
+<form name="calltoaction">
+
+  <h2><font color="#008800">Call to Action</font></h2>
+
+  <br>
+
+  <span class="buttonsmall" onclick="CallToActionText1()">&nbsp;&nbsp;&nbsp;Call to Action 01&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText2()">&nbsp;&nbsp;&nbsp;Call to Action 02&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText3()">&nbsp;&nbsp;&nbsp;Call to Action 03&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText4()">&nbsp;&nbsp;&nbsp;Call to Action 04&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText5()">&nbsp;&nbsp;&nbsp;Call to Action 05&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText6()">&nbsp;&nbsp;&nbsp;Call to Action 06&nbsp;&nbsp;&nbsp;</span><br>
+  <span class="buttonsmall" onclick="CallToActionText7()">&nbsp;&nbsp;&nbsp;Call to Action 07&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText8()">&nbsp;&nbsp;&nbsp;Call to Action 08&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText9()">&nbsp;&nbsp;&nbsp;Call to Action 09&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText10()">&nbsp;&nbsp;&nbsp;Call to Action 10&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText11()">&nbsp;&nbsp;&nbsp;Call to Action 11&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText12()">&nbsp;&nbsp;&nbsp;Call to Action 12&nbsp;&nbsp;&nbsp;</span><br>
+  <span class="buttonsmall" onclick="CallToActionText13()">&nbsp;&nbsp;&nbsp;Call to Action 13&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText14()">&nbsp;&nbsp;&nbsp;Call to Action 14&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText15()">&nbsp;&nbsp;&nbsp;Call to Action 15&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText16()">&nbsp;&nbsp;&nbsp;Call to Action 16&nbsp;&nbsp;&nbsp;</span>
+  <span class="buttonsmall" onclick="CallToActionText17()">&nbsp;&nbsp;&nbsp;Call to Action 17&nbsp;&nbsp;&nbsp;</span>
+
+  <br><br>
+
+  <textarea onfocus="this.select()" class="texty" id="calltoactiontext" name="calltoactiontext" rows="10" cols="110" placeholder="Call to action text"></textarea>
+
+  <br>
+
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetCallToAction()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Call to action" border="0" name="clearcalltoaction" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+
+</form>
+</div>
+
+
+
+<!-- ********************  Closer Section Tab  ******************** -->
+
+<div id="Closer" class="tabcontent">
+
+  <form name="closer">
+    <h2><font color="#008800">Closer</font></h2>
+
+    <br>
+
+    <span class="buttonsmall" onclick="CloserText1()">&nbsp;&nbsp;&nbsp;Closer 01&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText2()">&nbsp;&nbsp;&nbsp;Closer 02&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText3()">&nbsp;&nbsp;&nbsp;Closer 03&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText4()">&nbsp;&nbsp;&nbsp;Closer 04&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText5()">&nbsp;&nbsp;&nbsp;Closer 05&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText6()">&nbsp;&nbsp;&nbsp;Closer 06&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText7()">&nbsp;&nbsp;&nbsp;Closer 07&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText8()">&nbsp;&nbsp;&nbsp;Closer 08&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText9()">&nbsp;&nbsp;&nbsp;Closer 09&nbsp;&nbsp;&nbsp;</span><br>
+    <span class="buttonsmall" onclick="CloserText10()">&nbsp;&nbsp;&nbsp;Closer10 &nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText11()">&nbsp;&nbsp;&nbsp;Closer 11&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText12()">&nbsp;&nbsp;&nbsp;Closer 12&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText13()">&nbsp;&nbsp;&nbsp;Closer 13&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText14()">&nbsp;&nbsp;&nbsp;Closer 14&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText15()">&nbsp;&nbsp;&nbsp;Closer 15&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText16()">&nbsp;&nbsp;&nbsp;Closer 16&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText17()">&nbsp;&nbsp;&nbsp;Closer 17&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText18()">&nbsp;&nbsp;&nbsp;Closer 18&nbsp;&nbsp;&nbsp;</span><br>
+    <span class="buttonsmall" onclick="CloserText19()">&nbsp;&nbsp;&nbsp;Closer 19&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText20()">&nbsp;&nbsp;&nbsp;Closer 20&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText21()">&nbsp;&nbsp;&nbsp;Closer 21&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText22()">&nbsp;&nbsp;&nbsp;Closer 22&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText23()">&nbsp;&nbsp;&nbsp;Closer 23&nbsp;&nbsp;&nbsp;</span>
+    <span class="buttonsmall" onclick="CloserText24()">&nbsp;&nbsp;&nbsp;Closer 24&nbsp;&nbsp;&nbsp;</span>
+
+    <br><br>
+
+    <textarea onfocus="this.select()" class="texty" id="closertext" name="closertext" rows="10" cols="110" placeholder="Closer text"></textarea>
+
+    <br>
+
+
+
+  <br>
+  <table width="140px border="1" bordercolor="#000000">
+  <tr>
+  <td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+  <td align="center" valign="middle" width="65px"><a href="javascript:ResetCloser()"><img src="images/clear1.gif"width="60" height="46" alt="Clear Availability" border="0" name="clearavailability" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+  </tr>
+  </table>
+
+  </form>
+</div>
+
+
+
+<!-- ********************  Example Cover Letter Tab  ******************** -->
+
+<div id="Example" class="tabcontent">
+<form name="example">
+  <h2><font color="#008800">Example Cover Letter</font></h2>
+
+  <br>
+
+  <textarea class="texty" id="examplecontent" name="examplecontent" rows="45" cols="75" readonly></textarea>
+
+  <br>
+
+</form>
+</div>
+
+<!-- ********************  Cover Letter Tab  ******************** -->
+
+<div id="CoverLetter" class="tabcontent">
+<form name="coverletter">
+  <h2><font color="#008800">Cover Letter</font></h2>
+
+<span class="buttonsmall" onclick="MyFontsize10()">&nbsp;&nbsp;&nbsp;Font size 10&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="MyFontsize11()">&nbsp;&nbsp;&nbsp;Font size 11&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="MyFontsize12()">&nbsp;&nbsp;&nbsp;Font size 12&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="MyFontsize13()">&nbsp;&nbsp;&nbsp;Font size 13&nbsp;&nbsp;&nbsp;</span>
+<br><br>
+<!-- ********************<span class="buttonsmall" onclick="MyFontArial()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ******************** -->
+<span class="buttonsmall" onclick="MyFontHelvetica()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arial&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick="MyFontTimes()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Times&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="buttonsmall2" onclick="CoverLetterSimpleArial()">&nbsp;&nbsp;&nbsp;&nbsp;Save to PDF (Arial)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall2" onclick="CoverLetterSimpleTimes()">&nbsp;&nbsp;&nbsp;&nbsp;Save to PDF (Times)&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<br><br>
+
+<textarea class="textyy" onfocus="this.select()" id="coverlettercontent" name="coverlettercontent" rows="46" cols="75"></textarea>
+
+<br>
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetCoverLetter()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR SUMMARY" border="0" name="CLEARSUMMARY" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a></td>
+</tr>
+</table>
+
+
+
+</form>
+</div>
+
+<!-- ******************** Random  Cover Letter Tab  ******************** -->
+
+<div id="RandomCL" class="tabcontent">
+<form name="randomcl">
+  <h2><font color="#008800">Random Cover Letter</font></h2>
+
+<span class="buttonsmall" onclick = "RandomCoverLetter01()">&nbsp;&nbsp;&nbsp;Random Cover Letter&nbsp;&nbsp;&nbsp;</span>
+<span class="buttonsmall" onclick = "CompleteCL01()">&nbsp;&nbsp;&nbsp;Compile Cover Letter&nbsp;&nbsp;&nbsp;</span>
+
+<br><br>
+
+<table width="1220px  bordercolor="#000000" border="0">
+<tr>
+<td width="700px" align="left" valign="top">
+
+<textarea class="texty" onfocus="this.select()" id="randomclcontent" name="randomclcontent" rows="2" cols="75" placeholder="Subject..."></textarea><br>
+<textarea class="texty" onfocus="this.select()" id="randomclcontent02" name="randomclcontent02" rows="2" cols="75" placeholder="Greeting..."></textarea><br>
+<textarea class="texty" onfocus="this.select()" id="randomclcontent03" name="randomclcontent03" rows="7" cols="75" placeholder="Opener..."></textarea><br>
+<textarea class="texty" onfocus="this.select()" id="randomclcontent04" name="randomclcontent04" rows="10" cols="75" placeholder="Body..."></textarea><br>
+<textarea class="texty" onfocus="this.select()" id="randomclcontent05" name="randomclcontent05" rows="6" cols="75" placeholder="Gaps..."></textarea><br>
+<textarea class="texty" onfocus="this.select()" id="randomclcontent06" name="randomclcontent06" rows="4" cols="75" placeholder="Call to action..."></textarea><br>
+<textarea class="texty" onfocus="this.select()" id="randomclcontent07" name="randomclcontent07" rows="4" cols="75" placeholder="Closer..."></textarea><br>
+
+</td>
+<td width="520px" align="left" valign="top">
+  <input type="text" onfocus="this.select()" class="textyyy" id="companyposition05" name="companyposition05" size="35" maxlength="30" placeholder="Position Title">&nbsp;&nbsp;<label>Position Title</label><br>
+  <input type="text" onfocus="this.select()" class="textyyy" id="companyname05" name="companyname05" size="35" maxlength="30" placeholder="Company Name">&nbsp;&nbsp;<label>Company Name</label><br>
+  <input type="text" onfocus="this.select()" class="textyyy" id="advertisedon05" name="advertisedon05" size="35" maxlength="30" placeholder="Advertised on">&nbsp;&nbsp;<label>Advertised on</label><br>
+
+</td>
+</tr>
+</table>
+
+<br>
+<br>
+
+<table width="140px border="1" bordercolor="#000000">
+<tr>
+<td align="right" valign="middle" width="75px"><label><b>CLEAR</b></label><td>
+<td align="center" valign="middle" width="65px"><a href="javascript:ResetRandomCoverLetter()"><img src="images/clear1.gif"width="60" height="46" alt="CLEAR SUMMARY" border="0" name="CLEARSUMMARY" onMouseOver=" src='images/clear2.gif'" onMouseOut=" src='images/clear1.gif'"></a>
+</td>
+</tr>
+</table>
+
+<br>
+<table width="1000px  bordercolor="#000000">
+<tr>
+<td align="left" valign="top">
+<input type="text" onfocus="this.select()" class="texty" id="companyposition04" name="companyposition04" size="35" maxlength="30" placeholder="Position Title">&nbsp;&nbsp;<label>Position Title</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="companyname04" name="companyname04" size="35" maxlength="30" placeholder="Company Name">&nbsp;&nbsp;<label>Company Name</label><br>
+<input type="text" onfocus="this.select()" class="texty" id="advertisedon04" name="advertisedon04" size="35" maxlength="30" placeholder="Advertised on">&nbsp;&nbsp;<label>Advertised on</label><br>
+
+</td>
+</tr>
+</table>
+
+</form>
+</div>
+
+
+<!-- ********************  Help Tab  ******************** -->
+
+<div id="Help" class="tabcontent">
+<form name="helptab">
+  <a name ="top"></a>
+  <h2><font color="#008800">Help</font></h2>
+  <h3>How to use this Cover Letter Builder</h3>
+<p>Start at the <b><font color="#008800">'Contact Details'</font></b> tab on the left and work you way across to the <b><font color="#008800">'Closer'</font></b> Tab on the right.</p>
+<p>Just fill out the contact details that you need and copy and paste them into the textarea on the right as you need them. Take a look at the example cover letter in the <b><font color="#008800">'Example'</font></b> Tab. I have made this builder so that when you click into a text box it selects the text within that text box. Then just use (Control + C) to copy your selection and (Control + v) to paste your selection into the text box on the right. Just look at the picture below.</p>
+<br><center><img src="images/detailssmall.png" alt="Details Tab" width="1000" height="449" border="1"></center><br>
+<p>When you have all the details complete just select the text and copy and paste it into the textarea in the <b><font color="#008800">'Cover Letter'</font></b> tab.</p>
+<br><center><img src="images/coverlettersmall.png" alt="Cover Letter Tab" width="1000" height="457" border="1"></center><br>
+<p>Also, if you click on the label to the right of the 'Company Name', 'Position Title' and 'Advertised on' fields on the bottom of the following tabs will be pre-filled with the corresponding details 'Subject', 'Opener', 'Body'</p>
+<center><br><img src="images/detailstab.png" alt="Details Tab" width="698" height="524" border="1"></center><br>
+<center><br><img src="images/subjectsmall.png" alt="Details text boxes" width="608" height="667" border="1"></center><br>
+
+<p>Once you have finished the <b><font color="#008800">'Contact Details'</font></b> tab move along to the next one. Keep moving along the tabs to the right until your cover letter is complete. The <b><font color="#008800">'Gaps'</font></b> tab and <b><font color="#008800">'Availability'</font></b> tab are optional.</p>
+<p>When you open a Tab press the text input buttons and different text/paragraps will be displayed in the textarea. In the example below the 'Subject 01' button has been clicked and the corresponding text has appeared in the textarea. Now just edit the text in the [] square brackets, and any other text you wish to edit. Once edited just select the text and copy and paste it into the cover letter in the<b><font color="#008800">'Cover Letter'</font></b> tab textarea.</p>
+<center><br><img src="images/textselectionsmall.png" alt="Details text boxes" width="1000" height="428" border="1"></center><br>
+<p>Click on the 'Clear' Button underneath each textarea to clear it.</p>
+<br><br>
+<h3>Changing Fonts and Font Sizes</h3>
+<p>You can make your cover letters in either Arial or Times fonts with 10pt to 13pt sizes.</p>
+<p>Use the buttons provided in the <b><font color="#008800">'Cover Letter'</font></b> tab. The default font is Arial and the default size is 11pt. If you need to use another font you can just paste your cover letter into and office program and do it that way.</p>
+<center><br><img src="images/fontsizessmall.png" alt="Changing font types and sizes" width="1000" height="531" border="1"></center><br><br>
+
+
+
+
+<h3>Saving Cover Letters</h3>
+<p>There are three ways that you can save your cover letter:</p>
+<ol type="1">
+  <li>Save it into a word type document/PDF file with an office program.</li>
+  <li>Save it to PDF with the provided buttons.</li>
+  <li>Save it to PDF with the same header that you used on your single page resume.</li>
+</ol>
+<br>
+<h3>Saving your cover letter with an office program</h3>
+<p>To save your cover letter into an office program just copy your cover letter text into your office program. <br><br>You can also copy it into a website like SEEK, just copy it into the textarea provided and it should retain the correct formatting.</p>
+<br>
+
+<h3>Saving to PDF</h3>
+<p>To save your cover letter to a PDF just use the buttons provided. You can either choose Arial or Times font. The the font size buttons to change the font size. The default font size is 11pt.</p>
+<center><br><img src="images/savepdfsmall.png" alt="Save to PDF" width="1000" height="531" border="1"></center><br><br>
+<br>
+
+<h3>Saving to PDF with your Resume Header</h3>
+<p>To save your cover letter to a PDF with the same header as your single page resume just copy your cover letter and paste it into the textarea on the <b><font color="#008800">'Cover Letter'</font></b> tab on the  <b><font color="#008800">'Resume Builder'</font></b> page. It might be worth opening the resume builder page in a second window.</p>
+<p>Once you have pasted your cover letter into the textarea delete your name, address phone number and email address. Then go to the  <b><font color="#008800">'Personal Details'</font></b> tab and fill them in there so that they appear in the header the same as your resume. Then use the appropriate buttons to choose the resume/font style for your PDF file. </p>
+<br><br>
+<a href="#top"><b><font color="#008800">Top</font></b></a>
+
+</form>
+</div>
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
+<!-- ********************  kf then statement
+var empt = document.form1.adresse.value;
+if (empt === ""){
+VertSpace = VertSpace - 30;
+} else {
+VertSpace = VertSpace;
+}
+******************** -->
+
+
+<br>
+<!-- ********************  Start Footer  ******************** -->
+
+</div>
+<div id="footer">
+
+<center><a class="small" href="index.html">Home</a> | <a class="small" href="resume.html">Resume Builder</a> | <a class="small" href="coverletter.html">Cover Letter Builder</a> | <a class="small" href="jobsearch.html">Job Search</a></center>
+
+  Copyright &copy; wishicould.net, 2021
+</div>
+</div>
+
+<!-- ********************  End Footer  ******************** -->
+
+
+</body>
+</html>
